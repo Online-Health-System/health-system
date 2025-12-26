@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | Online Health System</title>
+  <link rel="stylesheet" href="./src/css/style.css">
+
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <h2>🏥 HealthSys</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Patients</a>
+    <a href="#">Doctors</a>
+    <a href="#">Appointments</a>
+    <a href="#">Reports</a>
+    <a href="#">Logout</a>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Dashboard Overview</h1>
+      <p>Welcome back, Admin</p>
+    </header>
+
+    <!-- Cards -->
+    <section class="cards">
+      <div class="card">
+        <h3>Total Patients</h3>
+        <p>1,245</p>
+      </div>
+
+      <div class="card">
+        <h3>Doctors</h3>
+        <p>84</p>
+      </div>
+
+      <div class="card">
+        <h3>Appointments</h3>
+        <p>312</p>
+      </div>
+
+      <div class="card">
+        <h3>Reports</h3>
+        <p>67</p>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="glass-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Ahmed Ali</td>
+            <td>Dr. Dina</td>
+            <td>27 Dec 2025</td>
+            <td><span class="badge badge-success">Completed</span></td>
+            <td class="table-actions">
+              <button class="btn btn-primary">View</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Sarah Hassan</td>
+            <td>Dr. Rehan</td>
+            <td>28 Dec 2025</td>
+            <td><span class="badge badge-warning">Pending</span></td>
+            <td class="table-actions">
+              <button class="btn btn-accent">Update</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Mohamed Samy</td>
+            <td>Dr. Dina</td>
+            <td>29 Dec 2025</td>
+            <td><span class="badge badge-danger">Canceled</span></td>
+            <td class="table-actions">
+              <button class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
