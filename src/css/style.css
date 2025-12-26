@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-/* ===== Colors ===== */
+/* ===== Colors (Navy Theme) ===== */
 :root {
-  --primary: #2E7D32;
-  --secondary: #F4F6F5;
-  --dark: #1F2933;
-  --accent: #7E57C2;
+  --primary: #0A3D62;     /* Navy */
+  --secondary: #E3EAF0;   /* Light Gray */
+  --dark: #0B1C2D;        /* Dark Navy */
+  --accent: #5C7AEA;     /* Soft Blue Accent */
   --danger: #C62828;
-  --glass: rgba(255,255,255,0.18);
+  --glass: rgba(255,255,255,0.16);
 }
 
 /* ===== Reset ===== */
@@ -26,7 +26,7 @@ html, body {
 
 /* ===== Body ===== */
 body {
-  background: linear-gradient(135deg, #1F2933, #263238);
+  background: linear-gradient(135deg, #0B1C2D, #0A3D62);
   color: #fff;
 }
 
@@ -43,13 +43,14 @@ body {
   left: 0;
   width: 250px;
   height: 100vh;
-  background: var(--glass);
+  background: rgba(11, 28, 45, 0.6);
   backdrop-filter: blur(14px);
   padding: 20px;
 }
 
 .sidebar h2 {
   margin-bottom: 30px;
+  color: #E3EAF0;
 }
 
 .sidebar a {
@@ -57,13 +58,13 @@ body {
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 10px;
-  color: #fff;
+  color: #E3EAF0;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .sidebar a:hover {
-  background: rgba(46,125,50,0.35);
+  background: rgba(92, 122, 234, 0.35);
 }
 
 /* ===== Main ===== */
@@ -83,7 +84,7 @@ body {
 }
 
 .header p {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* ===== Cards ===== */
@@ -99,7 +100,7 @@ body {
   backdrop-filter: blur(16px);
   padding: 25px;
   border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
   transition: transform 0.3s;
 }
 
@@ -109,12 +110,14 @@ body {
 
 .card h3 {
   font-size: 16px;
+  color: #E3EAF0;
 }
 
 .card p {
   font-size: 30px;
   font-weight: 600;
   margin-top: 10px;
+  color: #FFFFFF;
 }
 
 /* ===== Table ===== */
@@ -136,7 +139,7 @@ body {
 }
 
 .glass-table th {
-  background: rgba(31,41,51,0.7);
+  background: rgba(11, 28, 45, 0.75);
 }
 
 .glass-table tr {
@@ -144,7 +147,7 @@ body {
 }
 
 .glass-table tr:hover {
-  background: rgba(46,125,50,0.25);
+  background: rgba(92, 122, 234, 0.25);
 }
 
 /* ===== Buttons ===== */
@@ -180,13 +183,13 @@ body {
 }
 
 .badge-success {
-  background: #A5D6A7;
-  color: #1B5E20;
+  background: #9AD1C8;
+  color: #0B3C49;
 }
 
 .badge-warning {
-  background: #D1C4E9;
-  color: #311B92;
+  background: #B4C6FF;
+  color: #1A237E;
 }
 
 .badge-danger {
