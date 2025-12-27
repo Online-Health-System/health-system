@@ -17,23 +17,20 @@ Reports are generated for insights
 The project uses dummy data for demonstration purposes.
 
 🧱 Project Structure
+Project Structure
 Online-Health-System/
-│
 ├── data/
 │   └── db.js
-│
 ├── modules/
 │   ├── auth/
 │   ├── patient/
 │   ├── doctor/
 │   ├── admin/
 │   └── reports/
-│
 ├── src/
 │   ├── css/
 │   ├── js/
 │   └── assets/
-│
 ├── index.html
 └── README.md
 
