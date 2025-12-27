@@ -20,16 +20,27 @@ The project uses dummy data for demonstration purposes.
 Project Structure
 Online-Health-System/
 ├── data/
-│   └── db.js
+│   ├── appointments.js
+│   ├── data.json
+│   ├── storage.js
+│   └── users.js
 ├── modules/
 │   ├── auth/
-│   ├── patient/
-│   ├── doctor/
-│   ├── admin/
-│   └── reports/
+│   │   ├── auth.js
+│   │   └── validation.js
+│   ├── admin.js
+│   ├── doctor.js
+│   ├── patient.js
+│   └── reports.js
 ├── src/
 │   ├── css/
-│   ├── js/
+│   │   └── style.css
+│   ├── pages/
+│   │   ├── admin.html
+│   │   ├── doctor.html
+│   │   ├── login.html
+│   │   ├── patient.html
+│   │   └── register.html
 │   └── assets/
 ├── index.html
 └── README.md
