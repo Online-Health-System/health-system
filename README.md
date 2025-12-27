@@ -40,7 +40,7 @@ Online-Health-System/
 📂 Folder Responsibilities
 📁 data/
 
-dummyData.js
+db.js
 
 Contains mock data:
 
