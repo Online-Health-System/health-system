@@ -45,27 +45,27 @@ Online-Health-System/
 └── README.md
 📂 Folder Responsibilities
 📁 data/
-appointments.js / users.js: جداول البيانات الأساسية.
+appointments.js / users.js: 
 
-data.json: ملف البيانات الخام (Mock Data).
+data.json:(Mock Data).
 
-storage.js: المسؤول عن الـ LocalStorage وحفظ البيانات.
+storage.js: LocalStorage
 
 📁 modules/
-auth/ (Wahba): التحقق من الدخول، التسجيل، وتحديد الأدوار (Roles).
+auth/ (Wahba): Implements Authentication, Registration, and Role-Based Access Control (RBAC).
 
-patient.js (Rehan): بروفايل المريض، حجز المواعيد، وتاريخ الكشوفات.
+admin.js (Doaa): Centralized Dashboard for user management and system-wide configurations.
 
-doctor.js (Dina): قائمة المرضى، إدارة الكشوفات، وكتابة الملاحظات الطبية.
+patient.js (Rehan): Manages patient profiles, appointment scheduling, and medical history.
 
-admin.js (Doaa): لوحة التحكم الشاملة، إدارة المستخدمين والصلاحيات.
+doctor.js (Dina): Handles patient queues, examination updates, and clinical documentation.
 
-reports.js (Ibrahim): حساب الإحصائيات (عدد المرضى، الأطباء، المواعيد).
+reports.js (Ibrahim): Analytics engine for calculating KPIs (Patient/Doctor counts & trends).
 
 🎨 Design Guidelines
-Style: Glassmorphism UI (تأثير الزجاج الشفاف).
+Style: Glassmorphism UI 
 
-Colors: No blue colors. الأساس هو (Medical Green / Navy palette).
+Colors: No blue colors. (Medical Green / Navy palette).
 
 Layout: Sidebar + Main content layout.
 
