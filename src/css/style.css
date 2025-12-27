@@ -52,7 +52,10 @@ body {
   margin-bottom: 30px;
   color: #E3EAF0;
 }
-
+.sidebar h2 img {
+  position:relative;
+  top:15px;
+}
 .sidebar a {
   display: block;
   padding: 12px;
