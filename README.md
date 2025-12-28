@@ -20,7 +20,7 @@ The project uses dummy data for demonstration purposes.
 Online-Health-System/
 │
 ├── data/
-│   └── dummyData.js
+│   └── data.js
 │
 ├── modules/
 │   ├── auth/
