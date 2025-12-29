@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor | Online Health System</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <h2>
+      <img src="../assets/images/logo.png" width="50" height="50">
+      Health Care
+    </h2>
+
+    <a href="../../index.html">Dashboard</a>
+    <a href="#">Appointments</a>
+    <a href="#">Logout</a>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Doctor Dashboard</h1>
+      <p>Welcome back, Dr. Dina</p>
+    </header>
+
+    <!-- Cards -->
+    <section class="cards">
+      <div class="card">
+        <h3>Total Patients</h3>
+        <p>24</p>
+      </div>
+
+      <div class="card">
+        <h3>Today's Appointments</h3>
+        <p>5</p>
+      </div>
+
+      <div class="card">
+        <h3>Completed</h3>
+        <p>18</p>
+      </div>
+
+      <div class="card">
+        <h3>Pending</h3>
+        <p>6</p>
+      </div>
+    </section>
+
+    <!-- Patients Table -->
+    <section class="glass-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Age</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Ahmed Ali</td>
+            <td>35</td>
+            <td>27 Dec 2025</td>
+            <td>
+              <span class="badge badge-success">Completed</span>
+            </td>
+            <td>
+              <button class="btn btn-accent">View</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Sarah Hassan</td>
+            <td>29</td>
+            <td>28 Dec 2025</td>
+            <td>
+              <span class="badge badge-warning">Pending</span>
+            </td>
+            <td>
+              <button class="btn btn-primary">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Medical Record -->
+    <section class="card" style="margin-top:30px;">
+      <h3>Medical Record</h3>
+
+      <br>
+
+      <label>Medical Notes</label>
+      <textarea rows="4"
+        style="width:100%;padding:12px;border-radius:12px;border:none;"></textarea>
+
+      <br><br>
+
+      <label>Prescription</label>
+      <textarea rows="4"
+        style="width:100%;padding:12px;border-radius:12px;border:none;"></textarea>
+
+      <br><br>
+
+      <button class="btn btn-accent">Save Record</button>
+    </section>
+
+  </main>
+</div>
+
+<script src="../js/doctor.js"></script>
+</body>
+</html>
