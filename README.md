@@ -1,206 +1,90 @@
-🏥 Online Health System
+# 🏥 Online Health System
 
 A simple Online Health System built with HTML, CSS, and JavaScript using a modular architecture and role-based access.
 
-📌 Project Overview
+---
 
+## 📌 Project Overview
 This project simulates an online healthcare platform where:
+* **Patients**: Can book and view appointments.
+* **Doctors**: Can manage patient lists and update statuses.
+* **Admins**: Can manage the entire system and users.
+* **Reports**: Generated insights for system statistics.
 
-Patients can book appointments
+> **Note**: The project uses dummy data for demonstration purposes.
 
-Doctors can manage appointments
+---
 
-Admin can manage the system
-
-Reports are generated for insights
-
-The project uses dummy data for demonstration purposes.
-
-🧱 Project Structure
+## 🧱 Project Structure
+```text
 Online-Health-System/
-│
 ├── data/
+<<<<<<< HEAD
 │   └── data.js
 │
+=======
+│   ├── appointments.js
+│   ├── data.json
+│   ├── storage.js
+│   └── users.js
+>>>>>>> origin/main
 ├── modules/
 │   ├── auth/
-│   ├── patient/
-│   ├── doctor/
-│   ├── admin/
-│   └── reports/
-│
+│   │   ├── auth.js
+│   │   └── validation.js
+│   ├── admin.js
+│   ├── doctor.js
+│   ├── patient.js
+│   └── reports.js
 ├── src/
 │   ├── css/
-│   ├── js/
+│   │   └── style.css
+│   ├── pages/
+│   │   ├── admin.html
+│   │   ├── doctor.html
+│   │   ├── login.html
+│   │   ├── patient.html
+│   │   └── register.html
 │   └── assets/
-│
 ├── index.html
 └── README.md
-
 📂 Folder Responsibilities
 📁 data/
+appointments.js / users.js: 
 
-dummyData.js
+data.json:(Mock Data).
 
-Contains mock data:
+storage.js: LocalStorage
 
-Users
+📁 modules/
+auth/ (Wahba): Implements Authentication, Registration, and Role-Based Access Control (RBAC).
 
-Appointments
+admin.js (Doaa): Centralized Dashboard for user management and system-wide configurations.
 
-Reports
+patient.js (Rehan): Manages patient profiles, appointment scheduling, and medical history.
 
-Used for testing and presentation
+doctor.js (Dina): Handles patient queues, examination updates, and clinical documentation.
 
-📁 modules/auth (Wahba)
-
-Login / Signup validation
-
-Password checks
-
-Role detection
-
-Prevent invalid input
-
-📁 modules/patient (Rehan)
-
-View patient profile
-
-Book appointments
-
-View appointment history
-
-Update appointment status
-
-📁 modules/doctor (Dina)
-
-View patients list
-
-View appointments
-
-Update examination status
-
-Add doctor notes
-
-📁 modules/admin (Doaa)
-
-Admin dashboard
-
-View all users
-
-Review system data
-
-Manage roles and permissions
-
-📁 modules/reports (Ibrahim)
-
-Calculate statistics:
-
-Number of patients
-
-Number of doctors
-
-Number of appointments
-
-Display simple reports and summaries
-
-🔄 Application Flow
-
-User logs in or signs up
-
-Authentication module validates input
-
-System detects user role
-
-User is redirected to the Home Dashboard
-
-Based on role:
-
-Admin → System management
-
-Doctor → Appointment management
-
-Patient → Appointment booking
+reports.js (Ibrahim): Analytics engine for calculating KPIs (Patient/Doctor counts & trends).
 
 🎨 Design Guidelines
+Style: Glassmorphism UI 
 
-Glassmorphism UI
+Colors: No blue colors. (Medical Green / Navy palette).
 
-No blue colors
-
-Primary Color: Medical Green / Navy-based palette
-
-Consistent layout across all pages
-
-Sidebar + Main content layout
-
-Common UI Components
-
-Sidebar
-
-Header
-
-Cards
-
-Tables
-
-Buttons
-
-Forms
-
-Badges
+Layout: Sidebar + Main content layout.
 
 🎯 Naming Conventions
-📁 Files & Folders
+Files: lowercase-with-dashes.js (e.g., auth-ui.js).
 
-lowercase
+CSS (BEM): .block__element--modifier (e.g., .sidebar__item--active).
 
-dash-separated
+JS: Variables & Functions (camelCase), Classes (PascalCase).
 
-patient.js
-auth-ui.js
+🌿 Git Workflow & Team
+Process: Work on your branch -> No direct push to main -> Review before merge.
 
-🎨 CSS Classes (BEM Methodology)
-.block
-.block__element
-.block__element--modifier
-
-
-Examples
-
-.sidebar
-.sidebar__item
-.sidebar__item--active
-
-.btn
-.btn--primary
-.btn--danger
-
-🧠 JavaScript Naming
-
-Variables & functions → camelCase
-
-Classes → PascalCase
-
-function loginUser() {}
-class Appointment {}
-
-🧪 Dummy Data Naming
-usersData
-appointmentsData
-reportsData
-
-🌿 Git Workflow
-
-Each team member works on their own branch
-
-No direct push to main
-
-Use meaningful commit messages
-
-Merge only after review
-
-Branches
+Branches:
 
 auth → Wahba
 
@@ -212,37 +96,15 @@ admin → Doaa
 
 reports → Ibrahim
 
-📊 Dashboard Responsibility
-
-Admin Dashboard handled by Doaa
-
-Other roles have role-based home pages
-
-📋 Team Members
-Name  Module
-Doaa  Admin + Dashboard
-Rehan  Patient
-Dina  Doctor
-Ibrahim  Reports
-Wahba  Auth
-✅ Rules to Follow
-
-✔️ Follow the shared structure
-✔️ Use shared CSS classes
-✔️ No inline styles
-✔️ No push to main branch
-✔️ Communicate before major changes
-
 🚀 Technologies Used
-
-HTML5
-
-CSS3
-
-JavaScript (ES6)
+HTML5 / CSS3 / JavaScript (ES6)
 
 Git & GitHub
 
-📎 Notes
+✅ Project Rules:
 
-This project is built for learning and demonstration purposes using dummy data only.
+Follow the shared structure.
+
+Use shared CSS classes (No inline styles).
+
+Always communicate before major changes.
