@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Appointments | Doctor</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <h2>
+      <img src="../assets/images/logo.png" width="50" height="50">
+      Health Care
+    </h2>
+
+    <a href="doctor.html">Dashboard</a>
+    <a href="appointments.html">Appointments</a>
+    <a href="#">Logout</a>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>Appointments</h1>
+      <p>Manage your daily and upcoming schedule</p>
+    </header>
+
+    <!-- Cards -->
+    <section class="cards">
+      <div class="card">
+        <h3>Today's Appointments</h3>
+        <p>5</p>
+      </div>
+
+      <div class="card">
+        <h3>Upcoming</h3>
+        <p>12</p>
+      </div>
+
+      <div class="card">
+        <h3>Completed</h3>
+        <p>18</p>
+      </div>
+
+      <div class="card">
+        <h3>Canceled</h3>
+        <p>3</p>
+      </div>
+    </section>
+
+    <!-- Appointments Table -->
+    <section class="glass-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Ahmed Ali</td>
+            <td>29 Dec 2025</td>
+            <td>10:30 AM</td>
+            <td>
+              <span class="badge badge-warning">Pending</span>
+            </td>
+            <td>
+              <button class="btn btn-primary">Confirm</button>
+              <button class="btn btn-danger">Cancel</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Sarah Hassan</td>
+            <td>29 Dec 2025</td>
+            <td>12:00 PM</td>
+            <td>
+              <span class="badge badge-success">Completed</span>
+            </td>
+            <td>
+              <button class="btn btn-accent">View</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Mohamed Samy</td>
+            <td>30 Dec 2025</td>
+            <td>09:00 AM</td>
+            <td>
+              <span class="badge badge-danger">Canceled</span>
+            </td>
+            <td>
+              —
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
