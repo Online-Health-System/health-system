@@ -72,7 +72,47 @@
       "departmentId": "DEP-04",
       "status": "Unavailable",
       "appointmentsToday": 0
-    }
+    },
+     {
+  "id": "DOC-105",
+  "name": "Dr. Khaled Mahmoud",
+  "specialty": "Cardiology",
+  "departmentId": "DEP-01",
+  "status": "Busy",
+  "appointmentsToday": 8
+},
+{
+  "id": "DOC-106",
+  "name": "Dr. Nour ElDin Samir",
+  "specialty": "Dermatology",
+  "departmentId": "DEP-02",
+  "status": "Available",
+  "appointmentsToday": 3
+},
+{
+  "id": "DOC-107",
+  "name": "Dr. Hany Abdelrahman",
+  "specialty": "Pediatrics",
+  "departmentId": "DEP-03",
+  "status": "Busy",
+  "appointmentsToday": 7
+},
+{
+  "id": "DOC-108",
+  "name": "Dr. Rania Fathy",
+  "specialty": "Neurology",
+  "departmentId": "DEP-04",
+  "status": "Available",
+  "appointmentsToday": 2
+},
+{
+  "id": "DOC-109",
+  "name": "Dr. Yasser Ibrahim",
+  "specialty": "Cardiology",
+  "departmentId": "DEP-01",
+  "status": "Unavailable",
+  "appointmentsToday": 0
+}
   ],
 
   "patients": [
@@ -123,7 +163,56 @@
       "chronicDiseases": ["Asthma"],
       "lastVisit": "2024-12-25",
       "assignedDoctorId": "DOC-101"
-    }
+    },
+    {
+  "id": "PAT-205",
+  "name": "Hassan Mostafa",
+  "age": 52,
+  "gender": "Male",
+  "phone": "+20 109 222 3344",
+  "email": "hassan.mostafa@gmail.com",
+  "bloodType": "A-",
+  "chronicDiseases": ["Heart Disease"],
+  "lastVisit": "2024-12-26",
+  "assignedDoctorId": "DOC-105"
+},
+{
+  "id": "PAT-206",
+  "name": "Mona Adel",
+  "age": 31,
+  "gender": "Female",
+  "phone": "+20 100 999 6677",
+  "email": "mona.adel@gmail.com",
+  "bloodType": "O-",
+  "chronicDiseases": [],
+  "lastVisit": "2024-12-27",
+  "assignedDoctorId": "DOC-106"
+},
+{
+  "id": "PAT-207",
+  "name": "Omar Saeed",
+  "age": 7,
+  "gender": "Male",
+  "phone": "+20 111 555 7788",
+  "email": "omar.saeed@gmail.com",
+  "bloodType": "B+",
+  "chronicDiseases": ["Anemia"],
+  "lastVisit": "2024-12-28",
+  "assignedDoctorId": "DOC-107"
+},
+{
+  "id": "PAT-208",
+  "name": "Nourhan Adel",
+  "age": 41,
+  "gender": "Female",
+  "phone": "+20 102 444 9988",
+  "email": "nourhan.adel@gmail.com",
+  "bloodType": "AB-",
+  "chronicDiseases": ["Migraine"],
+  "lastVisit": "2024-12-29",
+  "assignedDoctorId": "DOC-108"
+}
+
   ],
 
   "appointments": [
@@ -144,7 +233,53 @@
       "date": "2025-01-03",
       "time": "13:00",
       "status": "Pending"
-    }
+    },
+    {
+  "id": "APP-303",
+  "patientId": "PAT-204",
+  "doctorId": "DOC-101",
+  "department": "Cardiology",
+  "date": "2025-01-04",
+  "time": "11:00",
+  "status": "Pending"
+},
+{
+  "id": "APP-304",
+  "patientId": "PAT-205",
+  "doctorId": "DOC-105",
+  "department": "Cardiology",
+  "date": "2025-01-04",
+  "time": "09:30",
+  "status": "Confirmed"
+},
+{
+  "id": "APP-305",
+  "patientId": "PAT-206",
+  "doctorId": "DOC-106",
+  "department": "Dermatology",
+  "date": "2025-01-05",
+  "time": "14:00",
+  "status": "Pending"
+},
+{
+  "id": "APP-306",
+  "patientId": "PAT-207",
+  "doctorId": "DOC-107",
+  "department": "Pediatrics",
+  "date": "2025-01-05",
+  "time": "10:00",
+  "status": "Confirmed"
+},
+{
+  "id": "APP-307",
+  "patientId": "PAT-208",
+  "doctorId": "DOC-108",
+  "department": "Neurology",
+  "date": "2025-01-06",
+  "time": "12:30",
+  "status": "Pending"
+}
+
   ],
 
   "reports": {
