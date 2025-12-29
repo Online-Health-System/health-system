@@ -199,3 +199,59 @@ body {
   background: #EF9A9A;
   color: #B71C1C;
 }
+
+/* ===== Auth Pages ===== */
+/* ===== Auth Pages ===== */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  padding: 40px;
+  width: 380px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.auth-card h2 {
+  margin-bottom: 10px;
+}
+
+.auth-card p {
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  border: none;
+  outline: none;
+}
+
+.role-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.auth-footer {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.auth-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
