@@ -314,3 +314,68 @@ body {
   font-size: 16px;
   font-weight: 500;
 }
+
+
+/* ===== SweetAlert Navy Glass Theme ===== */
+.swal-navy {
+  background: rgba(11, 28, 45, 0.85) !important; /* Dark Navy Glass */
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  color: #E3EAF0 !important;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+}
+
+/* Title */
+.swal-navy .swal2-title {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* Text */
+.swal-navy .swal2-html-container {
+  color: #dbe6ff !important;
+}
+
+/* Select / Input */
+.swal-navy .swal2-select,
+.swal-navy .swal2-input {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(92, 122, 234, 0.6) !important;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+/* Options */
+.swal-navy option {
+  background: #0B1C2D;
+  color: #ffffff;
+}
+
+/* Confirm Button */
+.swal-navy .swal2-confirm {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-radius: 20px !important;
+  padding: 8px 22px;
+  font-weight: 500;
+  box-shadow: 0 6px 18px rgba(92, 122, 234, 0.5);
+}
+
+/* Cancel Button */
+.swal-navy .swal2-cancel {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #E3EAF0 !important;
+  border-radius: 20px !important;
+  padding: 8px 22px;
+}
+
+/* Icons */
+.swal-navy .swal2-success-ring {
+  border-color: #5C7AEA !important;
+}
+
+.swal-navy .swal2-success-line-tip,
+.swal-navy .swal2-success-line-long {
+  background-color: #5C7AEA !important;
+}
