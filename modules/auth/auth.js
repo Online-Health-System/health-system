@@ -45,3 +45,12 @@ export const logout = () => {
     Storage.remove('currentUser');
     window.location.href = 'login.html';
 };
+
+export function getCurrentUser() {
+  const user = localStorage.getItem("currentUser");
+//   if (!user) {
+//     window.location.href = "login.html";
+//     return null;
+//   }
+  return JSON.parse(user);
+}

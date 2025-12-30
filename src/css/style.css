@@ -69,6 +69,11 @@ body {
 .sidebar a:hover {
   background: rgba(92, 122, 234, 0.35);
 }
+.sidebar .active {
+  background: rgba(92, 122, 234, 0.45);
+  color: #fff;
+  font-weight: 500;
+}
 
 /* ===== Main ===== */
 .main {
@@ -93,7 +98,7 @@ body {
 /* ===== Cards ===== */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
   gap: 20px;
   margin-bottom: 30px;
 }
@@ -126,11 +131,14 @@ body {
 /* ===== Table ===== */
 .glass-table {
   background: var(--glass);
-  backdrop-filter: blur(16px);
   border-radius: 18px;
-  overflow: hidden;
-}
-
+  overflow-x: auto;
+  overflow-y:hidden;
+  max-width:100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(92, 122, 234, 0.6) transparent;
+ text-align: center;}
+  
 .glass-table table {
   width: 100%;
   border-collapse: collapse;
@@ -138,7 +146,7 @@ body {
 
 .glass-table th,
 .glass-table td {
-  padding: 16px;
+  padding: 12px;
 }
 
 .glass-table th {
@@ -147,6 +155,11 @@ body {
 
 .glass-table tr {
   transition: background 0.3s;
+  border-top: 2px solid rgba(152, 161, 195, 0.25);
+}
+
+.glass-table tr:nth-child(1){
+  border-top:none;
 }
 
 .glass-table tr:hover {
@@ -201,7 +214,6 @@ body {
 }
 
 /* ===== Auth Pages ===== */
-/* ===== Auth Pages ===== */
 .auth-container {
   height: 100vh;
   display: flex;
@@ -254,4 +266,51 @@ body {
 .auth-footer a {
   color: var(--accent);
   text-decoration: none;
+}
+
+
+
+/* Hospital Card */
+.hospital-card {
+  margin-bottom : 50px;
+}
+
+/* Header */
+.hospital-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hospital-card h2 {
+  margin: 0;
+}
+
+/* Info Grid */
+.hospital-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+/* Info Item */
+.info-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.info-item span {
+  font-size: 16px;
+  font-weight:800;
+  color: #9bbcff;
+  text-transform: uppercase;
+  /* letter-spacing: 0.6px; */
+}
+
+.info-item p {
+  margin: 6px 0 0;
+  font-size: 16px;
+  font-weight: 500;
 }
