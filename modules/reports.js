@@ -1,6 +1,7 @@
 let DB = {};
 
-import { getCurrentUser } from "../Auth/auth.js"; // عدل المسار حسب مشروعك
+
+import { getCurrentUser } from "../modules/auth/auth.js"; 
 
 const currentUser = getCurrentUser();
 
@@ -81,9 +82,7 @@ function loadDoctor(container) {
 
 // ------------------- Admin View -------------------
 function loadAdmin(container) {
-  container.innerHTML = `
-    <input type="text" id="searchInput" placeholder="Search..." class="search-input">
-  `;
+  container.innerHTML = `<input type="text" id="searchInput" placeholder="Search..." class="search-input">`;
 
   // ===== Hospital Info =====
   const hospital = DB.hospitalInfo;
@@ -237,7 +236,7 @@ function loadAdmin(container) {
     </div>
   `;
 
-  // ===== Reports =====
+  // ===== Reports Cards =====
   const r = DB.reports;
   container.innerHTML += `
     <div class="cards">
@@ -250,7 +249,7 @@ function loadAdmin(container) {
     </div>
   `;
 
-  // ===== Search لجميع الجداول =====
+  // ===== Search=====
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
     searchInput.addEventListener("input", function() {
@@ -258,9 +257,7 @@ function loadAdmin(container) {
       document.querySelectorAll(".glass-table.searchable tbody tr").forEach(row => {
         const cells = row.querySelectorAll("td");
         let match = false;
-        cells.forEach(cell => {
-          if (cell.textContent.toLowerCase().includes(filter)) match = true;
-        });
+        cells.forEach(cell => { if(cell.textContent.toLowerCase().includes(filter)) match = true; });
         row.style.display = match ? "" : "none";
       });
     });

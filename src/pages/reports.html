@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Online Health System</title>
-  <link rel="stylesheet" href="../css/style.css" />
+  <meta charset="UTF-8">
+  <title>Reports | Online Health System</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-  <div class="layout">
+<div class="layout">
 
-  
-    <!-- Sidebar -->
-      <aside class="sidebar">
-    <h2><img src="./src/assets/images/logo.png" alt="" width="50px" height="50px">Health Care</h2>
-    <a href="#">Dashboard</a>
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <h2><img src="../assets/images/logo.png" alt="" width="50px" height="50px">Health Care</h2>
+    <a href="../../index.html">Dashboard</a>
     <a href="#">Patients</a>
     <a href="#">Doctors</a>
     <a href="#">Appointments</a>
-    <a href="./src/pages/reports.html">Reports</a>
-    <a href="#">Logout</a>
-
-
-
+    <a href="#">Reports</a>
+    <a href="#" id="logoutBtn">Logout</a>
   </aside>
-    
 
-    
-    <!-- Main -->
-    <div class="main">
-      <div class="header">
-        <h1>Dashboard</h1>
-        <p>Online Health System</p>
-      </div>
+  <!-- ===== Main ===== -->
+  <main class="main">
 
-      <div id="reportsContainer"></div>
-    </div>
-  </div>
+    <!-- Header -->
+    <header class="header">
+      <h1>Reports</h1>
+      <p id="welcomeMsg">Welcome back!</p>
+    </header>
 
-  <script src="../../modules/reports.js"></script>
+    <!-- Dynamic Reports & Tables -->
+    <div id="reportsContainer"></div>
+
+  </main>
+</div>
+
+<script type="module" src="../../modules/reports.js"></script>
 </body>
 </html>
