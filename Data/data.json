@@ -115,7 +115,7 @@
 }
   ],
 
-  "patients": [
+   "patients": [
     {
       "id": "PAT-201",
       "name": "Mohamed Adel",
@@ -126,7 +126,11 @@
       "bloodType": "A+",
       "chronicDiseases": ["Diabetes"],
       "lastVisit": "2024-12-18",
-      "assignedDoctorId": "DOC-101"
+      "assignedDoctorId": "DOC-101",
+      "medicalNotes": [
+        "Patient shows good progress in glucose control.",
+        "Recommended to monitor blood sugar daily."
+      ]
     },
     {
       "id": "PAT-202",
@@ -138,7 +142,11 @@
       "bloodType": "O+",
       "chronicDiseases": [],
       "lastVisit": "2024-12-20",
-      "assignedDoctorId": "DOC-102"
+      "assignedDoctorId": "DOC-102",
+      "medicalNotes": [
+        "Patient has mild skin irritation, prescribe ointment.",
+        "Follow up in 2 weeks."
+      ]
     },
     {
       "id": "PAT-203",
@@ -150,7 +158,11 @@
       "bloodType": "B-",
       "chronicDiseases": ["Hypertension"],
       "lastVisit": "2024-12-22",
-      "assignedDoctorId": "DOC-103"
+      "assignedDoctorId": "DOC-103",
+      "medicalNotes": [
+        "Blood pressure slightly elevated.",
+        "Advised to reduce salt intake."
+      ]
     },
     {
       "id": "PAT-204",
@@ -162,57 +174,75 @@
       "bloodType": "AB+",
       "chronicDiseases": ["Asthma"],
       "lastVisit": "2024-12-25",
-      "assignedDoctorId": "DOC-101"
+      "assignedDoctorId": "DOC-101",
+      "medicalNotes": [
+        "Asthma under control with inhaler.",
+        "Monitor during winter season."
+      ]
     },
     {
-  "id": "PAT-205",
-  "name": "Hassan Mostafa",
-  "age": 52,
-  "gender": "Male",
-  "phone": "+20 109 222 3344",
-  "email": "hassan.mostafa@gmail.com",
-  "bloodType": "A-",
-  "chronicDiseases": ["Heart Disease"],
-  "lastVisit": "2024-12-26",
-  "assignedDoctorId": "DOC-105"
-},
-{
-  "id": "PAT-206",
-  "name": "Mona Adel",
-  "age": 31,
-  "gender": "Female",
-  "phone": "+20 100 999 6677",
-  "email": "mona.adel@gmail.com",
-  "bloodType": "O-",
-  "chronicDiseases": [],
-  "lastVisit": "2024-12-27",
-  "assignedDoctorId": "DOC-106"
-},
-{
-  "id": "PAT-207",
-  "name": "Omar Saeed",
-  "age": 7,
-  "gender": "Male",
-  "phone": "+20 111 555 7788",
-  "email": "omar.saeed@gmail.com",
-  "bloodType": "B+",
-  "chronicDiseases": ["Anemia"],
-  "lastVisit": "2024-12-28",
-  "assignedDoctorId": "DOC-107"
-},
-{
-  "id": "PAT-208",
-  "name": "Nourhan Adel",
-  "age": 41,
-  "gender": "Female",
-  "phone": "+20 102 444 9988",
-  "email": "nourhan.adel@gmail.com",
-  "bloodType": "AB-",
-  "chronicDiseases": ["Migraine"],
-  "lastVisit": "2024-12-29",
-  "assignedDoctorId": "DOC-108"
-}
-
+      "id": "PAT-205",
+      "name": "Hassan Mostafa",
+      "age": 52,
+      "gender": "Male",
+      "phone": "+20 109 222 3344",
+      "email": "hassan.mostafa@gmail.com",
+      "bloodType": "A-",
+      "chronicDiseases": ["Heart Disease"],
+      "lastVisit": "2024-12-26",
+      "assignedDoctorId": "DOC-105",
+      "medicalNotes": [
+        "Patient recovering from recent heart surgery.",
+        "Schedule ECG next visit."
+      ]
+    },
+    {
+      "id": "PAT-206",
+      "name": "Mona Adel",
+      "age": 31,
+      "gender": "Female",
+      "phone": "+20 100 999 6677",
+      "email": "mona.adel@gmail.com",
+      "bloodType": "O-",
+      "chronicDiseases": [],
+      "lastVisit": "2024-12-27",
+      "assignedDoctorId": "DOC-106",
+      "medicalNotes": [
+        "Routine checkup, all vitals normal."
+      ]
+    },
+    {
+      "id": "PAT-207",
+      "name": "Omar Saeed",
+      "age": 7,
+      "gender": "Male",
+      "phone": "+20 111 555 7788",
+      "email": "omar.saeed@gmail.com",
+      "bloodType": "B+",
+      "chronicDiseases": ["Anemia"],
+      "lastVisit": "2024-12-28",
+      "assignedDoctorId": "DOC-107",
+      "medicalNotes": [
+        "Iron supplements prescribed.",
+        "Check hemoglobin levels next visit."
+      ]
+    },
+    {
+      "id": "PAT-208",
+      "name": "Nourhan Adel",
+      "age": 41,
+      "gender": "Female",
+      "phone": "+20 102 444 9988",
+      "email": "nourhan.adel@gmail.com",
+      "bloodType": "AB-",
+      "chronicDiseases": ["Migraine"],
+      "lastVisit": "2024-12-29",
+      "assignedDoctorId": "DOC-108",
+      "medicalNotes": [
+        "Patient experiences migraine 1-2 times per week.",
+        "Prescribed pain relief medication."
+      ]
+    }
   ],
 
   "appointments": [
