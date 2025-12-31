@@ -16,13 +16,13 @@ export function fetchAppointmentsData(doctorId) {
                     appointmentsDataArr.push(appointment);
                 }
             });
-            RenderTableData(appointmentsDataArr);
+            RenderTableData();
         }).catch(error => {
             console.error("Error fetching appointments:", error);
         });
 }
 
-function RenderTableData(data) {
+function RenderTableData() {
     tbody.innerHTML = "";
     if (patients.length === 0) {
         const tr = document.createElement('tr');
