@@ -154,5 +154,58 @@
     "availableDoctors": 19,
     "busyDoctors": 7,
     "unavailableDoctors": 3
+  },
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  "medicalRecords": [
+  {
+    "id": "MR-001",
+    "patientId": "PAT-201",
+    "doctorId": "DOC-101",
+    "date": "2024-12-18",
+    "diagnosis": "Diabetes",
+    "notes": "Patient needs regular blood sugar monitoring."
+  },
+  {
+    "id": "MR-002",
+    "patientId": "PAT-201",
+    "doctorId": "DOC-102",
+    "date": "2025-01-05",
+    "diagnosis": "Skin Allergy",
+    "notes": "Prescribed antihistamine for 7 days."
   }
+]
+
+
 }

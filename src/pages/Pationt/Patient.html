@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Online Health System</title>
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- ===== Sidebar ===== -->
+        <aside class="sidebar">
+            <h2>
+                Health Care
+            </h2>
+
+            <a href="profile.html">My Profile</a>
+            <a class="active" href="#">Dashboard</a>
+            <a href="create-appointment.html">Book Appointment</a>
+            <a href="my-appointments.html">My Appointments</a>
+            <a href="medical-records.html">Medical Records</a>
+            <a href="#">Logout</a>
+        </aside>
+
+        <!-- ===== Main ===== -->
+        <main class="main">
+
+            <!-- Header -->
+            <header class="header">
+                <h1>Patient Dashboard</h1>
+                <p>Welcome back, Rehan</p>
+            </header>
+
+
+            <!-- Cards -->
+            <section class="cards">
+
+                
+
+                <div class="card clickable-card" data-link="my-appointments.html">
+                    <h3>My Appointments</h3>
+                    <p id="totalAppointments">0</p>
+                </div>
+
+                <div class="card clickable-card" data-link="my-appointments.html">
+                    <h3>Upcoming Appointments</h3>
+                    <p id="upcomingAppointments">0</p>
+                </div>
+
+                <div class="card clickable-card" data-link="medical-records.html">
+                    <h3>Medical Records</h3>
+                    <p id="medicalRecordsCount">0</p>
+                </div>
+
+            </section>
+
+
+            <h2>My Appointments</h2>
+            <p class="section-desc">
+
+                Appointment history
+            </p>
+
+
+            <!-- Table -->
+            <section class="glass-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <!--   <tbody>
+                        <tr>
+                            <td>Dr. Dina</td>
+                            <td>27 Dec 2025</td>
+                            <td>
+                                <span class="badge badge-success">Completed</span>
+                            </td>
+                            <td class="table-actions">
+                                <button class="btn btn-primary">View</button>
+                            </td>
+                        </tr>
+
+                         <tr>
+                            <td>Dr. Doaa</td>
+                            <td>13 Dec 2025</td>
+                            <td>
+                                <span class="badge badge-success">Completed</span>
+                            </td>
+                            <td class="table-actions">
+                                <button class="btn btn-primary">View</button>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>Dr. Johny</td>
+                            <td>10 Dec 2025</td>
+                            <td>
+                                <span class="badge badge-danger">Canceld</span>
+                            </td>
+                            <td class="table-actions">
+                                <button class="btn btn-danger">View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Dr. Rehan</td>
+                            <td>1 jan 2026</td>
+                            <td>
+                                <span class="badge badge-warning">Pending</span>
+                            </td>
+                            <td class="table-actions">
+                                <button class="btn btn-accent">Details</button>
+                            </td>
+                        </tr>
+                       
+                       
+                    </tbody>
+                    -->
+                    <tbody id="appointmentsBody">
+                    </tbody>
+
+                </table>
+            </section>
+
+
+        </main>
+    </div>
+    <script type="module" src="../../../modules/Pationt/init.data.js"></script>
+    <script type="module" src="../../../modules/Pationt/patient.js"></script>
+</body>
+
+</html>
