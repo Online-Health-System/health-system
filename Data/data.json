@@ -1,0 +1,184 @@
+{
+  "hospitalInfo": {
+    "id": "HOSP-001",
+    "name": "Green Valley Hospital",
+    "location": {
+      "country": "Egypt",
+      "city": "Cairo",
+      "address": "Nasr City, Cairo"
+    },
+    "contact": {
+      "phone": "+20 100 123 4567",
+      "email": "info@greenvalleyhospital.com"
+    }
+  },
+
+  "departments": [
+    {
+      "id": "DEP-01",
+      "name": "Cardiology",
+      "totalDoctors": 8,
+      "availableDoctors": 5
+    },
+    {
+      "id": "DEP-02",
+      "name": "Dermatology",
+      "totalDoctors": 6,
+      "availableDoctors": 4
+    },
+    {
+      "id": "DEP-03",
+      "name": "Pediatrics",
+      "totalDoctors": 10,
+      "availableDoctors": 7
+    },
+    {
+      "id": "DEP-04",
+      "name": "Neurology",
+      "totalDoctors": 5,
+      "availableDoctors": 3
+    }
+  ],
+
+  "doctors": [
+    {
+      "id": "DOC-101",
+      "name": "Dr. Ahmed Hassan",
+      "specialty": "Cardiology",
+      "departmentId": "DEP-01",
+      "status": "Available",
+      "appointmentsToday": 6
+    },
+    {
+      "id": "DOC-102",
+      "name": "Dr. Sara Ali",
+      "specialty": "Dermatology",
+      "departmentId": "DEP-02",
+      "status": "Busy",
+      "appointmentsToday": 9
+    },
+    {
+      "id": "DOC-103",
+      "name": "Dr. Omar Khaled",
+      "specialty": "Pediatrics",
+      "departmentId": "DEP-03",
+      "status": "Available",
+      "appointmentsToday": 4
+    },
+    {
+      "id": "DOC-104",
+      "name": "Dr. Mona Youssef",
+      "specialty": "Neurology",
+      "departmentId": "DEP-04",
+      "status": "Unavailable",
+      "appointmentsToday": 0
+    }
+  ],
+
+  "patients": [
+    {
+      "id": "PAT-201",
+      "name": "Mohamed Adel",
+      "age": 34,
+      "gender": "Male",
+      "phone": "+20 101 555 2345",
+      "email": "mohamed.adel@gmail.com",
+      "bloodType": "A+",
+      "chronicDiseases": ["Diabetes"],
+      "lastVisit": "2024-12-18",
+      "assignedDoctorId": "DOC-101"
+    },
+    {
+      "id": "PAT-202",
+      "name": "Aya Mahmoud",
+      "age": 28,
+      "gender": "Female",
+      "phone": "+20 100 777 8899",
+      "email": "aya.mahmoud@gmail.com",
+      "bloodType": "O+",
+      "chronicDiseases": [],
+      "lastVisit": "2024-12-20",
+      "assignedDoctorId": "DOC-102"
+    },
+    {
+      "id": "PAT-203",
+      "name": "Youssef Samir",
+      "age": 45,
+      "gender": "Male",
+      "phone": "+20 111 333 4455",
+      "email": "youssef.samir@gmail.com",
+      "bloodType": "B-",
+      "chronicDiseases": ["Hypertension"],
+      "lastVisit": "2024-12-22",
+      "assignedDoctorId": "DOC-103"
+    },
+    {
+      "id": "PAT-204",
+      "name": "Salma Nabil",
+      "age": 19,
+      "gender": "Female",
+      "phone": "+20 102 888 1122",
+      "email": "salma.nabil@gmail.com",
+      "bloodType": "AB+",
+      "chronicDiseases": ["Asthma"],
+      "lastVisit": "2024-12-25",
+      "assignedDoctorId": "DOC-101"
+    }
+  ],
+
+  "appointments": [
+    {
+      "id": "APP-301",
+      "patientId": "PAT-201",
+      "doctorId": "DOC-101",
+      "department": "Cardiology",
+      "date": "2025-01-03",
+      "time": "10:30",
+      "status": "Confirmed"
+    },
+    {
+      "id": "APP-302",
+      "patientId": "PAT-202",
+      "doctorId": "DOC-102",
+      "department": "Dermatology",
+      "date": "2025-01-03",
+      "time": "13:00",
+      "status": "Pending"
+    }
+  ],
+
+  "reports": {
+    "totalDoctors": 29,
+    "totalPatients": 4,
+    "totalAppointmentsToday": 15,
+    "availableDoctors": 19,
+    "busyDoctors": 7,
+    "unavailableDoctors": 3
+  }
+  ,
+  "doctorRequests": [
+    {
+      "id": "dr_req_1",
+      "name": "Ahmed Hassan",
+      "email": "ahmed.hassan@gmail.com",
+      "department": "Cardiology",
+      "status": "pending"
+    },
+    {
+      "id": "dr_req_2",
+      "name": "Sara Mohamed",
+      "email": "sara.mohamed@gmail.com",
+      "department": "Dermatology",
+      "status": "approved"
+    },
+    {
+      "id": "dr_req_3",
+      "name": "Omar Ali",
+      "email": "omar.ali@gmail.com",
+      "department": "Neurology",
+      "status": "rejected"
+    }
+  ]
+
+
+}

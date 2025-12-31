@@ -1,32 +1,25 @@
-<<<<<<< Updated upstream
-=======
 export const Storage = {
     save: (key, data) => {
         try {
-            const jsonData = JSON.stringify(data);
-            localStorage.setItem(key, jsonData);
+            localStorage.setItem(key, JSON.stringify(data));
             return true;
         } catch (error) {
-            console.error(error);
             return false;
         }
     },
-
     get: (key) => {
         const data = localStorage.getItem(key);
         return data ? JSON.parse(data) : null;
     },
-
-    remove: (key) => {
-        localStorage.removeItem(key);
+    findItem: (key, predicate) => {
+        const data = Storage.get(key) || [];
+        return data.find(predicate);
     },
-
     pushToItem: (key, newItem) => {
         const currentData = Storage.get(key) || [];
         currentData.push(newItem);
         return Storage.save(key, currentData);
     },
-
     updateItem: (key, id, newData) => {
         const data = Storage.get(key) || [];
         const index = data.findIndex(item => item.id === id);
@@ -37,4 +30,3 @@ export const Storage = {
         return false;
     }
 };
->>>>>>> Stashed changes

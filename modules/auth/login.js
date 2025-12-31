@@ -12,13 +12,7 @@ if (loginForm) {
         const result = handleLogin(email, password);
 
         if (result.success) {
-            if (result.role === 'admin') {
-                window.location.href = '../pages/admin.html';
-            } else if (result.role === 'doctor') {
-                window.location.href = '../pages/doctor.html';
-            } else if (result.role === 'patient') {
-                window.location.href = '../pages/patient.html';
-            }
+            window.location.href = `../pages/${result.role}.html`;
         } else {
             alert(result.message);
         }
