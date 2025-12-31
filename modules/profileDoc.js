@@ -35,7 +35,7 @@ function getDoctorData(doctor) {
             docStatus.classList.add('badge-success');
             break;
         case 'Busy':
-            docStatus.classList.add('badge-danger');
+            docStatus.classList.add('badge-warning');
             break;
         case 'Unavailable':
             docStatus.classList.add('badge-danger');
