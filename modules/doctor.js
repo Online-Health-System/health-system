@@ -1,5 +1,6 @@
-let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-currentUser = currentUser ? currentUser : {id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor'};
+import { Storage } from '../../Data/storage.js';
+let currentUser = JSON.parse(Storage.get('currentUser'));
+currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
 // import { checkAccess } from "./auth/auth"; 
 // checkAccess(['admin', 'doctor']);
 const URL = '../../Data/data.json';
@@ -9,28 +10,19 @@ const appointments = document.getElementById('appointments');
 const confirm = document.getElementById('Confirm');
 const pending = document.getElementById('Pending');
 header.textContent = `Welcome back, ${currentUser.name}`;
-const patients =[];
-const appointmentsDataArr=[];
+const patients = [];
+const appointmentsDataArr = [];
 fetchPatients();
+const tbody = document.querySelector('#patientsTable tbody');
 const modal = document.getElementById('medicalNotesModal');
 const notesList = document.getElementById('notesList');
 const newNote = document.getElementById('newNote');
 const addNoteBtn = document.getElementById('addNoteBtn');
 const closeBtn = document.getElementById('closeNotesBtn');
 let currentPatientId = null;
-document.querySelectorAll('.show_medical').forEach(btn => {
-    btn.onclick = () => {
-        const row = btn.closest('tr');
-        currentPatientId = row.dataset.currentPatientId;
-        //renderNotes();
-        modal.style.display = 'flex';
-    }
-});
 
-closeBtn.onclick = () => modal.style.display = 'none';
-
-function fetchPatients(){
-    fetch(URL,{
+function fetchPatients() {
+    fetch(URL, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -38,35 +30,35 @@ function fetchPatients(){
     })
         .then(response => response.json())
         .then(data => {
-             data['patients'].forEach(patient => {
-                if(patient.assignedDoctorId === currentUser.id)
-                patients.push(patient);
+            data['patients'].forEach(patient => {
+                if (patient.assignedDoctorId === currentUser.id)
+                    patients.push(patient);
             });
             RenderTableData(patients);
-                return data['appointments']})
-                .then(appointmentsData => {
-                    let confirmedCount =0,pendingCount =0;
-                    appointmentsData.forEach(appointment => {
-                        if(appointment.doctorId === currentUser.id)
-                        {appointmentsDataArr.push(appointment);
-                        if(appointment.status === 'Confirmed'){
-                            confirmedCount++;
-                        }
-                        if(appointment.status==='Pending'){
-                            pendingCount++;
-                        }
-                        }
-                    });
-                    renderCards(confirmedCount
-                        ,pendingCount
-                    );
-                }) .catch(error => {
+            return data['appointments']
+        })
+        .then(appointmentsData => {
+            let confirmedCount = 0, pendingCount = 0;
+            appointmentsData.forEach(appointment => {
+                if (appointment.doctorId === currentUser.id) {
+                    appointmentsDataArr.push(appointment);
+                    if (appointment.status === 'Confirmed') {
+                        confirmedCount++;
+                    }
+                    if (appointment.status === 'Pending') {
+                        pendingCount++;
+                    }
+                }
+            });
+            renderCards(confirmedCount
+                , pendingCount
+            );
+        }).catch(error => {
             console.error("Error fetching patients:", error);
         });
 }
 
-function RenderTableData(patients){
-    const tbody = document.querySelector('#patientsTable tbody');
+function RenderTableData(patients) {
     tbody.innerHTML = "";
     if (patients.length === 0) {
         const tr = document.createElement('tr');
@@ -74,10 +66,10 @@ function RenderTableData(patients){
         tbody.appendChild(tr);
     }
     else
-    patients.forEach(patient => {
-        const tr = document.createElement('tr');
-        tr.dataset.currentPatientId = patient.id;
-        tr.innerHTML = `
+        patients.forEach(patient => {
+            const tr = document.createElement('tr');
+            tr.dataset.currentPatientId = patient.id;
+            tr.innerHTML = `
             <td>${patient.name}</td>
             <td>${patient.age}</td>
             <td>${patient.phone}</td>
@@ -86,13 +78,35 @@ function RenderTableData(patients){
             <td>${patient.lastVisit}</td>
             <td><button class="btn btn-accent show_medical">View</button></td>
         `;
-        tbody.appendChild(tr);
-    });
+            tbody.appendChild(tr);
+        });
 }
-function renderCards(confirmedCount = 0, pendingCount = 0){
+function renderCards(confirmedCount = 0, pendingCount = 0) {
     totalPatients.querySelector('p').textContent = patients.length;
     appointments.querySelector('p').textContent = appointmentsDataArr.length;
     confirm.querySelector('p').textContent = confirmedCount;
     pending.querySelector('p').textContent = pendingCount;
 
+}
+
+tbody.addEventListener('click', (e) => {
+    if (e.target.classList.contains('show_medical')) {
+        const row = e.target.closest('tr');
+        currentPatientId = row.dataset.currentPatientId;
+        loadMedicalNotes(currentPatientId);
+        modal.style.display = 'flex';
+    }
+});
+closeBtn.onclick = () => modal.style.display = 'none';
+
+function loadMedicalNotes(id) {
+    notesList.innerHTML = '';
+    const patient = patients.find(p => p.id === id);
+    if (patient && patient.medicalNotes) {
+        patient.medicalNotes.forEach(note => {
+            const li = document.createElement('li');
+            li.textContent = note;
+            notesList.appendChild(li);
+        });
+    }
 }
