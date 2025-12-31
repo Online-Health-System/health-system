@@ -18,7 +18,7 @@ function deleteData({ list, id, onReload }) {
     const index = list.findIndex(d => d.id === id);
     if (index === -1) return;
 
-    list.splice(index, 1); // ✅ تعديل حقيقي في DB
+    list.splice(index, 1); 
     saveDB();
     onReload();
 
