@@ -379,3 +379,45 @@ body {
 .swal-navy .swal2-success-line-long {
   background-color: #5C7AEA !important;
 }
+
+
+/* ===== Custom SweetAlert Select ===== */
+.sw-select {
+  position: relative;
+  margin-top: 10px;
+}
+
+.sw-selected {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(92,122,234,.45);
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.sw-options {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: #0B1C2D;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0,0,0,.55);
+  display: none;
+  z-index: 9999;
+}
+
+.sw-options.open {
+  display: block;
+}
+
+.sw-option {
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.sw-option:hover,
+.sw-option.active {
+  background: rgba(92,122,234,.35);
+}

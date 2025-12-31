@@ -1,11 +1,8 @@
-let DB = {};
-
-import { getCurrentUser } from "./auth/auth.js";
-
-const currentUser = getCurrentUser();
+export let DB = {};
 
 const adminMain = document.getElementById("adminMain");
 const links = document.querySelectorAll(".admin-link");
+const savedDB = localStorage.getItem("hospitalDB")
 
 links.forEach((link) => {
   link.addEventListener("click", (e) => {
@@ -29,6 +26,9 @@ links.forEach((link) => {
       case "doctors":
         loadDoctors(adminMain);
         break;
+      case "appointments":
+        loadAppointments(adminMain);
+        break;
       case "reports":
         loadAdmin(adminMain);
         break;
@@ -36,17 +36,28 @@ links.forEach((link) => {
   });
 });
 
-// ------------------- Load JSON -------------------
-fetch("../../Data/data.json")
-  .then((res) => res.json())
-  .then((data) => {
-    DB = data;
-    loadDashboard(adminMain);
-  })
-  .catch((err) => console.error(err));
+/// ------------------- Load JSON -------------------
+if (savedDB) {
+  DB = JSON.parse(savedDB);
+  loadDashboard(adminMain);
+} else {
+  fetch("../../Data/data.json")
+    .then(res => res.json())
+    .then(data => {
+      DB = data;
+      localStorage.setItem("hospitalDB", JSON.stringify(DB));
+      loadDashboard(adminMain);
+    })
+    .catch(err => console.error(err));
+}
+export function saveDB() {
+  localStorage.setItem("hospitalDB", JSON.stringify(DB));
+}
+
+
 
 // ------------------- Admin View -------------------
-function loadAdmin(container) {
+export function loadAdmin(container) {
   const hospital = DB.hospitalInfo;
 
   const departmentsHTML = DB.departments
@@ -67,32 +78,7 @@ function loadAdmin(container) {
     )
     .join("");
 
-  const appointmentsHTML = DB.appointments
-    .map((app) => {
-      const patient = DB.patients.find((p) => p.id === app.patientId);
-      const doctor = DB.doctors.find((d) => d.id === app.doctorId);
-
-      return `
-      <tr>
-        <td>${patient ? patient.name : "-"}</td>
-        <td>${doctor ? doctor.name : "-"}</td>
-        <td>${app.department}</td>
-        <td>${app.date} ${app.time}</td>
-        <td>${app.status}</td>
-        <td>
-          <div class="table-actions">
-            <button class="btn btn-accent" onclick="editAppointment('${
-              app.id
-            }')">Edit</button>
-            <button class="btn btn-danger" onclick="deleteAppointment('${
-              app.id
-            }')">Delete</button>
-          </div>
-        </td>
-      </tr>
-    `;
-    })
-    .join("");
+  
 
   container.innerHTML = `
     <div class="header">
@@ -152,35 +138,8 @@ function loadAdmin(container) {
       </section>
     </div>
 
-
-    <!-- Appointments -->
     <div style="margin-bottom: 55px;">
-      <h2 style="margin-bottom: 20px;">Appointments</h2>
-      <section class="glass-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Patient</th>
-              <th>Doctor</th>
-              <th>Department</th>
-              <th>Date & Time</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${appointmentsHTML}
-          </tbody>
-        </table>
-      </section>
-      
-    </div>
-
-    <div style="margin-bottom: 55px;">
-    ${loadDashboard()}
-    </div>
-    <div style="margin-bottom: 55px;">
-    ${loadDoctorRequests()}
+    ${loadAppointments()}
     </div>
 
     <div style="margin-bottom: 55px;">
@@ -216,7 +175,7 @@ function loadDashboard(container) {
   return dashboardHTML;
 }
 
-function loadDoctorRequests(container) {
+export function loadDoctorRequests(container) {
   const doctorsRequests = DB.doctorRequests;
   const doctorsRequestsHTML =  `
    <div class="header">
@@ -232,6 +191,7 @@ function loadDoctorRequests(container) {
             <th>Email</th>
             <th>Department</th>
             <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -254,6 +214,9 @@ function loadDoctorRequests(container) {
                   ${d.status}
                 </span>
               </td>
+              <td>
+                <button class="btn btn-accent" onclick="editRequest('${d.id}')">Edit</button>
+              </td>
             </tr>
           `
             )
@@ -268,7 +231,7 @@ function loadDoctorRequests(container) {
   return doctorsRequestsHTML;
 }
 
-function loadPatients(container) {
+export function loadPatients(container) {
   let patientsHTML = DB.patients
     .map((p) => {
       const doctor = DB.doctors.find((d) => d.id === p.assignedDoctorId);
@@ -284,14 +247,15 @@ function loadPatients(container) {
           p.chronicDiseases.length ? p.chronicDiseases.join(", ") : "-"
         }</td>
         <td>${doctor ? doctor.name : "-"}</td>
-        <td>
-          <button class="btn btn-accent" onclick="editPatient('${
-            p.id
-          }')">Edit</button>
-          <button class="btn btn-danger" onclick="deletePatient('${
-            p.id
-          }')">Delete</button>
-        </td>
+        ${
+          container
+            ? `<td>
+                <button class="btn btn-accent" onclick="editPatient('${p.id}')">Edit</button>
+                <button class="btn btn-danger" onclick="deletePatient('${p.id}')">Delete</button>
+              </td>`
+            : ""
+        }
+       
       </tr>
     `;
     })
@@ -315,7 +279,7 @@ function loadPatients(container) {
             <th>Blood</th>
             <th>Diseases</th>
             <th>Doctor</th>
-            <th>Actions</th>
+            ${container ? `<th>Actions</th>` : ``}
           </tr>
         </thead>
         <tbody>${patientsHTML}</tbody>
@@ -328,26 +292,40 @@ function loadPatients(container) {
     return patientsFullHTML;
 }
 
-function loadDoctors(container) {
+export function loadDoctors(container) {
   let doctorsHTML = DB.doctors
     .map(
       (d) => `
     <tr>
       <td>${d.name}</td>
       <td>${d.specialty}</td>
-      <td>${d.status}</td>
+      <td><span class="badge ${
+                  d.status === "Busy"
+                    ? "badge-warning"
+                    : d.status === "Available"
+                    ? "badge-success"
+                    : "badge-danger"
+                }">
+                  ${d.status}
+                </span></td>
       <td>${d.appointmentsToday}</td>
-      <td>
+      
+      ${
+          container
+            ? `<td>
         <button class="btn btn-accent" onclick="editDoctor('${d.id}')">Edit</button>
         <button class="btn btn-danger" onclick="deleteDoctor('${d.id}')">Delete</button>
-      </td>
+      </td>`
+            : ""
+        }
     </tr>
   `
     )
     .join("");
+
     const doctorsFullHTML =  `
     <div class="header">
-      <h1>Doctors</h1>
+      ${container ? `<h1>Doctors</h1>` : `<h2>Doctors</h2>`}
       <p>All Doctors in the hospital</p>
     </div>
     <section class="glass-table"  >
@@ -358,7 +336,7 @@ function loadDoctors(container) {
             <th>Specialty</th>
             <th>Status</th>
             <th>Appointments</th>
-            <th>Actions</th>
+            ${container ? `<th>Actions</th>` : ``}
           </tr>
         </thead>
         <tbody>${doctorsHTML}</tbody>
@@ -368,3 +346,70 @@ function loadDoctors(container) {
   if (container) container.innerHTML = doctorsFullHTML
   return doctorsFullHTML;
 }
+
+export function loadAppointments(container)
+{
+  const appointmentsHTML = DB.appointments
+    .map((app) => {
+      const patient = DB.patients.find((p) => p.id === app.patientId);
+      const doctor = DB.doctors.find((d) => d.id === app.doctorId);
+
+      return `
+      <tr>
+        <td>${patient ? patient.name : "-"}</td>
+        <td>${doctor ? doctor.name : "-"}</td>
+        <td>${app.department}</td>
+        <td>${app.date} ${app.time}</td>
+        <td>
+                <span class="badge ${
+                  app.status === "pending"
+                    ? "badge-warning"
+                    : app.status === "approved"
+                    ? "badge-success"
+                    : "badge-danger"
+                }">
+                  ${app.status}
+                </span>
+        ${container ? `<td>
+          <div class="table-actions">
+            <button class="btn btn-accent" onclick="editAppointment('${
+              app.id
+            }')">Edit</button>
+            <button class="btn btn-danger"  onclick="deleteAppointment('${app.id}')">Delete</button>
+          </div>
+        </td>` : ``}
+        
+      </tr>
+    `;
+    })
+    .join("");
+
+
+    const appointmentsFullHTML =  `
+    <div class="header">
+      ${container ? `<h1>Appointments</h1>` : `<h2>Appointments</h2>`}
+      <p>All Appointments in the hospital</p>
+    </div>
+    <section class="glass-table"  >
+      <table>
+        <thead>
+          <tr>
+            <th>Patient Name</th>
+            <th>Doctor Name</th>
+            <th>Department</th>
+            <th>Date & Time</th>
+            <th>Status</th>
+            ${container ? `<th>Actions</th>` : ``}
+          </tr>
+        </thead>
+        <tbody>${appointmentsHTML}</tbody>
+      </table>
+    </section>
+  `;
+
+    if (container) container.innerHTML = appointmentsFullHTML ; 
+
+    return appointmentsFullHTML;
+
+}
+
