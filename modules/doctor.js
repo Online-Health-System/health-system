@@ -97,6 +97,20 @@ tbody.addEventListener('click', (e) => {
         modal.style.display = 'flex';
     }
 });
+addNoteBtn.onclick = () => {
+    const noteText = newNote.value.trim();
+    if (noteText && currentPatientId) {
+        const patient = patients.find(p => p.id === currentPatientId);
+        if (patient) {
+            if (!patient.medicalNotes) {
+                patient.medicalNotes = [];
+            }
+            patient.medicalNotes.push(noteText);
+            loadMedicalNotes(currentPatientId);
+            newNote.value = '';
+        }
+    }
+}
 closeBtn.onclick = () => modal.style.display = 'none';
 
 function loadMedicalNotes(id) {
