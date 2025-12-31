@@ -1,4 +1,4 @@
-import { Storage } from '../../data/storage.js';
+import { Storage } from '../../Data/storage.js';
 
 export const handleLogin = (email, password) => {
 

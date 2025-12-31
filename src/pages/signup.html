@@ -13,27 +13,21 @@
       <p>Please fill in your information</p>
 <!-- form -->
       <form id="signupForm">
+    <input type="text" id="signupName" placeholder="Full Name" required />
+    <input type="email" id="signupEmail" placeholder="Email Address" required />
+    <input type="password" id="signupPassword" placeholder="Password" required />
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
 
-        <input type="text" placeholder="Full Name" required />
+    <button class="btn btn-primary" style="width:100%;" type="submit">
+        Sign Up
+    </button>
 
-        <input type="email" placeholder="Email Address" required />
-
-        <input type="password" placeholder="Password" required />
-
-        <input type="password" placeholder="Confirm Password" required />
-
-        <button class="btn btn-primary" style="width:100%;" type="submit">
-          Sign Up
-        </button>
-
-        <p class="auth-footer">
-          Already have an account?
-          <a href="login.html">Login</a>
-        </p>
-
-      </form>
+    <p class="auth-footer">
+        Already have an account? <a href="login.html">Login</a>
+    </p>
+</form>
     </div>
   </div>
-
+<script type="module" src="../../modules/auth/signup.js"></script>
 </body>
 </html>
