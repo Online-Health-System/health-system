@@ -69,9 +69,9 @@
 <script type="module">
   import { Storage } from '../../Data/storage.js';
   import { fetchAppointmentsData } from '../../modules/docAppointments.js';
-  let currentUser = JSON.parse(Storage.get('currentUser'));
-  currentUser = currentUser ? currentUser : {id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor'};
-  fetchAppointmentsData(currentUser.id);
+ //let currentUser = JSON.parse(Storage.get('currentUser'));
+  let currentUser =  {id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor'};
+  fetchAppointmentsData();
   
 </script>
 </body>

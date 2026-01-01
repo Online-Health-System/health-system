@@ -1,27 +1,19 @@
 const appointmentsDataArr = [];
 const patients = [];
 const tbody = document.querySelector('#appointmentTable tbody');
-const URL = '../../Data/data.json';
-export function fetchAppointmentsData(doctorId) {
-    fetch(URL, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(response => response.json())
-        .then(data => {
-            patients.push(...data['patients']);
-            data['appointments'].forEach(appointment => {
-                if (appointment.doctorId === doctorId) {
-                    appointmentsDataArr.push(appointment);
-                }
-            });
-            RenderTableData();
-        }).catch(error => {
-            console.error("Error fetching appointments:", error);
-        });
+
+// -----------------Fetch Appointments Data------------------
+export function fetchAppointmentsData() {
+    if (localStorage.getItem('doctorAppointments')) {
+        const storedAppointments = JSON.parse(localStorage.getItem('doctorAppointments'));
+        const storedPatients = JSON.parse(localStorage.getItem('assignedPatients'));
+        patients.push(...storedPatients);
+        appointmentsDataArr.push(...storedAppointments);
+        RenderTableData();
+    } 
 }
 
+// -----------------Helper Functions--------------------
 function RenderTableData() {
     tbody.innerHTML = "";
     if (patients.length === 0) {

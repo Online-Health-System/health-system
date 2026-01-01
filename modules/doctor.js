@@ -1,9 +1,10 @@
 import { Storage } from '../../Data/storage.js';
-let currentUser = JSON.parse(Storage.get('currentUser'));
-currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
-import { checkAccess } from "./auth/auth";
-checkAccess(['doctor']);
+//let currentUser = JSON.parse(Storage.get('currentUser'));
+ let currentUser  =   { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+// import { checkAccess } from "./auth/auth";
+// checkAccess(['doctor']);
 const URL = '../../Data/data.json';
+// -----------------UI Elements------------------
 const header = document.querySelector('header p');
 const totalPatients = document.getElementById('totalPatient');
 const appointments = document.getElementById('appointments');
@@ -17,46 +18,77 @@ const newNote = document.getElementById('newNote');
 const addNoteBtn = document.getElementById('addNoteBtn');
 const closeBtn = document.getElementById('closeNotesBtn');
 let currentPatientId = null;
-const patients = [];
-const appointmentsDataArr = [];
+let patients = [];
+let appointmentsDataArr = [];
+let confirmedCount = 0, pendingCount = 0;
 
 
+// -----------------Fetch Patients and Appointments Data--------------------
 export function fetchPatients() {
-    fetch(URL, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            data['patients'].forEach(patient => {
-                if (patient.assignedDoctorId === currentUser.id)
-                    patients.push(patient);
-            });
-            localStorage.setItem('assignedPatients', JSON.stringify(patients));
-            RenderTableData(patients);
-            return data['appointments']
+    if (localStorage.getItem('assignedPatients') && localStorage.getItem('doctorAppointments')) {
+        const storedPatients = JSON.parse(localStorage.getItem('assignedPatients'));
+        const storedAppointments = JSON.parse(localStorage.getItem('doctorAppointments'));
+        appointmentsDataArr.push(...storedAppointments);
+        appointmentsDataArr = getRelatedAppointment();
+        appointmentsDataArr.forEach(appointment => {
+            if (appointment.status === 'Confirmed') {
+                confirmedCount++;
+            } else if (appointment.status === 'Pending') {
+                pendingCount++;
+            }
+        });
+        patients.push(...storedPatients);
+        RenderTableData(patients);
+        renderCards(confirmedCount
+            , pendingCount
+        );
+
+    } else {
+        fetch(URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         })
-        .then(appointmentsData => {
-            let confirmedCount = 0, pendingCount = 0;
-            appointmentsData.forEach(appointment => {
-                if (appointment.doctorId === currentUser.id) {
-                    appointmentsDataArr.push(appointment);
+            .then(response => response.json())
+            .then(data => {
+                data['patients'].forEach(patient => {
+                    if (patient.assignedDoctorId === currentUser.id)
+                        patients.push(patient);
+                });
+                patients.forEach(patient => {
+                    if (patient.visits) {
+                        patient.visits.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    }
+                });
+                patients.sort((a, b) => new Date(b.visits[0].date) - new Date(a.visits[0].date));
+                localStorage.setItem('assignedPatients', JSON.stringify(patients));
+                RenderTableData(patients);
+                return data['appointments']
+            })
+            .then(appointmentsData => {
+                appointmentsDataArr.push(...appointmentsData);
+                appointmentsDataArr = getRelatedAppointment();
+                appointmentsDataArr.sort((a, b) => new Date(b.date) - new Date(a.date)) && new Date(b.time) - new Date(a.time);
+                appointmentsDataArr.forEach(appointment => {
                     if (appointment.status === 'Confirmed') {
                         confirmedCount++;
-                    }
-                    if (appointment.status === 'Pending') {
+                    } else if (appointment.status === 'Pending') {
                         pendingCount++;
                     }
-                }
+                });
+                localStorage.setItem('doctorAppointments', JSON.stringify(appointmentsDataArr));
+                renderCards(confirmedCount
+                    , pendingCount
+                );
+            }).catch(error => {
+                console.error("Error fetching patients:", error);
             });
-            renderCards(confirmedCount
-                , pendingCount
-            );
-        }).catch(error => {
-            console.error("Error fetching patients:", error);
-        });
+    }
+}
+// -----------------Helper Functions--------------------
+function getRelatedAppointment() {
+    return appointmentsDataArr.filter(appointment => appointment.doctorId === currentUser.id);
 }
 
 function RenderTableData(patients) {
@@ -76,7 +108,7 @@ function RenderTableData(patients) {
             <td>${patient.phone}</td>
             <td>${patient.chronicDiseases}</td>
             <td>${patient.bloodType}</td>
-            <td>${patient.lastVisit}</td>
+            <td>${patient.visits[0].date}</td>
             <td><button class="btn btn-accent show_medical">View</button></td>
         `;
             tbody.appendChild(tr);
