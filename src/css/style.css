@@ -256,7 +256,6 @@ body {
   gap: 8px;
   margin-bottom: 20px;
   opacity: 0.8;
-<<<<<<< HEAD
 }
 .auth-footer {
   margin-top: 15px;
@@ -275,27 +274,6 @@ body {
   margin-bottom : 50px;
 }
 
-=======
-}
-
-.auth-footer {
-  margin-top: 15px;
-  font-size: 13px;
-}
-
-.auth-footer a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-
-
-/* Hospital Card */
-.hospital-card {
-  margin-bottom : 50px;
-}
-
->>>>>>> f5418f0ffaff98bfec6d818d8351a927f36f3435
 /* Header */
 .hospital-card .card-header {
   display: flex;
@@ -441,9 +419,5 @@ body {
 .sw-option:hover,
 .sw-option.active {
   background: rgba(92,122,234,.35);
-<<<<<<< HEAD
 }
 
-=======
-}
->>>>>>> f5418f0ffaff98bfec6d818d8351a927f36f3435
