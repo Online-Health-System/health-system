@@ -1,32 +1,27 @@
-import { Validator } from './validation.js';
 import { Storage } from '../../Data/storage.js';
-export const handleRegister = (userData) => {
-    const check = Validator.validateForm(userData);
-    if (!check.isValid) return { success: false, errors: check.errors };
-
-    const users = Storage.get('users') || [];
-    if (users.find(u => u.email === userData.email)) {
-        return { success: false, errors: { email: "Email already exists!" } };
-    }
-
-    userData.id = Date.now();
-    Storage.pushToItem('users', userData);
-    return { success: true };
-};
 
 export const handleLogin = (email, password) => {
-    const users = Storage.get('users') || [];
-    const user = users.find(u => u.email === email && u.password === password);
 
-    if (user) {
-        Storage.save('currentUser', {
-            id: user.id,
-            name: user.name,
-            role: user.role
-        });
-        return { success: true, role: user.role };
+    if (email === "admin@hospital.com" && password === "admin123") {
+        const adminUser = { id: "ADMIN-01", name: "System Admin", role: "admin" };
+        Storage.save('currentUser', adminUser);
+        return { success: true, role: 'admin' };
     }
+    const doctors = Storage.get('doctors') || [];
+    const doctor = doctors.find(d => d.email === email && d.password === password);
+    if (doctor) {
+        Storage.save('currentUser', { ...doctor, role: 'doctor' });
+        return { success: true, role: 'doctor' };
+    }
+    const patients = Storage.get('patients') || [];
+    const patient = patients.find(p => p.email === email && p.password === password);
+    if (patient) {
+        Storage.save('currentUser', { ...patient, role: 'patient' });
+        return { success: true, role: 'patient' };
+    }
+
     return { success: false, message: "Invalid email or password" };
+<<<<<<< HEAD
 };
 
 export const checkAccess = (allowedRoles) => {
@@ -55,3 +50,6 @@ export function getCurrentUser() {
   }
   return JSON.parse(user);
 }
+=======
+};
+>>>>>>> 5ca9efc37b8dfc87cde8086e03aa192b5c20032d
