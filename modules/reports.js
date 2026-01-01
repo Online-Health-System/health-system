@@ -1,4 +1,3 @@
-
 import { getCurrentUser, checkAccess } from "../auth/auth.js";
 
 let DB = {};

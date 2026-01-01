@@ -15,7 +15,7 @@ function deleteData({ list, id, onReload }) {
     if (!r.isConfirmed) return;
     const index = list.findIndex(d => d.id === id);
     if (index === -1) return;
-    list.splice(index, 1); 
+    list.splice(index, 1);
     saveDB();
     onReload();
     Swal.fire({
@@ -27,33 +27,10 @@ function deleteData({ list, id, onReload }) {
   });
 }
 
-window.deleteDepartment = (id) =>
-  deleteData({
-    list: DB.departments,
-    id,
-    onReload: () => loadAdmin(adminMain)
-  });
-
-window.deleteAppointment = (id) =>
-  deleteData({
-    list: DB.appointments,
-    id,
-    onReload: () => loadAppointments(adminMain)
-  });
-
-window.deletePatient = (id) =>
-  deleteData({
-    list: DB.patients,
-    id,
-    onReload: () => loadPatients(adminMain)
-  });
-
-window.deleteDoctor = (id) =>
-  deleteData({
-    list: DB.doctors,
-    id,
-    onReload: () => loadDoctors(adminMain)
-  });
+window.deleteDepartment = (id) => deleteData({ list: DB.departments, id, onReload: () => loadAdmin(adminMain) });
+window.deleteAppointment = (id) => deleteData({ list: DB.appointments, id, onReload: () => loadAppointments(adminMain) });
+window.deletePatient = (id) => deleteData({ list: DB.patients, id, onReload: () => loadPatients(adminMain) });
+window.deleteDoctor = (id) => deleteData({ list: DB.doctors, id, onReload: () => loadDoctors(adminMain) });
 
 function editStatus({ list, id, onReload }) {
   const item = list.find(i => i.id === id);
@@ -61,11 +38,7 @@ function editStatus({ list, id, onReload }) {
   Swal.fire({
     title: "Edit Status",
     input: "select",
-    inputOptions: {
-      approved: "approved",
-      pending: "pending",
-      cancelled: "cancelled"
-    },
+    inputOptions: { approved: "approved", pending: "pending", cancelled: "cancelled" },
     inputValue: item.status,
     showCancelButton: true,
     customClass: { popup: "swal-navy" }
@@ -74,49 +47,27 @@ function editStatus({ list, id, onReload }) {
     item.status = r.value;
     saveDB();
     onReload();
-    Swal.fire({
-      title: "Updated!",
-      text: "Status Updated Successfully",
-      icon: "success",
-      customClass: { popup: "swal-navy" }
-    });
+    Swal.fire({ title: "Updated!", text: "Status Updated Successfully", icon: "success", customClass: { popup: "swal-navy" } });
   });
 }
 
-window.editRequest = (id) => {
-  editStatus({
-    list: DB.doctorRequests,
-    id,
-    onReload: () => loadDoctorRequests(adminMain)  });
-};
-
-window.editAppointment = (id) => {
-  editStatus({
-    list: DB.appointments,
-    id,
-    onReload: () => loadAppointments(adminMain)  });
-};
+window.editRequest = (id) => editStatus({ list: DB.doctorRequests, id, onReload: () => loadDoctorRequests(adminMain) });
+window.editAppointment = (id) => editStatus({ list: DB.appointments, id, onReload: () => loadAppointments(adminMain) });
 
 function editInfo({ title, entity, fields, onSave }) {
   const html = fields.map(f => {
     if (f.type === "checkbox") {
       return `
         <div class="swal-checkbox-group">
-          <label style="margin-bottom:8px;display:block;font-weight:600;margin-top:20px;">
-            ${f.label}
-          </label>
+          <label style="margin-bottom:8px;display:block;font-weight:600;margin-top:20px;">${f.label}</label>
           ${f.options.map(o => `
             <label style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-              <input type="radio" name="sw-${f.key}" value="${o}" ${entity[f.key] === o ? "checked" : ""} />
-              ${o}
+              <input type="radio" name="sw-${f.key}" value="${o}" ${entity[f.key] === o ? "checked" : ""} /> ${o}
             </label>
           `).join("")}
-        </div>
-      `;
+        </div>`;
     }
-    return `
-      <input id="sw-${f.key}" class="swal2-input" type="${f.type || "text"}" placeholder="${f.label}" value="${entity[f.key] ?? ""}">
-    `;
+    return `<input id="sw-${f.key}" class="swal2-input" type="${f.type || "text"}" placeholder="${f.label}" value="${entity[f.key] ?? ""}">`;
   }).join("");
 
   Swal.fire({
@@ -140,12 +91,7 @@ function editInfo({ title, entity, fields, onSave }) {
   }).then(r => {
     if (!r.isConfirmed) return;
     onSave(r.value);
-    Swal.fire({
-      title: "Updated!",
-      text: "Updated successfully",
-      icon: "success",
-      customClass: { popup: "swal-navy" }
-    });
+    Swal.fire({ title: "Updated!", text: "Updated successfully", icon: "success", customClass: { popup: "swal-navy" } });
   });
 }
 
@@ -155,18 +101,8 @@ window.editPatient = (id) => {
   editInfo({
     title: "Edit Patient",
     entity: p,
-    fields: [
-      { key: "name", label: "Name" },
-      { key: "age", label: "Age", type: "number" },
-      { key: "phone", label: "Phone" },
-      { key: "email", label: "Email" },
-      { key: "bloodType", label: "Blood Type" }
-    ],
-    onSave: (data) => {
-      Object.assign(p, data);
-      saveDB();
-      loadPatients(adminMain);
-    }
+    fields: [{ key: "name", label: "Name" }, { key: "age", label: "Age", type: "number" }, { key: "phone", label: "Phone" }, { key: "email", label: "Email" }, { key: "bloodType", label: "Blood Type" }],
+    onSave: (data) => { Object.assign(p, data); saveDB(); loadPatients(adminMain); }
   });
 };
 
@@ -176,16 +112,8 @@ window.editDoctor = (id) => {
   editInfo({
     title: "Edit Doctor",
     entity: d,
-    fields: [
-      { key: "name", label: "Name" },
-      { key: "specialty", label: "Specialty" },
-      { key: "status", label: "Doctor Status", type: "checkbox", options: ["Available", "Busy", "Unavailable"] }
-    ],
-    onSave: (data) => {
-      Object.assign(d, data);
-      saveDB();
-      loadDoctors(adminMain);
-    }
+    fields: [{ key: "name", label: "Name" }, { key: "specialty", label: "Specialty" }, { key: "status", label: "Doctor Status", type: "checkbox", options: ["Available", "Busy", "Unavailable"] }],
+    onSave: (data) => { Object.assign(d, data); saveDB(); loadDoctors(adminMain); }
   });
 };
 
@@ -193,31 +121,12 @@ window.editHospital = () => {
   const h = DB.hospitalInfo;
   editInfo({
     title: "Edit Hospital",
-    entity: {
-      name: h.name,
-      phone: h.contact.phone,
-      email: h.contact.email,
-      address: h.location.address,
-      city: h.location.city,
-      country: h.location.country
-    },
-    fields: [
-      { key: "name", label: "Hospital Name" },
-      { key: "phone", label: "Phone" },
-      { key: "email", label: "Email" },
-      { key: "address", label: "Address" },
-      { key: "city", label: "City" },
-      { key: "country", label: "Country" }
-    ],
+    entity: { name: h.name, phone: h.contact.phone, email: h.contact.email, address: h.location.address, city: h.location.city, country: h.location.country },
+    fields: [{ key: "name", label: "Hospital Name" }, { key: "phone", label: "Phone" }, { key: "email", label: "Email" }, { key: "address", label: "Address" }, { key: "city", label: "City" }, { key: "country", label: "Country" }],
     onSave: (data) => {
-      h.name = data.name;
-      h.contact.phone = data.phone;
-      h.contact.email = data.email;
-      h.location.address = data.address;
-      h.location.city = data.city;
-      h.location.country = data.country;
-      saveDB();
-      loadAdmin(adminMain);
+      h.name = data.name; h.contact.phone = data.phone; h.contact.email = data.email;
+      h.location.address = data.address; h.location.city = data.city; h.location.country = data.country;
+      saveDB(); loadAdmin(adminMain);
     }
   });
 };
@@ -228,18 +137,8 @@ window.editDepartment = (id) => {
   editInfo({
     title: "Edit Department",
     entity: dep,
-    fields: [
-      { key: "name", label: "Department Name" },
-      { key: "totalDoctors", label: "Total Doctors", type: "number" },
-      { key: "availableDoctors", label: "Available Doctors", type: "number" }
-    ],
-    onSave: (data) => {
-      dep.name = data.name;
-      dep.totalDoctors = Number(data.totalDoctors);
-      dep.availableDoctors = Number(data.availableDoctors);
-      saveDB();
-      loadAdmin(adminMain);
-    }
+    fields: [{ key: "name", label: "Department Name" }, { key: "totalDoctors", label: "Total Doctors", type: "number" }, { key: "availableDoctors", label: "Available Doctors", type: "number" }],
+    onSave: (data) => { dep.name = data.name; dep.totalDoctors = Number(data.totalDoctors); dep.availableDoctors = Number(data.availableDoctors); saveDB(); loadAdmin(adminMain); }
   });
 };
 
@@ -254,23 +153,15 @@ window.approveDoctor = (id) => {
     password: req.password,
     specialty: req.department || "General",
     status: "Available",
-    appointmentsToday: 0
+    appointmentsToday: 0,
+    joinedDate: new Date().toLocaleDateString()
   });
   DB.doctorRequests.splice(requestIndex, 1);
   saveDB();
   loadDoctorRequests(adminMain);
-  Swal.fire({
-    title: "Approved!",
-    text: "Doctor has been officially added.",
-    icon: "success",
-    customClass: { popup: "swal-navy" }
-  });
+  Swal.fire({ title: "Approved!", text: "Doctor has been officially added.", icon: "success", customClass: { popup: "swal-navy" } });
 };
 
 window.rejectDoctor = (id) => {
-  deleteData({
-    list: DB.doctorRequests,
-    id,
-    onReload: () => loadDoctorRequests(adminMain)
-  });
+  deleteData({ list: DB.doctorRequests, id, onReload: () => loadDoctorRequests(adminMain) });
 };

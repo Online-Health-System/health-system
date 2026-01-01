@@ -9,7 +9,7 @@
     },
     "contact": {
       "phone": "+20 100 123 4567",
-      "email": "info@greenvalleyhospital.com"
+      "email": "healthcare@hospital.com"
     }
   },
   "departments": [
@@ -36,8 +36,32 @@
       "name": "Neurology",
       "totalDoctors": 5,
       "availableDoctors": 3
-    }
-  ],
+    },
+  {
+  "id": "DEP-05",
+  "name": "Orthopedics",
+  "totalDoctors": 7,
+  "availableDoctors": 4
+},
+{
+  "id": "DEP-06",
+  "name": "Ophthalmology",
+  "totalDoctors": 5,
+  "availableDoctors": 3
+},
+{
+  "id": "DEP-07",
+  "name": "ENT",
+  "totalDoctors": 4,
+  "availableDoctors": 2
+},
+{
+  "id": "DEP-08",
+  "name": "Gynecology",
+  "totalDoctors": 6,
+  "availableDoctors": 4
+}
+],
   "doctors": [
     {
       "id": "DOC-101",
@@ -191,8 +215,93 @@
       "workingHours": "01:00 PM - 06:00 PM",
       "patientsToday": 0,
       "bio": "Senior cardiologist with extensive clinical experience."
-    }
-  ],
+    },
+  {
+  "id": "DOC-110",
+  "name": "Dr. Tarek ElSayed",
+  "specialty": "Orthopedics",
+  "departmentId": "DEP-05",
+  "status": "Available",
+  "appointmentsToday": 5,
+  "email": "tarek.elsayed@hospital.com",
+  "phone": "+20 120 444 8899",
+  "gender": "Male",
+  "experienceYears": 13,
+  "qualification": "MD, Orthopedics",
+  "clinicRoom": "Room 510",
+  "workingHours": "09:00 AM - 03:00 PM",
+  "patientsToday": 11,
+  "bio": "Specialist in bone fractures and joint replacement."
+},
+{
+  "id": "DOC-111",
+  "name": "Dr. Mai Abdelaziz",
+  "specialty": "Ophthalmology",
+  "departmentId": "DEP-06",
+  "status": "Busy",
+  "appointmentsToday": 8,
+  "email": "mai.abdelaziz@hospital.com",
+  "phone": "+20 121 333 2211",
+  "gender": "Female",
+  "experienceYears": 9,
+  "qualification": "MD, Ophthalmology",
+  "clinicRoom": "Room 610",
+  "workingHours": "10:00 AM - 04:00 PM",
+  "patientsToday": 16,
+  "bio": "Expert in eye care and vision correction."
+},
+{
+  "id": "DOC-112",
+  "name": "Dr. Mahmoud Adel",
+  "specialty": "ENT",
+  "departmentId": "DEP-07",
+  "status": "Available",
+  "appointmentsToday": 3,
+  "email": "mahmoud.adel@hospital.com",
+  "phone": "+20 122 666 7788",
+  "gender": "Male",
+  "experienceYears": 7,
+  "qualification": "MD, ENT",
+  "clinicRoom": "Room 710",
+  "workingHours": "11:00 AM - 05:00 PM",
+  "patientsToday": 6,
+  "bio": "Treating ear, nose, and throat disorders."
+},
+{
+  "id": "DOC-113",
+  "name": "Dr. Salma Naguib",
+  "specialty": "Gynecology",
+  "departmentId": "DEP-08",
+  "status": "Available",
+  "appointmentsToday": 4,
+  "email": "salma.naguib@hospital.com",
+  "phone": "+20 123 555 8899",
+  "gender": "Female",
+  "experienceYears": 10,
+  "qualification": "MD, Gynecology",
+  "clinicRoom": "Room 810",
+  "workingHours": "09:00 AM - 02:00 PM",
+  "patientsToday": 9,
+  "bio": "Specialist in women's health and pregnancy care."
+},
+{
+  "id": "DOC-114",
+  "name": "Dr. Hassan Mostafa",
+  "specialty": "Orthopedics",
+  "departmentId": "DEP-05",
+  "status": "Unavailable",
+  "appointmentsToday": 0,
+  "email": "hassan.mostafa@hospital.com",
+  "phone": "+20 124 777 9900",
+  "gender": "Male",
+  "experienceYears": 15,
+  "qualification": "PhD, Orthopedics",
+  "clinicRoom": "Room 515",
+  "workingHours": "01:00 PM - 06:00 PM",
+  "patientsToday": 0,
+  "bio": "Senior orthopedic consultant."
+}
+],
   "patients": [
     {
       "id": "PAT-201",
@@ -534,7 +643,8 @@
     "availableDoctors": 19,
     "busyDoctors": 7,
     "unavailableDoctors": 3
-  },
+  }
+  ,
   "doctorRequests": [
     {
       "id": "dr_req_1",
