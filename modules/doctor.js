@@ -17,6 +17,8 @@ const notesList = document.getElementById('notesList');
 const newNote = document.getElementById('newNote');
 const addNoteBtn = document.getElementById('addNoteBtn');
 const closeBtn = document.getElementById('closeNotesBtn');
+const srchInput = document.getElementById('patientSearch');
+// -----------------Global Variables------------------
 let currentPatientId = null;
 let patients = [];
 let appointmentsDataArr = [];
@@ -157,3 +159,11 @@ function loadMedicalNotes(id) {
         });
     }
 }
+// -----------------Search Functionality--------------------
+srchInput.addEventListener('input', function () {
+    const query = srchInput.value.toLowerCase();
+    const filteredPatients = patients.filter(patient =>
+        patient.name.toLowerCase().includes(query) 
+    );
+    RenderTableData(filteredPatients);
+});
