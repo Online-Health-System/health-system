@@ -5,46 +5,23 @@
   <title>Login | Online Health System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../../modules/auth/login.js" type="module"></script>
 </head>
 <body>
-
   <div class="auth-container">
-
     <div class="auth-card">
-
       <h2>Welcome Back</h2>
       <p>Login to your account</p>
-
       <form id="loginForm">
-
-        <input
-          type="email"
-          placeholder="Email Address"
-          id="loginEmail"
-          required
-        />
-
-        <input
-          type="password"
-          placeholder="Password"
-          id="loginPassword"
-          required
-        />
-
-        <button class="btn btn-primary" style="width:100%;" type="submit">
-          Login
-        </button>
-
+        <input type="email" placeholder="Email Address" id="loginEmail" required />
+        <input type="password" placeholder="Password" id="loginPassword" required />
+        <button class="btn btn-primary" style="width:100%;" type="submit">Login</button>
       </form>
-
       <div class="auth-footer">
-        Don't have an account?
-        <a href="signup.html">Sign up</a>
+        Don't have an account? <a href="signup.html">Sign up</a>
       </div>
-
     </div>
   </div>
-
 </body>
 </html>
