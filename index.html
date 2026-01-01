@@ -2,106 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Home | Online Health System</title>
-  <link rel="stylesheet" href="./src/css/style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthCare</title>
+  <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="logo">
+      <img src="src/assets/images/logo.png" alt="HealthCare Logo">
+      <h1>HealthCare</h1>
+    </div>
+    <div class="auth-buttons">
+      <a href="src/pages/login.html"><button class="btn btn-primary">Login</button></a>
+      <a href="src/pages/signup.html"><button class="btn btn-accent">Sign Up</button></a>
+    </div>
+  </header>
 
-<div class="layout">
+  <!-- ===== Hero Section ===== -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <h2>Welcome to HealthCare</h2>
+      <p>Smart hospital management system for Doctors & Patients. Manage appointments, doctors, and patients efficiently with our intuitive platform.</p>
+    </div>
+  </section>
 
-  <!-- ===== Sidebar ===== -->
-  <aside class="sidebar">
-    <h2><img src="./src/assets/images/logo.png" alt="" width="50px" height="50px">Health Care</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Patients</a>
-    <a href="#">Doctors</a>
-    <a href="#">Appointments</a>
-    <a href="./src/pages/reports.html">Reports</a>
-    <a href="#">Logout</a>
-  </aside>
+  <!-- ===== Hospital Cards ===== -->
+ <section class="cards-section">
+  <h2>Our Services</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="src/assets/images/Cardiology.jpg" alt="Service 1">
+      <h3>Cardiology</h3>
+      <p>Comprehensive heart care with advanced diagnostic tools.</p>
+      <button class="btn btn-accent">Learn More</button>
+    </div>
+    <div class="card">
+      <img src="src/assets/images/Emergency Care.avif" alt="Service 2">
+      <h3>Emergency Care</h3>
+      <p>24/7 emergency services with highly trained staff.</p>
+      <button class="btn btn-accent">Learn More</button>
+    </div>
+    <div class="card">
+      <img src="src/assets/images/Neurology.jpg" alt="Service 3">
+      <h3>Neurology</h3>
+      <p>Advanced neurology treatments with experienced specialists.</p>
+      <button class="btn btn-accent">Learn More</button>
+    </div>
+  </div>
+</section>
+<!-- Department Section -->
 
-  <!-- ===== Main ===== -->
-  <main class="main">
+<section class="departments">
+  <h2>Departments</h2>
+  <div class="departments-cards">
 
-    <!-- Header -->
-    <header class="header">
-      <h1>Dashboard Overview</h1>
-      <p>Welcome back, Admin</p>
-    </header>
+    <!-- Cardiology -->
+    <div class="department-card">
+      <img src="src/assets/images/CardiologyDepartment.avif" alt="Cardiology">
+      <h3>Cardiology</h3>
+      <p> Dr. Ahmed Hassan</p>
+      <a href="src/pages/signup.html"><button class="btn btn-accent">Book Appointment</button></a>
+    </div>
 
-    <!-- Cards -->
-    <section class="cards">
-      <div class="card">
-        <h3>Total Patients</h3>
-        <p>1,245</p>
-      </div>
+    <!-- Neurology -->
+    <div class="department-card">
+      <img src="src/assets/images/NeurologyDepartment.avif" alt="Neurology">
+      <h3>Neurology</h3>
+      <p>Dr. Sara Ali</p>
+      <a href="src/pages/signup.html"><button class="btn btn-accent">Book Appointment</button></a>
+    </div>
 
-      <div class="card">
-        <h3>Doctors</h3>
-        <p>84</p>
-      </div>
+    <!-- Pediatrics -->
+    <div class="department-card">
+      <img src="src/assets/images/PediatricsDepartment.jpg" alt="Pediatrics">
+      <h3>Pediatrics</h3>
+      <p>Dr. Omar Khaled</p>
+      <a href="src/pages/signup.html"><button class="btn btn-accent">Book Appointment</button></a>
+    </div>
 
-      <div class="card">
-        <h3>Appointments</h3>
-        <p>312</p>
-      </div>
+    <!-- Orthopedics -->
+    <div class="department-card">
+      <img src="src/assets/images/OrthopedicsDepartment.avif" alt="Orthopedics">
+      <h3>Orthopedics</h3>
+      <p>Dr. Marwa Mohamed</p>
+      <a href="src/pages/signup.html"><button class="btn btn-accent">Book Appointment</button></a>
+    </div>
 
-      <div class="card">
-        <h3>Reports</h3>
-        <p>67</p>
-      </div>
-    </section>
+    <!-- Dermatology (New) -->
+    <div class="department-card">
+      <img src="src/assets/images/dermatologyDepartment.avif" alt="Dermatology">
+      <h3>Dermatology</h3>
+      <p>Dr. Malak Maged</p>
+      <a href="src/pages/signup.html"><button class="btn btn-accent">Book Appointment</button></a>
+    </div>
 
-    <!-- Table -->
-    <section class="glass-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Patient</th>
-            <th>Doctor</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+    <!-- Radiology (New) -->
+    <div class="department-card">
+      <img src="src/assets/images/RadiologyDepartment.avif" alt="Radiology">
+      <h3>Radiology</h3>
+      <p>Dr. Salma Elsaher</p>
+      <a href="src/pages/signup.html"><button class="btn btn-accent">Book Appointment</button></a>
+    </div>
+  </div>
+</section>
 
-        <tbody>
-          <tr>
-            <td>Ahmed Ali</td>
-            <td>Dr. Dina</td>
-            <td>27 Dec 2025</td>
-            <td><span class="badge badge-success">Completed</span></td>
-            <td class="table-actions">
-              <button class="btn btn-primary">View</button>
-            </td>
-          </tr>
 
-          <tr>
-            <td>Sarah Hassan</td>
-            <td>Dr. Rehan</td>
-            <td>28 Dec 2025</td>
-            <td><span class="badge badge-warning">Pending</span></td>
-            <td class="table-actions">
-              <button class="btn btn-accent">Update</button>
-            </td>
-          </tr>
 
-          <tr>
-            <td>Mohamed Samy</td>
-            <td>Dr. Dina</td>
-            <td>29 Dec 2025</td>
-            <td><span class="badge badge-danger">Canceled</span></td>
-            <td class="table-actions">
-              <button class="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
 
-  </main>
-</div>
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+  <div class="team">
+    <p>Ibrahim | Doaa | Wahba | Dina | Rehan</p>
+  </div>
+  <div class="contact">
+    <p>Contact Info:</p>
+    <div class="contact-buttons">
+      <a href="mailto:info@healthcare.com" class="btn btn-accent">
+        <img src="src/assets/images/email.jpg" alt="Email" class="icon"> Send Email
+      </a>
+      <a href="https://wa.me/20123456789" target="_blank" class="btn btn-accent">
+        <img src="src/assets/images/watsapp.jpg" alt="WhatsApp" class="icon"> WhatsApp
+      </a>
+    </div>
+  </div>
+  <p>All rights reserved &copy; 2025</p>
+</footer>
 
 </body>
 </html>
