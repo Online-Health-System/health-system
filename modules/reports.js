@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 import { getCurrentUser, checkAccess } from "../auth/auth.js";
 
 let DB = {};
@@ -190,4 +194,8 @@ function renderDashboard() {
   });
   }
   RenderAccording();
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
