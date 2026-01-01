@@ -590,12 +590,8 @@
     "availableDoctors": 19,
     "busyDoctors": 7,
     "unavailableDoctors": 3
-<<<<<<< HEAD
   }
   ,
-=======
-  },
->>>>>>> main
   "doctorRequests": [
     {
       "id": "dr_req_1",
