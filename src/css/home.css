@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+/* ===== Colors (Navy Theme) ===== */
+:root {
+  --primary: #0A3D62;     /* Navy */
+  --secondary: #E3EAF0;   /* Light Gray */
+  --dark: #0B1C2D;        /* Dark Navy */
+  --accent: #5C7AEA;     /* Soft Blue Accent */
+  --danger: #C62828;
+  --glass: rgba(255,255,255,0.16);
+}
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+/* ===== Body ===== */
+body {
+  background: linear-gradient(135deg, #0B1C2D, #0A3D62);
+  color: #fff;
+}
+/* ===== Buttons ===== */
+.btn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+/* ===== Header ===== */
+.home-header {
+  display: flex;
+}
+.home-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 50px;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  background: rgba(11, 28, 45, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  z-index: 1000;
+}
+.home-header .home-logo img {
+  width:80px;
+}
+/* ===== Hero Section ===== */
+.home-hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../assets/images/BackGroundImage2.jpg") center/cover
+    no-repeat;
+  margin: 40px 50px;
+  margin-top:100px;
+  border-radius: 20px;
+}
+.hero-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 28, 45, 0.6);
+  border-radius: 20px;
+}
+.hero-text {
+  position: relative;
+  text-align: center;
+  max-width: 600px;
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  padding: 30px 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 30px var(--shadow);
+}
+.hero-text h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #e3eaf0;
+}
+.hero-text p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+/* ===== Cards Section ===== */
+.home-cards-section {
+  padding: 50px;
+  text-align: center;
+}
+.home-cards-section h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #e3eaf0;
+}
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+.home-card {
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 15px 30px var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.home-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 40px var(--shadow);
+}
+.home-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+.home-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #e3eaf0;
+}
+.home-card p {
+  font-size: 14px;
+  color: #f0f0f0;
+  margin-bottom: 15px;
+}
+.home-card .btn {
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+}
+.home-section {
+  padding: 50px;
+  text-align: center;
+}
+.home-section h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #e3eaf0;
+}
+/* ===== Departments ===== */
+.home-departments-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-content: center; 
+  justify-items: center;     
+}
+.home-department-card {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.home-department-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.4);
+}
+.home-department-card img {
+  width: 300px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+.home-department-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #e3eaf0;
+}
+.home-department-card p {
+  font-size: 14px;
+  color: #f0f0f0;
+  margin-bottom: 0;
+}
+.home-department-card button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.home-department-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(92, 122, 234, 0.4);
+}
+/* ===== Footer ===== */
+.home-footer {
+  background: rgba(11, 28, 45, 0.6);
+  backdrop-filter: blur(14px);
+  padding: 30px;
+  text-align: center;
+}
+.home-footer p {
+  margin: 5px 0;
+  color: #fff;
+}
+.home-contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+.home-contact-buttons a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #fff;
+}
+.home-contact-buttons a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(92, 122, 234, 0.4);
+  transition: all 0.3s;
+}
+/* ===== Home Hospital Info ===== */
+.home-hospital-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+.home-hospital-cards .home-info-item {
+  background: rgba(11, 28, 45, 0.65);
+  backdrop-filter: blur(14px);
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  min-height: 120px;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-hospital-cards .home-info-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+.home-hospital-cards .home-info-item span {
+  font-size: 13px;
+  font-weight: 700;
+  color: #9bbcff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.home-hospital-cards .home-info-item p {
+  font-size: 17px;
+  font-weight: 500;
+  color: #f1f5f9;
+  margin: 0;
+}
