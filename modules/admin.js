@@ -2,7 +2,7 @@ export let DB = {};
 
 const adminMain = document.getElementById("adminMain");
 const links = document.querySelectorAll(".admin-link");
-const savedDB = localStorage.getItem("hospitalDB")
+export const savedDB = localStorage.getItem("hospitalDB")
 
 links.forEach((link) => {
   link.addEventListener("click", (e) => {
