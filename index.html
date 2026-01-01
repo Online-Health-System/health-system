@@ -1,138 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Online Health System</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="./src/css/style.css" />
-</head>
-
-<body>
-
-  <!-- ===== HERO SECTION ===== -->
-  <section class="hero" style="
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:40px;
-  ">
-    <div class="card" style="max-width:700px;">
-      <h1 style="font-size:34px; margin-bottom:15px;">
-        Welcome to Online Health System
-      </h1>
-      <p style="opacity:.85; margin-bottom:25px;">
-        Smart hospital management system for patients, doctors and admins.
-      </p>
-
-      <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-        <a href="pages/login.html" class="btn btn-primary">Login</a>
-        <a href="pages/signup.html" class="btn btn-accent">Register as Patient</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthCare</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <!-- ===== Header ===== -->
+    <header class="header">
+      <div class="logo">
+        <img src="src/assets/images/logo.png" alt="HealthCare Logo" />
+        <h1>HealthCare</h1>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT SECTION ===== -->
-  <section style="padding:60px 30px;">
-    <div class="header" style="text-align:center;">
-      <h1>About Our Hospital</h1>
-      <p>Providing quality healthcare with modern technology</p>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Qualified Doctors</h3>
-        <p style="font-size:16px;">Experienced specialists in all departments</p>
+      <div class="auth-buttons">
+        <a href="src/pages/login.html"
+          ><button class="btn btn-primary">Login</button></a
+        >
+        <a href="src/pages/signup.html"
+          ><button class="btn btn-accent">Sign Up</button></a
+        >
       </div>
+    </header>
 
-      <div class="card">
-        <h3>Modern Equipment</h3>
-        <p style="font-size:16px;">Latest medical technologies & labs</p>
+    <!-- ===== Hero Section ===== -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-text">
+        <h2>Welcome to HealthCare</h2>
+        <p>
+          Smart hospital management system for Doctors & Patients. Manage
+          appointments, doctors, and patients efficiently with our intuitive
+          platform.
+        </p>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>24/7 Service</h3>
-        <p style="font-size:16px;">Emergency & online support anytime</p>
+    <!-- ===== Hospital Cards ===== -->
+    <section class="cards-section">
+      <h2>Our Services</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="src/assets/images/Cardiology.jpg" alt="Service 1" />
+          <h3>Cardiology</h3>
+          <p>Comprehensive heart care with advanced diagnostic tools.</p>
+          <button class="btn btn-accent">Learn More</button>
+        </div>
+        <div class="card">
+          <img src="src/assets/images/Emergency Care.avif" alt="Service 2" />
+          <h3>Emergency Care</h3>
+          <p>24/7 emergency services with highly trained staff.</p>
+          <button class="btn btn-accent">Learn More</button>
+        </div>
+        <div class="card">
+          <img src="src/assets/images/Neurology.jpg" alt="Service 3" />
+          <h3>Neurology</h3>
+          <p>Advanced neurology treatments with experienced specialists.</p>
+          <button class="btn btn-accent">Learn More</button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- Department Section -->
 
-  <!-- ===== STATISTICS SECTION ===== -->
-  <section style="padding:60px 30px;">
-    <div class="header" style="text-align:center;">
-      <h1>Hospital Statistics</h1>
-      <p>Real-time healthcare insights</p>
-    </div>
+    <section class="departments">
+      <h2>Departments</h2>
+      <div class="departments-cards">
+        <!-- Cardiology -->
+        <div class="department-card">
+          <img
+            src="src/assets/images/CardiologyDepartment.avif"
+            alt="Cardiology"
+          />
+          <h3>Cardiology</h3>
+          <p>Dr. Ahmed Hassan</p>
+          <a href="src/pages/signup.html"
+            ><button class="btn btn-accent">Book Appointment</button></a
+          >
+        </div>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Total Doctors</h3>
-        <p>120+</p>
+        <!-- Neurology -->
+        <div class="department-card">
+          <img
+            src="src/assets/images/NeurologyDepartment.avif"
+            alt="Neurology"
+          />
+          <h3>Neurology</h3>
+          <p>Dr. Sara Ali</p>
+          <a href="src/pages/signup.html"
+            ><button class="btn btn-accent">Book Appointment</button></a
+          >
+        </div>
+
+        <!-- Pediatrics -->
+        <div class="department-card">
+          <img
+            src="src/assets/images/PediatricsDepartment.jpg"
+            alt="Pediatrics"
+          />
+          <h3>Pediatrics</h3>
+          <p>Dr. Omar Khaled</p>
+          <a href="src/pages/signup.html"
+            ><button class="btn btn-accent">Book Appointment</button></a
+          >
+        </div>
+
+        <!-- Orthopedics -->
+        <div class="department-card">
+          <img
+            src="src/assets/images/OrthopedicsDepartment.avif"
+            alt="Orthopedics"
+          />
+          <h3>Orthopedics</h3>
+          <p>Dr. Marwa Mohamed</p>
+          <a href="src/pages/signup.html"
+            ><button class="btn btn-accent">Book Appointment</button></a
+          >
+        </div>
+
+        <!-- Dermatology (New) -->
+        <div class="department-card">
+          <img
+            src="src/assets/images/dermatologyDepartment.avif"
+            alt="Dermatology"
+          />
+          <h3>Dermatology</h3>
+          <p>Dr. Malak Maged</p>
+          <a href="src/pages/signup.html"
+            ><button class="btn btn-accent">Book Appointment</button></a
+          >
+        </div>
+
+        <!-- Radiology (New) -->
+        <div class="department-card">
+          <img
+            src="src/assets/images/RadiologyDepartment.avif"
+            alt="Radiology"
+          />
+          <h3>Radiology</h3>
+          <p>Dr. Salma Elsaher</p>
+          <a href="src/pages/signup.html"
+            ><button class="btn btn-accent">Book Appointment</button></a
+          >
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Total Patients</h3>
-        <p>5,000+</p>
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+      <div class="team">
+        <p>Ibrahim | Doaa | Wahba | Dina | Rehan</p>
       </div>
-
-      <div class="card">
-        <h3>Departments</h3>
-        <p>15</p>
+      <div class="contact">
+        <p>Contact Info:</p>
+        <div class="contact-buttons">
+          <a href="mailto:info@healthcare.com" class="btn btn-accent">
+            <img src="src/assets/images/email.jpg" alt="Email" class="icon" />
+            Send Email
+          </a>
+          <a
+            href="https://wa.me/20123456789"
+            target="_blank"
+            class="btn btn-accent"
+          >
+            <img
+              src="src/assets/images/watsapp.jpg"
+              alt="WhatsApp"
+              class="icon"
+            />
+            WhatsApp
+          </a>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Appointments Daily</h3>
-        <p>300+</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICES SECTION ===== -->
-  <section style="padding:60px 30px;">
-    <div class="header" style="text-align:center;">
-      <h1>Our Services</h1>
-      <p>What we offer</p>
-    </div>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Online Appointments</h3>
-        <p style="font-size:16px;">Book & manage appointments easily</p>
-      </div>
-
-      <div class="card">
-        <h3>Medical Records</h3>
-        <p style="font-size:16px;">Secure digital medical records</p>
-      </div>
-
-      <div class="card">
-        <h3>Doctor Dashboard</h3>
-        <p style="font-size:16px;">Patient management & prescriptions</p>
-      </div>
-
-      <div class="card">
-        <h3>Admin Control</h3>
-        <p style="font-size:16px;">Full hospital management system</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer style="
-    padding:25px;
-    text-align:center;
-    background:rgba(11,28,45,0.7);
-  ">
-    <p style="opacity:.8;">
-      © 2025 Online Health System | All Rights Reserved
-    </p>
-  </footer>
-
-</body>
+      <p>All rights reserved &copy; 2025</p>
+    </footer>
+  </body>
 </html>

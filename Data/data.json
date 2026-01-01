@@ -534,5 +534,28 @@
     "availableDoctors": 19,
     "busyDoctors": 7,
     "unavailableDoctors": 3
-  }
+  },
+  "doctorRequests": [
+    {
+      "id": "dr_req_1",
+      "name": "Ahmed Hassan",
+      "email": "ahmed.hassan@gmail.com",
+      "department": "Cardiology",
+      "status": "pending"
+    },
+    {
+      "id": "dr_req_2",
+      "name": "Sara Mohamed",
+      "email": "sara.mohamed@gmail.com",
+      "department": "Dermatology",
+      "status": "approved"
+    },
+    {
+      "id": "dr_req_3",
+      "name": "Omar Ali",
+      "email": "omar.ali@gmail.com",
+      "department": "Neurology",
+      "status": "rejected"
+    }
+  ]
 }
