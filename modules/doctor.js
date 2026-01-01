@@ -1,6 +1,6 @@
 import { Storage } from '../../Data/storage.js';
 //let currentUser = JSON.parse(Storage.get('currentUser'));
- let currentUser  =   { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+let currentUser = { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
 // import { checkAccess } from "./auth/auth";
 // checkAccess(['doctor']);
 const URL = '../../Data/data.json';
@@ -71,7 +71,11 @@ export function fetchPatients() {
             .then(appointmentsData => {
                 appointmentsDataArr.push(...appointmentsData);
                 appointmentsDataArr = getRelatedAppointment();
-                appointmentsDataArr.sort((a, b) => new Date(b.date) - new Date(a.date)) && new Date(b.time) - new Date(a.time);
+                appointmentsDataArr.sort((a, b) => {
+                    const dateA = new Date(a.date + ' ' + a.time);
+                    const dateB = new Date(b.date + ' ' + b.time);
+                    return dateB - dateA; 
+                    });
                 appointmentsDataArr.forEach(appointment => {
                     if (appointment.status === 'Confirmed') {
                         confirmedCount++;
@@ -124,6 +128,8 @@ function renderCards(confirmedCount = 0, pendingCount = 0) {
 
 }
 
+// -----------------Medical Notes Modal Functionality--------------------
+
 tbody.addEventListener('click', (e) => {
     if (e.target.classList.contains('show_medical')) {
         const row = e.target.closest('tr');
@@ -134,37 +140,47 @@ tbody.addEventListener('click', (e) => {
 });
 addNoteBtn.onclick = () => {
     const noteText = newNote.value.trim();
-    if (noteText && currentPatientId) {
-        const patient = patients.find(p => p.id === currentPatientId);
-        if (patient) {
-            if (!patient.medicalNotes) {
-                patient.medicalNotes = [];
-            }
-            patient.medicalNotes.push(noteText);
-            localStorage.setItem('assignedPatients', JSON.stringify(patients));
-            loadMedicalNotes(currentPatientId);
-            newNote.value = '';
-        }
+    if (!noteText || !currentPatientId) return;
+
+    const patient = patients.find(p => p.id === currentPatientId);
+    if (!patient || !patient.visits || patient.visits.length === 0) return;
+    if (!patient.visits[0].notes) {
+        patient.visits[0].notes = [];
     }
-}
+    patient.visits[0].notes.push(noteText);
+    localStorage.setItem('assignedPatients', JSON.stringify(patients));
+    loadMedicalNotes(currentPatientId);
+    newNote.value = '';
+};
+
 closeBtn.onclick = () => modal.style.display = 'none';
 
 function loadMedicalNotes(id) {
     notesList.innerHTML = '';
     const patient = patients.find(p => p.id === id);
-    if (patient && patient.medicalNotes) {
-        patient.medicalNotes.forEach(note => {
+
+    if (
+        patient &&
+        patient.visits &&
+        patient.visits.length > 0 &&
+        patient.visits[0].notes &&
+        patient.visits[0].notes.length > 0
+    ) {
+        patient.visits[0].notes.forEach(note => {
             const li = document.createElement('li');
             li.textContent = note;
             notesList.appendChild(li);
         });
+    } else {
+        notesList.innerHTML = '<li>No medical notes yet.</li>';
     }
 }
+
 // -----------------Search Functionality--------------------
 srchInput.addEventListener('input', function () {
     const query = srchInput.value.toLowerCase();
     const filteredPatients = patients.filter(patient =>
-        patient.name.toLowerCase().includes(query) 
+        patient.name.toLowerCase().includes(query)
     );
     RenderTableData(filteredPatients);
 });
