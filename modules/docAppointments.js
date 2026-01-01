@@ -61,12 +61,14 @@ tbody.addEventListener('click', function (e) {
             const appointment = appointmentsDataArr.find(app => app.id === appointmentId);
             if (appointment) {
                 appointment.status = 'Confirmed';
+                localStorage.setItem('doctorAppointments', JSON.stringify(appointmentsDataArr));
                 RenderTableData(appointmentsDataArr);
             }
         } else if (e.target.classList.contains('btn-danger')) {
             const appointment = appointmentsDataArr.find(app => app.id === appointmentId);
             if (appointment) {
                 appointment.status = 'Canceled';
+                localStorage.setItem('doctorAppointments', JSON.stringify(appointmentsDataArr));
                 RenderTableData(appointmentsDataArr);
             }
         }
