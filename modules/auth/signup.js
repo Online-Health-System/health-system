@@ -16,25 +16,36 @@ if (signupForm) {
             return;
         }
 
-        const doctors = Storage.get('doctors') || [];
+        const db = JSON.parse(localStorage.getItem("hospitalDB")) || { doctorRequests: [], doctors: [] };
 
-        if (doctors.find(d => d.email === email)) {
-            alert("This email is already registered!");
+        const isEmailExists = [
+            ...(db.doctorRequests || []), 
+            ...(db.doctors || [])
+        ].some(d => d.email === email);
+
+        if (isEmailExists) {
+            alert("This email is already registered or has a pending request!");
             return;
         }
 
-        const newDoctor = {
-            id: `DOC-${Date.now()}`,
+        const newRequest = {
+            id: `REQ-${Date.now()}`,
             name: name,
             email: email,
             password: password,
-            role: 'doctor'
+            department: "General",
+            status: "pending",
+            requestDate: new Date().toLocaleDateString()
         };
 
-        doctors.push(newDoctor);
-        Storage.save('doctors', doctors);
+        if (!db.doctorRequests) {
+            db.doctorRequests = [];
+        }
 
-        alert("Account created successfully!");
+        db.doctorRequests.push(newRequest);
+        localStorage.setItem("hospitalDB", JSON.stringify(db));
+
+        alert("Your request has been sent to the Admin!");
         window.location.href = 'login.html';
     });
 }
