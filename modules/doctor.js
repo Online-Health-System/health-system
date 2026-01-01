@@ -1,7 +1,7 @@
 import { Storage } from '../../Data/storage.js';
 let currentUser = JSON.parse(Storage.get('currentUser'));
 currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
-import { checkAccess } from "./auth/auth"; 
+import { checkAccess } from "./auth/auth";
 checkAccess(['doctor']);
 const URL = '../../Data/data.json';
 const header = document.querySelector('header p');
@@ -10,9 +10,6 @@ const appointments = document.getElementById('appointments');
 const confirm = document.getElementById('Confirm');
 const pending = document.getElementById('Pending');
 header.textContent = `Welcome back, ${currentUser.name}`;
-const patients = [];
-const appointmentsDataArr = [];
-fetchPatients();
 const tbody = document.querySelector('#patientsTable tbody');
 const modal = document.getElementById('medicalNotesModal');
 const notesList = document.getElementById('notesList');
@@ -20,8 +17,11 @@ const newNote = document.getElementById('newNote');
 const addNoteBtn = document.getElementById('addNoteBtn');
 const closeBtn = document.getElementById('closeNotesBtn');
 let currentPatientId = null;
+const patients = [];
+const appointmentsDataArr = [];
 
-function fetchPatients() {
+
+export function fetchPatients() {
     fetch(URL, {
         method: 'GET',
         headers: {
@@ -34,6 +34,7 @@ function fetchPatients() {
                 if (patient.assignedDoctorId === currentUser.id)
                     patients.push(patient);
             });
+            localStorage.setItem('assignedPatients', JSON.stringify(patients));
             RenderTableData(patients);
             return data['appointments']
         })
