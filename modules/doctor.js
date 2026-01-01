@@ -141,6 +141,7 @@ addNoteBtn.onclick = () => {
                 patient.medicalNotes = [];
             }
             patient.medicalNotes.push(noteText);
+            localStorage.setItem('assignedPatients', JSON.stringify(patients));
             loadMedicalNotes(currentPatientId);
             newNote.value = '';
         }
