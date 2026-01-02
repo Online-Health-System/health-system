@@ -19,6 +19,7 @@
     <a href="doctor.html">Dashboard</a>
     <a href="">Profile</a>
     <a href="appointments.html">Appointments</a>
+    <a href="reports.html">Reports</a>
     <a href="../pages/login.html">Logout</a>
   </aside>
 
@@ -106,9 +107,11 @@
 <script src="../../modules/profileDoc.js" type="module"></script>
 <script type="module">
   import { fetchDoctorData } from '../../modules/profileDoc.js';
-  import { Storage } from '../../Data/storage.js';
-  let currentUser = JSON.parse(Storage.get('currentUser'));
-  currentUser = currentUser ? currentUser : {id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor'};
+  import { checkAccess } from "../../modules/auth/auth.js";
+  import { getCurrentUser } from '../../modules/auth/auth.js';
+  checkAccess(['doctor']);
+  let currentUser = getCurrentUser();
+  currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
   fetchDoctorData(currentUser.id)
 </script>
 </html>

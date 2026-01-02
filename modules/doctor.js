@@ -1,8 +1,9 @@
-import { Storage } from '../../Data/storage.js';
-//let currentUser = JSON.parse(Storage.get('currentUser'));
-let currentUser = { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
-// import { checkAccess } from "./auth/auth";
-// checkAccess(['doctor']);
+import { getCurrentUser } from './auth/auth';   
+let currentUser = getCurrentUser();
+console.log(currentUser);
+ currentUser = currentUser? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+import { checkAccess } from "./auth/auth";
+checkAccess(['doctor']);
 const URL = '../../Data/data.json';
 // -----------------UI Elements------------------
 const header = document.querySelector('header p');

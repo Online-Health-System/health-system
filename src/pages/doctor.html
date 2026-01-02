@@ -19,6 +19,7 @@
     <a href="">Dashboard</a>
     <a href="profileDoc.html">Profile</a>
     <a href="appointments.html">Appointments</a>
+    <a href="reports.html">Reports</a>
     <a href="../pages/login.html">Logout</a>
   </aside>
 
@@ -99,6 +100,9 @@
 <script type="module" >
 import {fetchPatients} from "../../modules/doctor.js";
 fetchPatients();
+function goToReports() {
+    window.location.href = 'reports.html';
+}
 </script>
 </body>
 </html>
