@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>Appointments | Doctor</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="src/assets/images/logo.png">
 </head>
 
 <body>
@@ -53,22 +54,6 @@
           </tbody>
         </table>
       </section>
-      <div id="medicalNotesModal" class="modal"
-        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000;">
-        <div class="glass-card"
-          style="background:var(--glass); backdrop-filter:blur(16px); border-radius:20px; padding:20px; max-width:500px; width:90%; position:relative;">
-          <h3 style="margin-bottom:15px;">Medical Notes</h3>
-
-          <ul id="notesList" style="padding-left:20px; max-height:200px; overflow-y:auto; margin-bottom:10px;">
-          </ul>
-
-          <textarea id="newNote" rows="3" placeholder="Write a new note..."
-            style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.3); margin-bottom:10px;"></textarea>
-          <button id="addNoteBtn" class="btn btn-accent" style="width:100%; margin-bottom:10px;">Add Note</button>
-          <button id="closeNotesBtn" class="btn btn-primary" style="width:100%;">Close</button>
-        </div>
-      </div>
-
     </main>
   </div>
   <script src="../../modules/docAppointments.js" type="module"></script>
