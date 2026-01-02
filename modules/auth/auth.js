@@ -51,3 +51,12 @@ export function getCurrentUser() {
   }
   return JSON.parse(user);
 }
+
+export function getCurrentUser2() {
+  try {
+    const user = localStorage.getItem("currentUser");
+    return user ? JSON.parse(user) : null;
+  } catch {
+    return null;
+  }
+}

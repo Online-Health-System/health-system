@@ -1,18 +1,36 @@
-import { getCurrentUser, checkAccess } from "../auth/auth.js";
-import { Storage } from "../../Data/storage.js";
+import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
+import { Storage } from "../Data/storage.js";
+import { checkAccess } from "./auth/auth.js";
+checkAccess(['patient']);
 
-checkAccess(["patient"]);
+// Try to get logged-in user
+let currentUser = null;
 
-let currentUser = getCurrentUser();
+try {
+  currentUser = getCurrentUser2();
+} catch (e) {
+  currentUser = null;
+}
 
-currentUser = currentUser  ? currentUser : { id: "PAT-201", role: "patient" };
+if (!currentUser) {
+  console.warn("No logged-in user, using test patient");
 
+  currentUser = {
+    id: "PAT-201",
+    role: "patient",
+    testMode: true
+  };
+}
+
+// Use patient id everywhere
 const currentPatientId = currentUser.id;
 
+// Load hospital data
 const data = Storage.get("hospitalData");
 
-
-
+if (!data) {
+  console.error("hospitalData not found");
+}
 
 // ===== Doctors Map =====
 const doctorsMap = {};

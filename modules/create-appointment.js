@@ -1,14 +1,30 @@
 // create-appointment.js
-import { getCurrentUser, checkAccess } from "../auth/auth.js";
-import { Storage } from "../../Data/storage.js";
+import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
+import { Storage } from "../Data/storage.js";
+import { checkAccess } from "./auth/auth.js";
+checkAccess(['patient']);
+// Try to get logged-in user
+let currentUser = null;
 
-checkAccess(["patient"]);
+try {
+  currentUser = getCurrentUser2();
+} catch (e) {
+  currentUser = null;
+}
 
-let currentUser = getCurrentUser();
+if (!currentUser) {
+  console.warn("No logged-in user, using test patient");
 
-currentUser = currentUser  ? currentUser : { id: "PAT-201", role: "patient" };
+  currentUser = {
+    id: "PAT-201",
+    role: "patient",
+    testMode: true
+  };
+}
 
 const currentPatientId = currentUser.id;
+
+
 
 
 const form = document.getElementById("appointmentForm");

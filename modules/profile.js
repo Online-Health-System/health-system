@@ -1,61 +1,25 @@
-/*
-import { Storage } from "../../Data/storage.js";
+import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
+import { Storage } from "../Data/storage.js";
+import { checkAccess } from "./auth/auth.js";
+checkAccess(['patient']);
+// Try to get logged-in user
+let currentUser = null;
 
-
-// temporary
-const currentPatientId = "PAT-201"; 
-
-// getting the data
-const data = Storage.get("hospitalData");
-
-if (!data) {
-  alert("No hospital data found");
-  throw new Error("hospitalData not found");
+try {
+  currentUser = getCurrentUser2();
+} catch (e) {
+  currentUser = null;
 }
 
-// get the current patient
-const patient = data.patients.find(
-  p => p.id === currentPatientId
-);
+if (!currentUser) {
+  console.warn("No logged-in user, using test patient");
 
-if (!patient) {
-  alert("Patient not found");
-  throw new Error("Patient not found");
+  currentUser = {
+    id: "PAT-201",
+    role: "patient",
+    testMode: true
+  };
 }
-
-// view the informaiom
-document.getElementById("name").value = patient.name || "";
-document.getElementById("email").value = patient.email || "";
-document.getElementById("phone").value = patient.phone || "";
-document.getElementById("gender").value = patient.gender || "";
-document.getElementById("bloodType").value = patient.bloodType || "";
-
-// saving the changes
-document
-  .getElementById("profileForm")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    patient.name = document.getElementById("name").value;
-    patient.email = document.getElementById("email").value;
-    patient.phone = document.getElementById("phone").value;
-    patient.gender = document.getElementById("gender").value;
-    patient.bloodType = document.getElementById("bloodType").value;
-
-    Storage.save("hospitalData", data);
-
-    alert("Profile updated successfully ✅");
-  });
-*/
-
-import { getCurrentUser, checkAccess } from "../auth/auth.js";
-import { Storage } from "../../Data/storage.js";
-
-checkAccess(["patient"]);
-
-let currentUser = getCurrentUser();
-
-currentUser = currentUser  ? currentUser : { id: "PAT-201", role: "patient" };
 
 const currentPatientId = currentUser.id;
 
