@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor | Online Health System</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <h2>
+      <img src="../assets/images/logo.png" width="50" height="50">
+      Health Care
+    </h2>
+
+    <a href="">Dashboard</a>
+    <a href="profileDoc.html">Profile</a>
+    <a href="appointments.html">Appointments</a>
+    <a href="reports.html">Reports</a>
+    <a href="../pages/login.html">Logout</a>
+  </aside>
+
+  <!-- ===== Main ===== -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="header" style="display:flex; align-items:center; justify-content:space-between;">
+       <div>
+    <h1>Doctor Dashboard</h1>
+    <p>Welcome back, Dr. Dina</p>
+  </div>
+  <div>
+    <input type="text" id="patientSearch" placeholder="Search by patient name..." 
+           style="padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.5); background:#fff; width:250px;">
+  </div>
+    </header>
+
+
+    <!-- Cards -->
+    <section class="cards">
+      <div class="card" id="totalPatient">
+        <h3>Total Patients</h3>
+        <p>-</p>
+      </div>
+
+      <div class="card" id="appointments">
+        <h3>Today's Appointments</h3>
+        <p>-</p>
+      </div>
+
+      <div class="card" id="Confirm">
+        <h3>Confirmed</h3>
+        <p>-</p>
+      </div>
+
+      <div class="card" id="Pending">
+        <h3>Pending</h3>
+        <p>-</p>
+      </div>
+    </section>
+
+    <!-- Patients Table -->
+   <section class="glass-table" >
+     <table id="patientsTable">
+      <thead>
+        <tr>
+        <th>Patient Name</th>
+        <th>Age</th>
+        <th>Phone</th>
+        <th>Chronic Diseases</th>
+        <th>Blood Type</th>
+        <th>Last Visit</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  </section>
+
+<div id="medicalNotesModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000;">
+  <div class="glass-card" style="background:var(--glass); backdrop-filter:blur(16px); border-radius:20px; padding:20px; max-width:500px; width:90%; position:relative;">
+    <h3 style="margin-bottom:15px;">Medical Notes</h3>
+    
+    <ul id="notesList" style="padding-left:20px; max-height:200px; overflow-y:auto; margin-bottom:10px;">
+    </ul>
+
+    <textarea id="newNote" rows="3" placeholder="Write a new note..." style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.3); margin-bottom:10px;"></textarea>
+    <button id="addNoteBtn" class="btn btn-accent" style="width:100%; margin-bottom:10px;">Add Note</button>
+    <button id="closeNotesBtn" class="btn btn-primary" style="width:100%;">Close</button>
+  </div>
+</div>
+
+  </main>
+</div>
+
+<script src="../../modules/doctor.js" type="module"></script>
+<script type="module" >
+import {fetchPatients} from "../../modules/doctor.js";
+fetchPatients();
+function goToReports() {
+    window.location.href = 'reports.html';
+}
+</script>
+</body>
+</html>
