@@ -71,6 +71,7 @@
       "status": "Available",
       "appointmentsToday": 6,
       "email": "ahmed.hassan@hospital.com",
+      
       "phone": "+20 100 123 4567",
       "gender": "Male",
       "experienceYears": 12,
@@ -590,8 +591,7 @@
     "availableDoctors": 19,
     "busyDoctors": 7,
     "unavailableDoctors": 3
-  }
-  ,
+  },
   "doctorRequests": [
     {
       "id": "dr_req_1",

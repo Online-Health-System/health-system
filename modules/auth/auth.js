@@ -23,7 +23,6 @@ export const handleLogin = (email, password) => {
     return { success: true, role: "patient" };
   }
 
-<<<<<<< HEAD
     if (email === "admin@hospital.com" && password === "admin123") {
         const adminUser = { id: "ADMIN-01", name: "System Admin", role: "admin" };
         Storage.save('currentUser', adminUser);
@@ -44,7 +43,6 @@ export const handleLogin = (email, password) => {
 
     return { success: false, message: "Invalid email or password" };
 };
-=======
   return { success: false, message: "Invalid email or password" };
 };
 
@@ -73,4 +71,3 @@ export function getCurrentUser() {
   }
   return JSON.parse(user);
 }
->>>>>>> main

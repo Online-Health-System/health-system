@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Appointments | Doctor</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- ===== Sidebar ===== -->
+    <aside class="sidebar">
+      <h2>
+        <img src="../assets/images/logo.png" width="50" height="50">
+        Health Care
+      </h2>
+
+      <a href="doctor.html">Dashboard</a>
+      <a href="profileDoc.html">Profile</a>
+      <a href="">Appointments</a>
+      <a href="reports.html">Reports</a>
+      <a href="../pages/login.html">Logout</a>
+    </aside>
+
+    <!-- ===== Main ===== -->
+    <main class="main">
+
+      <!-- Header -->
+      <header class="header">
+        <h1>Appointments</h1>
+        <p>Manage your daily and upcoming schedule</p>
+      </header>
+
+
+      <!-- Appointments Table -->
+      <section class="glass-table">
+        <table id="appointmentTable">
+          <thead>
+            <tr>
+              <th>Patient</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          </tbody>
+        </table>
+      </section>
+      <div id="medicalNotesModal" class="modal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:1000;">
+        <div class="glass-card"
+          style="background:var(--glass); backdrop-filter:blur(16px); border-radius:20px; padding:20px; max-width:500px; width:90%; position:relative;">
+          <h3 style="margin-bottom:15px;">Medical Notes</h3>
+
+          <ul id="notesList" style="padding-left:20px; max-height:200px; overflow-y:auto; margin-bottom:10px;">
+          </ul>
+
+          <textarea id="newNote" rows="3" placeholder="Write a new note..."
+            style="width:100%; padding:10px; border-radius:12px; border:1px solid rgba(255,255,255,0.3); margin-bottom:10px;"></textarea>
+          <button id="addNoteBtn" class="btn btn-accent" style="width:100%; margin-bottom:10px;">Add Note</button>
+          <button id="closeNotesBtn" class="btn btn-primary" style="width:100%;">Close</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
+  <script src="../../modules/docAppointments.js" type="module"></script>
+  <script type="module">
+    import { Storage } from '../../Data/storage.js';
+    import { fetchAppointmentsData } from '../../modules/docAppointments.js';
+    import { checkAccess } from "../../modules/auth/auth.js";
+    import { getCurrentUser } from '../../modules/auth/auth.js';
+    checkAccess(['doctor']);
+    let currentUser = getCurrentUser();
+    currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+    fetchAppointmentsData();
+
+  </script>
+</body>
+
+</html>
