@@ -1,6 +1,15 @@
 // create-appointment.js
-
+import { getCurrentUser, checkAccess } from "../auth/auth.js";
 import { Storage } from "../../Data/storage.js";
+
+checkAccess(["patient"]);
+
+let currentUser = getCurrentUser();
+
+currentUser = currentUser  ? currentUser : { id: "PAT-201", role: "patient" };
+
+const currentPatientId = currentUser.id;
+
 
 const form = document.getElementById("appointmentForm");
 
@@ -40,7 +49,7 @@ form.addEventListener("submit", function (e) {
 
   const newAppointment = {
     id: "APP-" + Date.now(),
-    patientId: "PAT-201", // temporary logged-in user
+    patientId: currentPatientId, // temporary logged-in user
     doctorId: doctorId,
     date: date,
     time: time,
@@ -51,4 +60,25 @@ form.addEventListener("submit", function (e) {
   Storage.save("hospitalData", data);
 
   window.location.href = "my-appointments.html";
+});
+
+document.getElementById("logoutBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  Swal.fire({
+    title: "Logout",
+    text: "Are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+    customClass: {
+      popup: "swal-navy"
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Storage.remove("currentUser");
+window.location.href = "../login.html";
+    }
+  });
 });

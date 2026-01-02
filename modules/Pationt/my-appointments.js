@@ -1,9 +1,17 @@
 
-
+import { getCurrentUser, checkAccess } from "../auth/auth.js";
 import { Storage } from "../../Data/storage.js";
 
-const tbody = document.getElementById("appointmentsBody");
+checkAccess(["patient"]);
+
+let currentUser = getCurrentUser();
+
+currentUser = currentUser  ? currentUser : { id: "PAT-201", role: "patient" };
+
+const currentPatientId = currentUser.id;
+
 const data = Storage.get("hospitalData");
+
 
 if (!data || !data.appointments) {
   tbody.innerHTML = `
@@ -14,8 +22,6 @@ if (!data || !data.appointments) {
   throw new Error("hospitalData not found");
 }
 
-// temporary
-const currentPatientId = "PAT-201";
 
 // Map doctors
 const doctorsMap = {};
@@ -66,6 +72,7 @@ myAppointments.forEach((app, index) => {
   tbody.appendChild(tr);
 });
 
+/* 
 tbody.addEventListener("click", e => {
   if (e.target.classList.contains("btn-danger")) {
     const index = e.target.dataset.index;
@@ -76,4 +83,63 @@ tbody.addEventListener("click", e => {
       location.reload();
     }
   }
+});
+*/
+
+tbody.addEventListener("click", e => {
+  if (e.target.classList.contains("btn-danger")) {
+    const index = e.target.dataset.index;
+
+    Swal.fire({
+      title: "Cancel Appointment?",
+      text: "Are you sure you want to cancel this appointment?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, cancel it",
+      cancelButtonText: "No",
+      customClass: {
+        popup: "swal-navy"
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        myAppointments[index].status = "Canceled";
+        Storage.save("hospitalData", data);
+
+        Swal.fire({
+          title: "Canceled!",
+          text: "Your appointment has been canceled.",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+          customClass: {
+            popup: "swal-navy"
+          }
+        }).then(() => {
+          location.reload();
+        });
+      }
+    });
+  }
+});
+
+
+document.getElementById("logoutBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  Swal.fire({
+    title: "Logout",
+    text: "Are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+    customClass: {
+      popup: "swal-navy"
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Storage.remove("currentUser");
+      window.location.href = "/src/pages/login.html";
+    }
+  });
 });
