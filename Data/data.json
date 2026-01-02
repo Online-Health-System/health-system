@@ -9,10 +9,9 @@
     },
     "contact": {
       "phone": "+20 100 123 4567",
-      "email": "info@greenvalleyhospital.com"
+      "email": "healthcare@hospital.com"
     }
   },
-
   "departments": [
     {
       "id": "DEP-01",
@@ -37,9 +36,32 @@
       "name": "Neurology",
       "totalDoctors": 5,
       "availableDoctors": 3
-    }
-  ],
-
+    },
+  {
+  "id": "DEP-05",
+  "name": "Orthopedics",
+  "totalDoctors": 7,
+  "availableDoctors": 4
+},
+{
+  "id": "DEP-06",
+  "name": "Ophthalmology",
+  "totalDoctors": 5,
+  "availableDoctors": 3
+},
+{
+  "id": "DEP-07",
+  "name": "ENT",
+  "totalDoctors": 4,
+  "availableDoctors": 2
+},
+{
+  "id": "DEP-08",
+  "name": "Gynecology",
+  "totalDoctors": 6,
+  "availableDoctors": 4
+}
+],
   "doctors": [
     {
       "id": "DOC-101",
@@ -47,7 +69,16 @@
       "specialty": "Cardiology",
       "departmentId": "DEP-01",
       "status": "Available",
-      "appointmentsToday": 6
+      "appointmentsToday": 6,
+      "email": "ahmed.hassan@hospital.com",
+      "phone": "+20 100 123 4567",
+      "gender": "Male",
+      "experienceYears": 12,
+      "qualification": "MD, Cardiology",
+      "clinicRoom": "Room 201",
+      "workingHours": "09:00 AM - 03:00 PM",
+      "patientsToday": 14,
+      "bio": "Specialist in heart diseases and cardiac care."
     },
     {
       "id": "DOC-102",
@@ -55,7 +86,16 @@
       "specialty": "Dermatology",
       "departmentId": "DEP-02",
       "status": "Busy",
-      "appointmentsToday": 9
+      "appointmentsToday": 9,
+      "email": "sara.ali@hospital.com",
+      "phone": "+20 101 555 8123",
+      "gender": "Female",
+      "experienceYears": 9,
+      "qualification": "MD, Dermatology",
+      "clinicRoom": "Room 305",
+      "workingHours": "10:00 AM - 04:00 PM",
+      "patientsToday": 18,
+      "bio": "Expert in skin care and cosmetic dermatology."
     },
     {
       "id": "DOC-103",
@@ -63,7 +103,16 @@
       "specialty": "Pediatrics",
       "departmentId": "DEP-03",
       "status": "Available",
-      "appointmentsToday": 4
+      "appointmentsToday": 4,
+      "email": "omar.khaled@hospital.com",
+      "phone": "+20 102 777 3344",
+      "gender": "Male",
+      "experienceYears": 7,
+      "qualification": "MD, Pediatrics",
+      "clinicRoom": "Room 110",
+      "workingHours": "08:00 AM - 02:00 PM",
+      "patientsToday": 10,
+      "bio": "Providing medical care for infants and children."
     },
     {
       "id": "DOC-104",
@@ -71,10 +120,188 @@
       "specialty": "Neurology",
       "departmentId": "DEP-04",
       "status": "Unavailable",
-      "appointmentsToday": 0
-    }
-  ],
-
+      "appointmentsToday": 0,
+      "email": "mona.youssef@hospital.com",
+      "phone": "+20 109 222 9988",
+      "gender": "Female",
+      "experienceYears": 15,
+      "qualification": "PhD, Neurology",
+      "clinicRoom": "Room 410",
+      "workingHours": "11:00 AM - 05:00 PM",
+      "patientsToday": 0,
+      "bio": "Specialist in neurological disorders and brain health."
+    },
+    {
+      "id": "DOC-105",
+      "name": "Dr. Khaled Mahmoud",
+      "specialty": "Cardiology",
+      "departmentId": "DEP-01",
+      "status": "Busy",
+      "appointmentsToday": 8,
+      "email": "khaled.mahmoud@hospital.com",
+      "phone": "+20 111 333 8899",
+      "gender": "Male",
+      "experienceYears": 11,
+      "qualification": "MD, Cardiology",
+      "clinicRoom": "Room 203",
+      "workingHours": "09:00 AM - 04:00 PM",
+      "patientsToday": 16,
+      "bio": "Experienced cardiologist specializing in heart failure."
+    },
+    {
+      "id": "DOC-106",
+      "name": "Dr. Nour ElDin Samir",
+      "specialty": "Dermatology",
+      "departmentId": "DEP-02",
+      "status": "Available",
+      "appointmentsToday": 3,
+      "email": "nour.samir@hospital.com",
+      "phone": "+20 122 888 7766",
+      "gender": "Male",
+      "experienceYears": 6,
+      "qualification": "MD, Dermatology",
+      "clinicRoom": "Room 310",
+      "workingHours": "12:00 PM - 06:00 PM",
+      "patientsToday": 7,
+      "bio": "Focused on clinical and aesthetic dermatology."
+    },
+    {
+      "id": "DOC-107",
+      "name": "Dr. Hany Abdelrahman",
+      "specialty": "Pediatrics",
+      "departmentId": "DEP-03",
+      "status": "Busy",
+      "appointmentsToday": 7,
+      "email": "hany.abdelrahman@hospital.com",
+      "phone": "+20 115 444 2233",
+      "gender": "Male",
+      "experienceYears": 10,
+      "qualification": "MD, Pediatrics",
+      "clinicRoom": "Room 115",
+      "workingHours": "08:00 AM - 03:00 PM",
+      "patientsToday": 15,
+      "bio": "Dedicated to child health and development."
+    },
+    {
+      "id": "DOC-108",
+      "name": "Dr. Rania Fathy",
+      "specialty": "Neurology",
+      "departmentId": "DEP-04",
+      "status": "Available",
+      "appointmentsToday": 2,
+      "email": "rania.fathy@hospital.com",
+      "phone": "+20 106 999 4455",
+      "gender": "Female",
+      "experienceYears": 8,
+      "qualification": "MD, Neurology",
+      "clinicRoom": "Room 415",
+      "workingHours": "10:00 AM - 03:00 PM",
+      "patientsToday": 6,
+      "bio": "Treating neurological and nerve disorders."
+    },
+    {
+      "id": "DOC-109",
+      "name": "Dr. Yasser Ibrahim",
+      "specialty": "Cardiology",
+      "departmentId": "DEP-01",
+      "status": "Unavailable",
+      "appointmentsToday": 0,
+      "email": "yasser.ibrahim@hospital.com",
+      "phone": "+20 118 555 6677",
+      "gender": "Male",
+      "experienceYears": 14,
+      "qualification": "MD, Cardiology",
+      "clinicRoom": "Room 205",
+      "workingHours": "01:00 PM - 06:00 PM",
+      "patientsToday": 0,
+      "bio": "Senior cardiologist with extensive clinical experience."
+    },
+  {
+  "id": "DOC-110",
+  "name": "Dr. Tarek ElSayed",
+  "specialty": "Orthopedics",
+  "departmentId": "DEP-05",
+  "status": "Available",
+  "appointmentsToday": 5,
+  "email": "tarek.elsayed@hospital.com",
+  "phone": "+20 120 444 8899",
+  "gender": "Male",
+  "experienceYears": 13,
+  "qualification": "MD, Orthopedics",
+  "clinicRoom": "Room 510",
+  "workingHours": "09:00 AM - 03:00 PM",
+  "patientsToday": 11,
+  "bio": "Specialist in bone fractures and joint replacement."
+},
+{
+  "id": "DOC-111",
+  "name": "Dr. Mai Abdelaziz",
+  "specialty": "Ophthalmology",
+  "departmentId": "DEP-06",
+  "status": "Busy",
+  "appointmentsToday": 8,
+  "email": "mai.abdelaziz@hospital.com",
+  "phone": "+20 121 333 2211",
+  "gender": "Female",
+  "experienceYears": 9,
+  "qualification": "MD, Ophthalmology",
+  "clinicRoom": "Room 610",
+  "workingHours": "10:00 AM - 04:00 PM",
+  "patientsToday": 16,
+  "bio": "Expert in eye care and vision correction."
+},
+{
+  "id": "DOC-112",
+  "name": "Dr. Mahmoud Adel",
+  "specialty": "ENT",
+  "departmentId": "DEP-07",
+  "status": "Available",
+  "appointmentsToday": 3,
+  "email": "mahmoud.adel@hospital.com",
+  "phone": "+20 122 666 7788",
+  "gender": "Male",
+  "experienceYears": 7,
+  "qualification": "MD, ENT",
+  "clinicRoom": "Room 710",
+  "workingHours": "11:00 AM - 05:00 PM",
+  "patientsToday": 6,
+  "bio": "Treating ear, nose, and throat disorders."
+},
+{
+  "id": "DOC-113",
+  "name": "Dr. Salma Naguib",
+  "specialty": "Gynecology",
+  "departmentId": "DEP-08",
+  "status": "Available",
+  "appointmentsToday": 4,
+  "email": "salma.naguib@hospital.com",
+  "phone": "+20 123 555 8899",
+  "gender": "Female",
+  "experienceYears": 10,
+  "qualification": "MD, Gynecology",
+  "clinicRoom": "Room 810",
+  "workingHours": "09:00 AM - 02:00 PM",
+  "patientsToday": 9,
+  "bio": "Specialist in women's health and pregnancy care."
+},
+{
+  "id": "DOC-114",
+  "name": "Dr. Hassan Mostafa",
+  "specialty": "Orthopedics",
+  "departmentId": "DEP-05",
+  "status": "Unavailable",
+  "appointmentsToday": 0,
+  "email": "hassan.mostafa@hospital.com",
+  "phone": "+20 124 777 9900",
+  "gender": "Male",
+  "experienceYears": 15,
+  "qualification": "PhD, Orthopedics",
+  "clinicRoom": "Room 515",
+  "workingHours": "01:00 PM - 06:00 PM",
+  "patientsToday": 0,
+  "bio": "Senior orthopedic consultant."
+}
+],
   "patients": [
     {
       "id": "PAT-201",
@@ -84,9 +311,40 @@
       "phone": "+20 101 555 2345",
       "email": "mohamed.adel@gmail.com",
       "bloodType": "A+",
-      "chronicDiseases": ["Diabetes"],
-      "lastVisit": "2024-12-18",
-      "assignedDoctorId": "DOC-101"
+      "chronicDiseases": [
+        "Diabetes"
+      ],
+      "assignedDoctorId": "DOC-101",
+      "visits": [
+        {
+          "visitId": "VIS-001",
+          "date": "2024-12-18",
+          "reason": "Routine checkup",
+          "diagnosis": "Good glucose control",
+          "treatment": "Continue current medication",
+          "prescriptions": [
+            "Metformin 500mg"
+          ],
+          "notes": [
+            "Patient shows good progress in glucose control."
+          ],
+          "followUp": "2025-01-18"
+        },
+        {
+          "visitId": "VIS-002",
+          "date": "2024-12-25",
+          "reason": "Asthma monitoring",
+          "diagnosis": "Asthma stable",
+          "treatment": "Continue inhaler",
+          "prescriptions": [
+            "Albuterol inhaler"
+          ],
+          "notes": [
+            "Monitor symptoms during winter."
+          ],
+          "followUp": "2025-01-25"
+        }
+      ]
     },
     {
       "id": "PAT-202",
@@ -97,8 +355,38 @@
       "email": "aya.mahmoud@gmail.com",
       "bloodType": "O+",
       "chronicDiseases": [],
-      "lastVisit": "2024-12-20",
-      "assignedDoctorId": "DOC-102"
+      "assignedDoctorId": "DOC-102",
+      "visits": [
+        {
+          "visitId": "VIS-003",
+          "date": "2024-12-20",
+          "reason": "Skin irritation",
+          "diagnosis": "Mild rash",
+          "treatment": "Apply prescribed ointment",
+          "prescriptions": [
+            "Ointment XYZ"
+          ],
+          "notes": [
+            "Patient has mild skin irritation."
+          ],
+          "followUp": "2025-01-03"
+        },
+        {
+          "visitId": "VIS-004",
+          "date": "2024-12-27",
+          "reason": "Cosmetic consultation",
+          "diagnosis": "Acne-prone skin",
+          "treatment": "Suggested skincare routine",
+          "prescriptions": [
+            "Face wash ABC",
+            "Moisturizer DEF"
+          ],
+          "notes": [
+            "Patient advised to avoid sun exposure."
+          ],
+          "followUp": "2025-01-10"
+        }
+      ]
     },
     {
       "id": "PAT-203",
@@ -108,9 +396,38 @@
       "phone": "+20 111 333 4455",
       "email": "youssef.samir@gmail.com",
       "bloodType": "B-",
-      "chronicDiseases": ["Hypertension"],
-      "lastVisit": "2024-12-22",
-      "assignedDoctorId": "DOC-103"
+      "chronicDiseases": [
+        "Hypertension"
+      ],
+      "assignedDoctorId": "DOC-103",
+      "visits": [
+        {
+          "visitId": "VIS-005",
+          "date": "2024-12-22",
+          "reason": "Blood pressure check",
+          "diagnosis": "Slightly elevated BP",
+          "treatment": "Reduce salt intake, monitor daily",
+          "prescriptions": [
+            "Atenolol 50mg"
+          ],
+          "notes": [
+            "Advised to track BP at home."
+          ],
+          "followUp": "2025-01-15"
+        },
+        {
+          "visitId": "VIS-006",
+          "date": "2024-12-28",
+          "reason": "Follow-up consultation",
+          "diagnosis": "BP stable",
+          "treatment": "Continue current medication",
+          "prescriptions": [],
+          "notes": [
+            "Patient following diet and medication properly."
+          ],
+          "followUp": "2025-02-01"
+        }
+      ]
     },
     {
       "id": "PAT-204",
@@ -120,12 +437,140 @@
       "phone": "+20 102 888 1122",
       "email": "salma.nabil@gmail.com",
       "bloodType": "AB+",
-      "chronicDiseases": ["Asthma"],
-      "lastVisit": "2024-12-25",
-      "assignedDoctorId": "DOC-101"
+      "chronicDiseases": [
+        "Asthma"
+      ],
+      "assignedDoctorId": "DOC-101",
+      "visits": [
+        {
+          "visitId": "VIS-007",
+          "date": "2024-12-25",
+          "reason": "Asthma control",
+          "diagnosis": "Asthma under control",
+          "treatment": "Use inhaler as needed",
+          "prescriptions": [
+            "Salbutamol inhaler"
+          ],
+          "notes": [
+            "Monitor during winter season."
+          ],
+          "followUp": "2025-01-25"
+        }
+      ]
+    },
+    {
+      "id": "PAT-205",
+      "name": "Hassan Mostafa",
+      "age": 52,
+      "gender": "Male",
+      "phone": "+20 109 222 3344",
+      "email": "hassan.mostafa@gmail.com",
+      "bloodType": "A-",
+      "chronicDiseases": [
+        "Heart Disease"
+      ],
+      "assignedDoctorId": "DOC-105",
+      "visits": [
+        {
+          "visitId": "VIS-008",
+          "date": "2024-12-26",
+          "reason": "Post-surgery follow-up",
+          "diagnosis": "Recovering well",
+          "treatment": "Monitor heart rate and schedule ECG",
+          "prescriptions": [
+            "Aspirin 81mg"
+          ],
+          "notes": [
+            "Patient recovering from recent heart surgery."
+          ],
+          "followUp": "2025-01-10"
+        }
+      ]
+    },
+    {
+      "id": "PAT-206",
+      "name": "Mona Adel",
+      "age": 31,
+      "gender": "Female",
+      "phone": "+20 100 999 6677",
+      "email": "mona.adel@gmail.com",
+      "bloodType": "O-",
+      "chronicDiseases": [],
+      "assignedDoctorId": "DOC-106",
+      "visits": [
+        {
+          "visitId": "VIS-009",
+          "date": "2024-12-27",
+          "reason": "Routine checkup",
+          "diagnosis": "All vitals normal",
+          "treatment": "No medication required",
+          "prescriptions": [],
+          "notes": [
+            "Routine checkup, all vitals normal."
+          ],
+          "followUp": "2025-06-27"
+        }
+      ]
+    },
+    {
+      "id": "PAT-207",
+      "name": "Omar Saeed",
+      "age": 7,
+      "gender": "Male",
+      "phone": "+20 111 555 7788",
+      "email": "omar.saeed@gmail.com",
+      "bloodType": "B+",
+      "chronicDiseases": [
+        "Anemia"
+      ],
+      "assignedDoctorId": "DOC-107",
+      "visits": [
+        {
+          "visitId": "VIS-010",
+          "date": "2024-12-28",
+          "reason": "Iron deficiency",
+          "diagnosis": "Mild anemia",
+          "treatment": "Prescribe iron supplements",
+          "prescriptions": [
+            "Ferrous sulfate 100mg"
+          ],
+          "notes": [
+            "Check hemoglobin levels next visit."
+          ],
+          "followUp": "2025-01-15"
+        }
+      ]
+    },
+    {
+      "id": "PAT-208",
+      "name": "Nourhan Adel",
+      "age": 41,
+      "gender": "Female",
+      "phone": "+20 102 444 9988",
+      "email": "nourhan.adel@gmail.com",
+      "bloodType": "AB-",
+      "chronicDiseases": [
+        "Migraine"
+      ],
+      "assignedDoctorId": "DOC-108",
+      "visits": [
+        {
+          "visitId": "VIS-011",
+          "date": "2024-12-29",
+          "reason": "Migraine episodes",
+          "diagnosis": "Migraine 1-2 times per week",
+          "treatment": "Pain relief medication as needed",
+          "prescriptions": [
+            "Ibuprofen 200mg"
+          ],
+          "notes": [
+            "Patient experiences migraine 1-2 times per week."
+          ],
+          "followUp": "2025-01-10"
+        }
+      ]
     }
   ],
-
   "appointments": [
     {
       "id": "APP-301",
@@ -144,9 +589,53 @@
       "date": "2025-01-03",
       "time": "13:00",
       "status": "Pending"
+    },
+    {
+      "id": "APP-303",
+      "patientId": "PAT-204",
+      "doctorId": "DOC-101",
+      "department": "Cardiology",
+      "date": "2025-01-04",
+      "time": "11:00",
+      "status": "Pending"
+    },
+    {
+      "id": "APP-304",
+      "patientId": "PAT-205",
+      "doctorId": "DOC-105",
+      "department": "Cardiology",
+      "date": "2025-01-04",
+      "time": "09:30",
+      "status": "Confirmed"
+    },
+    {
+      "id": "APP-305",
+      "patientId": "PAT-206",
+      "doctorId": "DOC-106",
+      "department": "Dermatology",
+      "date": "2025-01-05",
+      "time": "14:00",
+      "status": "Pending"
+    },
+    {
+      "id": "APP-306",
+      "patientId": "PAT-207",
+      "doctorId": "DOC-107",
+      "department": "Pediatrics",
+      "date": "2025-01-05",
+      "time": "10:00",
+      "status": "Confirmed"
+    },
+    {
+      "id": "APP-307",
+      "patientId": "PAT-208",
+      "doctorId": "DOC-108",
+      "department": "Neurology",
+      "date": "2025-01-06",
+      "time": "12:30",
+      "status": "Pending"
     }
   ],
-
   "reports": {
     "totalDoctors": 29,
     "totalPatients": 4,
@@ -208,4 +697,28 @@
 ]
 
 
+  ,
+  "doctorRequests": [
+    {
+      "id": "dr_req_1",
+      "name": "Ahmed Hassan",
+      "email": "ahmed.hassan@gmail.com",
+      "department": "Cardiology",
+      "status": "pending"
+    },
+    {
+      "id": "dr_req_2",
+      "name": "Sara Mohamed",
+      "email": "sara.mohamed@gmail.com",
+      "department": "Dermatology",
+      "status": "approved"
+    },
+    {
+      "id": "dr_req_3",
+      "name": "Omar Ali",
+      "email": "omar.ali@gmail.com",
+      "department": "Neurology",
+      "status": "rejected"
+    }
+  ]
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo"><img src="../assets/images/logo.png" alt="Logo"><h1>Hospital Dashboard</h1></div>
+  <select id="mockUser">
+    <option value="PAT-201|patient">Patient</option>
+    <option value="DOC-101|doctor">Doctor</option>
+  </select>
+</header>
+
+<main>
+  <div id="hospitalInfo"></div>
+  <div id="doctors"></div>
+  <div id="patients"></div>
+  <div id="appointments"></div>
+</main>
+<script type="module" src="../../modules/reports.js"></script>
+
+</body>
+</html>
