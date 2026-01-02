@@ -1,7 +1,8 @@
 export let DB = {};
+
 const adminMain = document.getElementById("adminMain");
 const links = document.querySelectorAll(".admin-link");
-export const savedDB = localStorage.getItem("hospitalDB");
+export const savedDB = localStorage.getItem("hospitalDB")
 
 links.forEach((link) => {
   link.addEventListener("click", (e) => {
@@ -35,24 +36,16 @@ links.forEach((link) => {
 
 if (savedDB) {
   DB = JSON.parse(savedDB);
-  if (!DB.doctors) DB.doctors = [];
-  if (!DB.patients) DB.patients = [];
-  if (!DB.doctorRequests) DB.doctorRequests = [];
-  if (!DB.appointments) DB.appointments = [];
   loadDashboard(adminMain);
 } else {
   fetch("../../Data/data.json")
-    .then((res) => res.json())
-    .then((data) => {
+    .then(res => res.json())
+    .then(data => {
       DB = data;
-      if (!DB.doctors) DB.doctors = [];
-      if (!DB.patients) DB.patients = [];
-      if (!DB.doctorRequests) DB.doctorRequests = [];
-      if (!DB.appointments) DB.appointments = [];
       localStorage.setItem("hospitalDB", JSON.stringify(DB));
       loadDashboard(adminMain);
     })
-    .catch((err) => console.error(err));
+    .catch(err => console.error(err));
 }
 
 export function saveDB() {
@@ -118,23 +111,23 @@ export function loadAdmin(container) {
   `;
 }
 
-export function loadDashboard(container) {
-  const r = DB.reports || {};
+function loadDashboard(container) {
+  const r = DB.reports;
   const dashboardHTML = `
   <div class="header">
     ${container ? `<h1>Dashboard Overview</h1>` : `<h2>Dashboard Overview</h2> `}
     <p>System summary & management</p>
   </div>
   <section class="cards">
-    <div class="card"><h3>Total Doctors</h3><p id="totalDoctors">${r.totalDoctors || 0}</p></div>
-    <div class="card"><h3>Total Patients</h3><p>${r.totalPatients || 0}</p></div>
-    <div class="card"><h3>Appointments Today</h3><p>${r.totalAppointmentsToday || 0}</p></div>
-    <div class="card"><h3>Available Doctors</h3><p>${r.availableDoctors || 0}</p></div>
-    <div class="card"><h3>Busy Doctors</h3><p>${r.busyDoctors || 0}</p></div>
-    <div class="card"><h3>Unavailable Doctors</h3><p>${r.unavailableDoctors || 0}</p></div>
+    <div class="card"><h3>Total Doctors</h3><p id="totalDoctors">${r.totalDoctors}</p></div>
+    <div class="card"><h3>Total Patients</h3><p>${r.totalPatients}</p></div>
+    <div class="card"><h3>Appointments Today</h3><p>${r.totalAppointmentsToday}</p></div>
+    <div class="card"><h3>Available Doctors</h3><p>${r.availableDoctors}</p></div>
+    <div class="card"><h3>Busy Doctors</h3><p>${r.busyDoctors}</p></div>
+    <div class="card"><h3>Unavailable Doctors</h3><p>${r.unavailableDoctors}</p></div>
   </section>
-  `;
-  if (container) container.innerHTML = dashboardHTML;
+  `
+  if(container) container.innerHTML = dashboardHTML;
   return dashboardHTML;
 }
 
@@ -183,13 +176,12 @@ export function loadDoctorRequests(container) {
       </table>
     </section>
   `;
-  if (container) container.innerHTML = doctorsRequestsHTML;
+  if(container) container.innerHTML = doctorsRequestsHTML;
   return doctorsRequestsHTML;
 }
 
 export function loadPatients(container) {
-  const patients = DB.patients || [];
-  let patientsHTML = patients
+  let patientsHTML = DB.patients
     .map((p) => {
       const doctor = DB.doctors.find((d) => d.id === p.assignedDoctorId);
       return `
@@ -200,7 +192,7 @@ export function loadPatients(container) {
         <td>${p.phone}</td>
         <td>${p.email}</td>
         <td>${p.bloodType}</td>
-        <td>${p.chronicDiseases && p.chronicDiseases.length ? p.chronicDiseases.join(", ") : "-"}</td>
+        <td>${p.chronicDiseases.length ? p.chronicDiseases.join(", ") : "-"}</td>
         <td>${doctor ? doctor.name : "-"}</td>
         ${container ? `<td>
                 <button class="btn btn-accent" onclick="editPatient('${p.id}')">Edit</button>
@@ -228,13 +220,12 @@ export function loadPatients(container) {
       </table>
     </section>
   `;
-  if (container) container.innerHTML = patientsFullHTML;
+  if (container) container.innerHTML = patientsFullHTML
   return patientsFullHTML;
 }
 
 export function loadDoctors(container) {
-  const doctors = DB.doctors || [];
-  let doctorsHTML = doctors
+  let doctorsHTML = DB.doctors
     .map(
       (d) => `
     <tr>
@@ -268,13 +259,12 @@ export function loadDoctors(container) {
       </table>
     </section>
   `;
-  if (container) container.innerHTML = doctorsFullHTML;
+  if (container) container.innerHTML = doctorsFullHTML
   return doctorsFullHTML;
 }
 
 export function loadAppointments(container) {
-  const appointments = DB.appointments || [];
-  const appointmentsHTML = appointments
+  const appointmentsHTML = DB.appointments
     .map((app) => {
       const patient = DB.patients.find((p) => p.id === app.patientId);
       const doctor = DB.doctors.find((d) => d.id === app.doctorId);
@@ -284,7 +274,7 @@ export function loadAppointments(container) {
         <td>${doctor ? doctor.name : "-"}</td>
         <td>${app.department}</td>
         <td>${app.date} ${app.time}</td>
-        <td><span class="badge ${app.status === "pending" ? "badge-warning" : app.status === "approved" ? "badge-success" : app.status === "approved" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
+        <td><span class="badge ${app.status === "pending" ? "badge-warning" : app.status === "approved" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
         ${container ? `<td>
           <div class="table-actions">
             <button class="btn btn-accent" onclick="editAppointment('${app.id}')">Edit</button>
