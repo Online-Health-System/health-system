@@ -99,6 +99,6 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
   }).then((result) => {
     if (result.isConfirmed) {
       
-window.location.href = "../src/pages/login.html";     }
+window.location.href = "./login.html";    }
   });
 });
