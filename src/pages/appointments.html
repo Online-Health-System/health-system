@@ -62,9 +62,10 @@
     import { fetchAppointmentsData } from '../../modules/docAppointments.js';
     import { checkAccess } from "../../modules/auth/auth.js";
     import { getCurrentUser } from '../../modules/auth/auth.js';
-    checkAccess(['doctor']);
-    let currentUser = getCurrentUser();
-    currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+    //checkAccess(['doctor']);
+    //let currentUser = getCurrentUser();
+    //currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+    let currentUser =  { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
     fetchAppointmentsData();
 
   </script>

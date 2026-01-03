@@ -1,4 +1,4 @@
-import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
+import { getCurrentUser } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
 import { checkAccess } from "./auth/auth.js";
 checkAccess(['patient']);
@@ -7,7 +7,7 @@ checkAccess(['patient']);
 let currentUser = null;
 
 try {
-  currentUser = getCurrentUser2();
+  currentUser = getCurrentUser();
 } catch (e) {
   currentUser = null;
 }
@@ -176,7 +176,7 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
   }).then((result) => {
     if (result.isConfirmed) {
       Storage.remove("currentUser");
-      window.location.href = "../login.html";
+      window.location.href = "./login.html";
     }
   });
 });

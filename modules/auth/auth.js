@@ -32,3 +32,15 @@ export function getCurrentUser() {
   }
   return JSON.parse(user);
 }
+
+export const checkAccess = (allowedRoles) => {
+  const currentUser = Storage.get("currentUser");
+  if (!currentUser) {
+    window.location.href = "login.html";
+    return;
+  }
+  if (!allowedRoles.includes(currentUser.role)) {
+    alert("Access Denied!");
+    window.location.href = `${currentUser.role}.html`;
+  }
+};

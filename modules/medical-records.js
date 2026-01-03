@@ -88,7 +88,6 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      Storage.remove("currentUser");
       window.location.href = "/src/pages/login.html";
     }
   });

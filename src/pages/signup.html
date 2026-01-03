@@ -2,33 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Doctor Signup</title>
+  <title>Sign Up | Online Health System</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="icon" type="image/png" href="src/assets/images/logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
   <div class="auth-container">
     <div class="auth-card">
-      <h2>Create Doctor Account</h2>
-      <p>Please fill in your information</p>
-<!-- form -->
+      <h2 id="formTitle">Create Account</h2> <p>Please fill in your information</p>
+      
       <form id="signupForm">
-    <input type="text" id="signupName" placeholder="Full Name" required />
-    <input type="email" id="signupEmail" placeholder="Email Address" required />
-    <input type="password" id="signupPassword" placeholder="Password" required />
-    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+        <select id="userRole" class="swal2-input" style="width:100%; margin-bottom: 15px; background: rgba(255,255,255,0.1); color: white; border: 1px solid #444;">
+          <option value="patient" style="color: black;">I am a Patient</option>
+          <option value="doctor" style="color: black;">I am a Doctor</option>
+        </select>
 
-    <button class="btn btn-primary" style="width:100%;" type="submit">
-        Sign Up
-    </button>
+        <input type="text" id="signupName" placeholder="Full Name" required />
+        <input type="email" id="signupEmail" placeholder="Email Address" required />
+        <input type="password" id="signupPassword" placeholder="Password" required />
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
 
-    <p class="auth-footer">
-        Already have an account? <a href="login.html">Login</a>
-    </p>
-</form>
+        <button class="btn btn-primary" style="width:100%;" type="submit">Sign Up</button>
+
+        <p class="auth-footer">
+            Already have an account? <a href="login.html">Login</a>
+        </p>
+      </form>
     </div>
   </div>
-<script type="module" src="../../modules/auth/signup.js"></script>
+  <script type="module" src="../../modules/auth/signup.js"></script>
 </body>
 </html>

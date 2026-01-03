@@ -1,9 +1,12 @@
-import { getCurrentUser, checkAccess } from "../auth/auth.js";
+import { getCurrentUser, checkAccess } from "./auth/auth.js";
 checkAccess(['doctor', 'patient']);
 
 const currentUser = getCurrentUser();
-if (!currentUser) return;
+// if (!currentUser) return;
 
+// const currentUser = { id: 'DOC-101',  role: 'doctor' };
+
+let DB = {};
 
 // ===== Sidebar Rendering =====
 function renderSidebar() {
@@ -27,7 +30,7 @@ function renderSidebar() {
   `;
 
   const doctorLinks = `
-    <a href="#">Dashboard</a>
+    <a href="doctor.html">Dashboard</a>
     <a href="profileDoc.html">Profile</a>
     <a href="appointments.html">Appointments</a>
     <a href="reports.html" class="active">Reports</a>
