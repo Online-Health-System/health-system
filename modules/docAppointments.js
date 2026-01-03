@@ -74,3 +74,25 @@ tbody.addEventListener('click', function (e) {
         }
     }
 });
+
+
+document.getElementById("logoutBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  Swal.fire({
+    title: "Logout",
+    text: "Are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+    customClass: {
+      popup: "swal-navy"
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      window.location.href = "./login.html";
+    }
+  });
+});

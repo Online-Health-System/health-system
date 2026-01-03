@@ -1,8 +1,13 @@
 
 import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
+import { dataInitialized } from "./init.data.js";
 import { checkAccess } from "./auth/auth.js";
+
+// Wait for data to load before running
+await dataInitialized;
 checkAccess(['patient']);
+
 
 // ==========================
 // Try to get logged-in user
@@ -157,8 +162,6 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      Storage.remove("currentUser");
-      window.location.href = "/src/pages/login.html";
-    }
+window.location.href = "../src/pages/login.html";     }
   });
 });

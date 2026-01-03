@@ -1,70 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Appointments | Online Health System</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/png" href="src/assets/images/logo.png" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>My Appointments | Online Health System</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
+  <body>
+    <div class="layout">
+      <!-- ===== Sidebar ===== -->
+      <aside class="sidebar">
+        <h2>
+          <img src="../assets/images/logo.png" width="50" height="50" />
+          Health Care
+        </h2>
+        <a href="patient.html">My Dashboard</a>
+        <a href="profile.html">My Profile</a>
+        <a href="reports.html">My Reports</a>
+        <a href="create-appointment.html">Book Appointment</a>
+        <a class="active" href="#">My Appointments</a>
+        <a href="medical-records.html">Medical Records</a>
+        <a href="../login.html" id="logoutBtn">Logout</a>
+      </aside>
 
-<body>
+      <!-- ===== Main ===== -->
+      <main class="main">
+        <!-- Header -->
+        <header class="header">
+          <h1>My Appointments</h1>
+          <p>View all your past and upcoming appointments</p>
+        </header>
 
-  <div class="layout">
+        <!-- ===== Appointments Table ===== -->
+        <h2>Appointments List</h2>
+        <p class="section-desc">
+          This table shows all appointments you have booked.
+        </p>
 
-    <!-- ===== Sidebar ===== -->
-    <aside class="sidebar">
-      <h2>
-        <img src="../assets/images/logo.png" width="50" height="50">
-        Health Care
-      </h2>
-      <a href="profile.html">My Profile</a>
-      <a href="patient.html">My Dashboard</a>
-      <a href="reports.html">My Reports</a>
-      <a href="create-appointment.html">Book Appointment</a>
-      <a class="active" href="#">My Appointments</a>
-      <a href="medical-records.html">Medical Records</a>
-     <a href="../login.html" id="logoutBtn">Logout</a>
-    </aside>
+        <section class="glass-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-    <!-- ===== Main ===== -->
-    <main class="main">
-
-      <!-- Header -->
-      <header class="header">
-        <h1>My Appointments</h1>
-        <p>View all your past and upcoming appointments</p>
-      </header>
-
-      <!-- ===== Appointments Table ===== -->
-      <h2>Appointments List</h2>
-      <p class="section-desc">
-        This table shows all appointments you have booked.
-      </p>
-
-      <section class="glass-table">
-        <table>
-          <thead>
-            <tr>
-              <th>Doctor</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody id="appointmentsBody">
-            <!-- JS will fill this -->
-          </tbody>
-
-        </table>
-      </section>
-
-    </main>
-  </div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<script type="module" src="../../modules/my-appointments.js"></script>
-</body>
-
+            <tbody id="appointmentsBody"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../../modules/my-appointments.js"></script>
+  </body>
 </html>

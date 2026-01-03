@@ -44,3 +44,11 @@ export const checkAccess = (allowedRoles) => {
     window.location.href = `${currentUser.role}.html`;
   }
 };
+export function getCurrentUser2() {
+  try {
+    const user = localStorage.getItem("currentUser");
+    return user ? JSON.parse(user) : null;
+  } catch {
+    return null;
+  }
+}

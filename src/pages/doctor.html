@@ -1,105 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Doctor | Online Health System</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" type="image/png" href="src/assets/images/logo.png">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Doctor | Online Health System</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/png" href="src/assets/images/logo.png" />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- ===== Sidebar ===== -->
+      <aside class="sidebar">
+        <h2>
+          <img src="../assets/images/logo.png" width="50" height="50" />
+          Health Care
+        </h2>
 
-<div class="layout">
+        <a href="" class="active">Dashboard</a>
+        <a href="profileDoc.html">Profile</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="reports.html">Reports</a>
+        <a id="logoutBtn">Logout</a>
+      </aside>
 
-  <!-- ===== Sidebar ===== -->
-  <aside class="sidebar">
-    <h2>
-      <img src="../assets/images/logo.png" width="50" height="50">
-      Health Care
-    </h2>
+      <!-- ===== Main ===== -->
+      <main class="main">
+        <!-- Header -->
+        <header class="header docheader">
+          <div>
+            <h1>Doctor Dashboard</h1>
+            <p></p>
+          </div>
+          <div>
+            <input
+              type="text"
+              id="patientSearch"
+              placeholder="Search by patient name..."
+            />
+          </div>
+        </header>
 
-    <a href="">Dashboard</a>
-    <a href="profileDoc.html">Profile</a>
-    <a href="appointments.html">Appointments</a>
-    <a href="reports.html" >Reports</a>
-    <a href="../pages/login.html">Logout</a>
-  </aside>
+        <!-- Cards -->
+        <section class="cards">
+          <div class="card" id="totalPatient">
+            <h3>Total Patients</h3>
+            <p></p>
+          </div>
 
-  <!-- ===== Main ===== -->
-  <main class="main">
+          <div class="card" id="appointments">
+            <h3>Today's Appointments</h3>
+            <p></p>
+          </div>
 
-    <!-- Header -->
-    <header class="header docheader" >
-       <div>
-    <h1>Doctor Dashboard</h1>
-    <p></p>
-  </div>
-  <div>
-    <input type="text" id="patientSearch" placeholder="Search by patient name..." >
-  </div>
-    </header>
+          <div class="card" id="Confirm">
+            <h3>Confirmed</h3>
+            <p></p>
+          </div>
 
+          <div class="card" id="Pending">
+            <h3>Pending</h3>
+            <p></p>
+          </div>
+        </section>
 
-    <!-- Cards -->
-    <section class="cards">
-      <div class="card" id="totalPatient">
-        <h3>Total Patients</h3>
-        <p></p>
-      </div>
+        <!-- Patients Table -->
+        <section class="glass-table">
+          <table id="patientsTable">
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Chronic Diseases</th>
+                <th>Blood Type</th>
+                <th>Last Visit</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
 
-      <div class="card" id="appointments">
-        <h3>Today's Appointments</h3>
-        <p></p>
-      </div>
+        <div id="medicalNotesModal" class="modal">
+          <div class="glass-card notesBackground">
+            <h3>Medical Notes</h3>
 
-      <div class="card" id="Confirm">
-        <h3>Confirmed</h3>
-        <p></p>
-      </div>
+            <ul id="notesList"></ul>
 
-      <div class="card" id="Pending">
-        <h3>Pending</h3>
-        <p></p>
-      </div>
-    </section>
-
-    <!-- Patients Table -->
-   <section class="glass-table" >
-     <table id="patientsTable">
-      <thead>
-        <tr>
-        <th>Patient Name</th>
-        <th>Age</th>
-        <th>Phone</th>
-        <th>Chronic Diseases</th>
-        <th>Blood Type</th>
-        <th>Last Visit</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  </section>
-
-<div id="medicalNotesModal" class="modal" >
-  <div class="glass-card notesBackground" >
-    <h3>Medical Notes</h3>
-    
-    <ul id="notesList">
-    </ul>
-
-    <textarea id="newNote" rows="3" placeholder="Write a new note..." ></textarea>
-    <button id="addNoteBtn" class="btn btn-accent">Add Note</button>
-    <button id="closeNotesBtn" class="btn btn-primary">Close</button>
-  </div>
-</div>
-
-  </main>
-</div>
-
-<script src="../../modules/doctor.js" type="module"></script>
-<script type="module" >
-import {fetchPatients} from "../../modules/doctor.js";
-fetchPatients();
-</script>
-</body>
+            <textarea
+              id="newNote"
+              rows="3"
+              placeholder="Write a new note..."
+            ></textarea>
+            <button id="addNoteBtn" class="btn btn-accent">Add Note</button>
+            <button id="closeNotesBtn" class="btn btn-primary">Close</button>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../modules/doctor.js" type="module"></script>
+    <script type="module">
+      import { fetchPatients } from "../../modules/doctor.js";
+      fetchPatients();
+    </script>
+  </body>
 </html>

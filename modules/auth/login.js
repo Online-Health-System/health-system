@@ -33,7 +33,7 @@ if (loginForm) {
             localStorage.setItem("loggedInUser", JSON.stringify(doctor));
 
             Swal.fire({
-                title: `Welcome Dr. ${doctor.name}`,
+                title: `Welcome ${doctor.name}`,
                 icon: "success",
                 timer: 1500,
                 showConfirmButton: false

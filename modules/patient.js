@@ -1,13 +1,19 @@
-import { getCurrentUser } from "./auth/auth.js";
+import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
+import { dataInitialized } from "./init.data.js";
 import { checkAccess } from "./auth/auth.js";
+
+// Wait for data to load before running
+await dataInitialized;
 checkAccess(['patient']);
+
+
 
 // Try to get logged-in user
 let currentUser = null;
 
 try {
-  currentUser = getCurrentUser();
+  currentUser = getCurrentUser2();
 } catch (e) {
   currentUser = null;
 }
@@ -29,17 +35,18 @@ const currentPatientId = currentUser.id;
 const data = Storage.get("hospitalData");
 
 if (!data) {
-  console.error("hospitalData not found");
+  console.error("❌ hospitalData not found - data failed to load!");
+  console.warn("Attempting to use empty data structures instead");
 }
 
 // ===== Doctors Map =====
 const doctorsMap = {};
-data.doctors.forEach(doc => {
+(data?.doctors || []).forEach(doc => {
     doctorsMap[doc.id] = doc.name;
 });
 
 // ===== Appointments =====
-const myAppointments = data.appointments.filter(
+const myAppointments = (data?.appointments || []).filter(
     app => app.patientId === currentPatientId
 );
 
@@ -51,7 +58,7 @@ document.getElementById("upcomingAppointments").innerText =
     myAppointments.filter(app => app.status === "Pending").length;
 // ===== Medical Records Card =====
 
-const myMedicalRecords = data.medicalRecords.filter(
+const myMedicalRecords = (data?.medicalRecords || []).filter(
     record => record.patientId === currentPatientId
 );
 
@@ -175,8 +182,6 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      Storage.remove("currentUser");
-      window.location.href = "./login.html";
-    }
+window.location.href = "../src/pages/login.html";   }
   });
 });
