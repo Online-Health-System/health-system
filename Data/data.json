@@ -335,8 +335,12 @@
           "reason": "Routine checkup",
           "diagnosis": "Good glucose control",
           "treatment": "Continue current medication",
-          "prescriptions": ["Metformin 500mg"],
-          "notes": ["Patient shows good progress in glucose control."],
+          "prescriptions": [
+            "Metformin 500mg"
+          ],
+          "notes": [
+            "Patient shows good progress in glucose control."
+          ],
           "followUp": "2025-01-18"
         },
         {
@@ -345,8 +349,12 @@
           "reason": "Asthma monitoring",
           "diagnosis": "Asthma stable",
           "treatment": "Continue inhaler",
-          "prescriptions": ["Albuterol inhaler"],
-          "notes": ["Monitor symptoms during winter."],
+          "prescriptions": [
+            "Albuterol inhaler"
+          ],
+          "notes": [
+            "Monitor symptoms during winter."
+          ],
           "followUp": "2025-01-25"
         }
       ]
@@ -369,8 +377,12 @@
           "reason": "Skin irritation",
           "diagnosis": "Mild rash",
           "treatment": "Apply prescribed ointment",
-          "prescriptions": ["Ointment XYZ"],
-          "notes": ["Patient has mild skin irritation."],
+          "prescriptions": [
+            "Ointment XYZ"
+          ],
+          "notes": [
+            "Patient has mild skin irritation."
+          ],
           "followUp": "2025-01-03"
         },
         {
@@ -379,8 +391,13 @@
           "reason": "Cosmetic consultation",
           "diagnosis": "Acne-prone skin",
           "treatment": "Suggested skincare routine",
-          "prescriptions": ["Face wash ABC", "Moisturizer DEF"],
-          "notes": ["Patient advised to avoid sun exposure."],
+          "prescriptions": [
+            "Face wash ABC",
+            "Moisturizer DEF"
+          ],
+          "notes": [
+            "Patient advised to avoid sun exposure."
+          ],
           "followUp": "2025-01-10"
         }
       ]
@@ -403,8 +420,12 @@
           "reason": "Blood pressure check",
           "diagnosis": "Slightly elevated BP",
           "treatment": "Reduce salt intake, monitor daily",
-          "prescriptions": ["Atenolol 50mg"],
-          "notes": ["Advised to track BP at home."],
+          "prescriptions": [
+            "Atenolol 50mg"
+          ],
+          "notes": [
+            "Advised to track BP at home."
+          ],
           "followUp": "2025-01-15"
         },
         {
@@ -414,7 +435,9 @@
           "diagnosis": "BP stable",
           "treatment": "Continue current medication",
           "prescriptions": [],
-          "notes": ["Patient following diet and medication properly."],
+          "notes": [
+            "Patient following diet and medication properly."
+          ],
           "followUp": "2025-02-01"
         }
       ]
@@ -437,8 +460,12 @@
           "reason": "Asthma control",
           "diagnosis": "Asthma under control",
           "treatment": "Use inhaler as needed",
-          "prescriptions": ["Salbutamol inhaler"],
-          "notes": ["Monitor during winter season."],
+          "prescriptions": [
+            "Salbutamol inhaler"
+          ],
+          "notes": [
+            "Monitor during winter season."
+          ],
           "followUp": "2025-01-25"
         }
       ]
@@ -461,8 +488,12 @@
           "reason": "Post-surgery follow-up",
           "diagnosis": "Recovering well",
           "treatment": "Monitor heart rate and schedule ECG",
-          "prescriptions": ["Aspirin 81mg"],
-          "notes": ["Patient recovering from recent heart surgery."],
+          "prescriptions": [
+            "Aspirin 81mg"
+          ],
+          "notes": [
+            "Patient recovering from recent heart surgery."
+          ],
           "followUp": "2025-01-10"
         }
       ]
@@ -486,7 +517,9 @@
           "diagnosis": "All vitals normal",
           "treatment": "No medication required",
           "prescriptions": [],
-          "notes": ["Routine checkup, all vitals normal."],
+          "notes": [
+            "Routine checkup, all vitals normal."
+          ],
           "followUp": "2025-06-27"
         }
       ]
@@ -499,8 +532,9 @@
       "phone": "+20 111 555 7788",
       "email": "omar.saeed@gmail.com",
       "bloodType": "B+",
-      "chronicDiseases": ["Anemia"],
-      "password":123,
+      "chronicDiseases": [
+        "Anemia"
+      ],
       "assignedDoctorId": "DOC-107",
       "visits": [
         {
@@ -509,8 +543,12 @@
           "reason": "Iron deficiency",
           "diagnosis": "Mild anemia",
           "treatment": "Prescribe iron supplements",
-          "prescriptions": ["Ferrous sulfate 100mg"],
-          "notes": ["Check hemoglobin levels next visit."],
+          "prescriptions": [
+            "Ferrous sulfate 100mg"
+          ],
+          "notes": [
+            "Check hemoglobin levels next visit."
+          ],
           "followUp": "2025-01-15"
         }
       ]
@@ -533,8 +571,12 @@
           "reason": "Migraine episodes",
           "diagnosis": "Migraine 1-2 times per week",
           "treatment": "Pain relief medication as needed",
-          "prescriptions": ["Ibuprofen 200mg"],
-          "notes": ["Patient experiences migraine 1-2 times per week."],
+          "prescriptions": [
+            "Ibuprofen 200mg"
+          ],
+          "notes": [
+            "Patient experiences migraine 1-2 times per week."
+          ],
           "followUp": "2025-01-10"
         }
       ]
