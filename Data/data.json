@@ -71,6 +71,7 @@
       "status": "Available",
       "appointmentsToday": 6,
       "email": "ahmed.hassan@hospital.com",
+      "password":123,
       "phone": "+20 100 123 4567",
       "gender": "Male",
       "experienceYears": 12,
@@ -88,6 +89,7 @@
       "status": "Busy",
       "appointmentsToday": 9,
       "email": "sara.ali@hospital.com",
+      "password":123,
       "phone": "+20 101 555 8123",
       "gender": "Female",
       "experienceYears": 9,
@@ -105,6 +107,7 @@
       "status": "Available",
       "appointmentsToday": 4,
       "email": "omar.khaled@hospital.com",
+      "password":123,
       "phone": "+20 102 777 3344",
       "gender": "Male",
       "experienceYears": 7,
@@ -122,6 +125,7 @@
       "status": "Unavailable",
       "appointmentsToday": 0,
       "email": "mona.youssef@hospital.com",
+      "password":123,
       "phone": "+20 109 222 9988",
       "gender": "Female",
       "experienceYears": 15,
@@ -139,6 +143,7 @@
       "status": "Busy",
       "appointmentsToday": 8,
       "email": "khaled.mahmoud@hospital.com",
+      "password":123,
       "phone": "+20 111 333 8899",
       "gender": "Male",
       "experienceYears": 11,
@@ -156,6 +161,7 @@
       "status": "Available",
       "appointmentsToday": 3,
       "email": "nour.samir@hospital.com",
+      "password":123,
       "phone": "+20 122 888 7766",
       "gender": "Male",
       "experienceYears": 6,
@@ -173,6 +179,7 @@
       "status": "Busy",
       "appointmentsToday": 7,
       "email": "hany.abdelrahman@hospital.com",
+      "password":123,
       "phone": "+20 115 444 2233",
       "gender": "Male",
       "experienceYears": 10,
@@ -190,6 +197,7 @@
       "status": "Available",
       "appointmentsToday": 2,
       "email": "rania.fathy@hospital.com",
+      "password":123,
       "phone": "+20 106 999 4455",
       "gender": "Female",
       "experienceYears": 8,
@@ -207,6 +215,7 @@
       "status": "Unavailable",
       "appointmentsToday": 0,
       "email": "yasser.ibrahim@hospital.com",
+      "password":123,
       "phone": "+20 118 555 6677",
       "gender": "Male",
       "experienceYears": 14,
@@ -224,6 +233,7 @@
   "status": "Available",
   "appointmentsToday": 5,
   "email": "tarek.elsayed@hospital.com",
+  "password":123,
   "phone": "+20 120 444 8899",
   "gender": "Male",
   "experienceYears": 13,
@@ -241,6 +251,7 @@
   "status": "Busy",
   "appointmentsToday": 8,
   "email": "mai.abdelaziz@hospital.com",
+  "password":123,
   "phone": "+20 121 333 2211",
   "gender": "Female",
   "experienceYears": 9,
@@ -258,6 +269,7 @@
   "status": "Available",
   "appointmentsToday": 3,
   "email": "mahmoud.adel@hospital.com",
+  "password":123,
   "phone": "+20 122 666 7788",
   "gender": "Male",
   "experienceYears": 7,
@@ -275,6 +287,7 @@
   "status": "Available",
   "appointmentsToday": 4,
   "email": "salma.naguib@hospital.com",
+  "password":123,
   "phone": "+20 123 555 8899",
   "gender": "Female",
   "experienceYears": 10,
@@ -292,6 +305,7 @@
   "status": "Unavailable",
   "appointmentsToday": 0,
   "email": "hassan.mostafa@hospital.com",
+  "password":123,
   "phone": "+20 124 777 9900",
   "gender": "Male",
   "experienceYears": 15,
@@ -312,6 +326,7 @@
       "email": "mohamed.adel@gmail.com",
       "bloodType": "A+",
       "chronicDiseases": ["Diabetes"],
+      "password":123,
       "assignedDoctorId": "DOC-101",
       "visits": [
         {
@@ -344,6 +359,7 @@
       "phone": "+20 100 777 8899",
       "email": "aya.mahmoud@gmail.com",
       "bloodType": "O+",
+      "password":123,
       "chronicDiseases": [],
       "assignedDoctorId": "DOC-102",
       "visits": [
@@ -377,6 +393,7 @@
       "phone": "+20 111 333 4455",
       "email": "youssef.samir@gmail.com",
       "bloodType": "B-",
+      "password":123,
       "chronicDiseases": ["Hypertension"],
       "assignedDoctorId": "DOC-103",
       "visits": [
@@ -410,6 +427,7 @@
       "phone": "+20 102 888 1122",
       "email": "salma.nabil@gmail.com",
       "bloodType": "AB+",
+      "password":123,
       "chronicDiseases": ["Asthma"],
       "assignedDoctorId": "DOC-101",
       "visits": [
@@ -433,6 +451,7 @@
       "phone": "+20 109 222 3344",
       "email": "hassan.mostafa@gmail.com",
       "bloodType": "A-",
+      "password":123,
       "chronicDiseases": ["Heart Disease"],
       "assignedDoctorId": "DOC-105",
       "visits": [
@@ -456,6 +475,7 @@
       "phone": "+20 100 999 6677",
       "email": "mona.adel@gmail.com",
       "bloodType": "O-",
+      "password":123,
       "chronicDiseases": [],
       "assignedDoctorId": "DOC-106",
       "visits": [
@@ -480,6 +500,7 @@
       "email": "omar.saeed@gmail.com",
       "bloodType": "B+",
       "chronicDiseases": ["Anemia"],
+      "password":123,
       "assignedDoctorId": "DOC-107",
       "visits": [
         {
@@ -502,6 +523,7 @@
       "phone": "+20 102 444 9988",
       "email": "nourhan.adel@gmail.com",
       "bloodType": "AB-",
+      "password":123,
       "chronicDiseases": ["Migraine"],
       "assignedDoctorId": "DOC-108",
       "visits": [
@@ -590,8 +612,7 @@
     "availableDoctors": 19,
     "busyDoctors": 7,
     "unavailableDoctors": 3
-  }
-  ,
+  },
   "doctorRequests": [
     {
       "id": "dr_req_1",

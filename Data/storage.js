@@ -1,32 +1,19 @@
 export const Storage = {
     save: (key, data) => {
-        try {
-            localStorage.setItem(key, JSON.stringify(data));
-            return true;
-        } catch (error) {
-            return false;
-        }
+        localStorage.setItem(key, JSON.stringify(data));
+        return true;
     },
     get: (key) => {
         const data = localStorage.getItem(key);
         return data ? JSON.parse(data) : null;
     },
-    findItem: (key, predicate) => {
-        const data = Storage.get(key) || [];
-        return data.find(predicate);
+    getDBPart: (part) => {
+        const db = JSON.parse(localStorage.getItem("hospitalDB")) || {};
+        return db[part] || [];
     },
-    pushToItem: (key, newItem) => {
-        const currentData = Storage.get(key) || [];
-        currentData.push(newItem);
-        return Storage.save(key, currentData);
-    },
-    updateItem: (key, id, newData) => {
-        const data = Storage.get(key) || [];
-        const index = data.findIndex(item => item.id === id);
-        if (index !== -1) {
-            data[index] = { ...data[index], ...newData };
-            return Storage.save(key, data);
-        }
-        return false;
+    updateDB: (part, newData) => {
+        const db = JSON.parse(localStorage.getItem("hospitalDB")) || {};
+        db[part] = newData;
+        localStorage.setItem("hospitalDB", JSON.stringify(db));
     }
 };

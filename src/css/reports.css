@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ===== Theme Variables ===== */
+:root {
+  --primary: #0A3D62;
+  --accent: #5C7AEA;
+  --danger: #C62828;
+  --dark: #0B1C2D;
+  --glass: rgba(255,255,255,0.16);
+}
+
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0B1C2D, #0A3D62);
+  color: #fff;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background: rgba(11, 28, 45, 0.6);
+  backdrop-filter: blur(14px);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.sidebar h2 {
+  margin-bottom: 30px;
+  color: #E3EAF0;
+}
+
+.sidebar h2 img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.sidebar a {
+  display: block;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  color: #E3EAF0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: rgba(92, 122, 234, 0.35);
+}
+
+.sidebar .active {
+  background: rgba(92, 122, 234, 0.45);
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ===== Header ===== */
+.header {
+  margin-left: 250px; 
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(11, 28, 45, 0.6);
+  backdrop-filter: blur(14px);
+}
+
+.header .logo img {
+  width: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* ===== Main Content ===== */
+.main-content {
+  margin-left: 250px; 
+  padding: 25px;
+}
+
+/* ===== Glass Table ===== */
+.glass-table {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 22px;
+  margin-bottom: 35px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.4);
+}
+
+.glass-table h2 {
+  margin-bottom: 15px;
+  color: #E3EAF0;
+}
+
+.glass-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.glass-table th,
+.glass-table td {
+  padding: 12px;
+  text-align: center;
+}
+
+.glass-table th {
+  background: rgba(11,28,45,.75);
+}
+
+.glass-table tr {
+  border-top: 2px solid rgba(152,161,195,.25);
+  transition: background .3s;
+}
+
+.glass-table tr:first-child {
+  border-top: none;
+}
+
+.glass-table tr:hover {
+  background: rgba(92,122,234,.25);
+}
+
+/* ===== Accordion ===== */
+.accordion {
+  background: rgba(255,255,255,0.06);
+  border-radius: 16px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  background: rgba(11,28,45,.8);
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.accordion-header:hover {
+  background: rgba(92,122,234,.35);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+  padding: 0 16px;
+}
+
+.accordion-content table {
+  width: 100%;
+  margin: 12px 0;
+  border-collapse: collapse;
+}
+
+.accordion-content th,
+.accordion-content td {
+  padding: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}

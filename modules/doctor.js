@@ -3,24 +3,31 @@ const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInUser"));
 if (!loggedInDoctor) {
     window.location.href = "login.html";
 }
+const drNameDisplay = document.getElementById("drNameDisplay");
+if(drNameDisplay) drNameDisplay.innerText = `Dr. ${loggedInDoctor.name}`;
 
-document.getElementById("drNameDisplay").innerText = `Dr. ${loggedInDoctor.name}`;
-
+const totalPatients = document.getElementById('totalPatient');
+const appointmentsDisplay = document.getElementById('appointments');
 function loadMyPatients() {
     const db = JSON.parse(localStorage.getItem("hospitalDB"));
+    if (!db) return;
     const myPatients = db.patients.filter(p => p.assignedDoctorId === loggedInDoctor.id);
-    
-    const tableBody = document.getElementById("patientsTableBody");
-    tableBody.innerHTML = myPatients.map(p => `
-        <tr>
-            <td>${p.name}</td>
-            <td>${p.age}</td>
-            <td>${p.diagnosis || "Under Checkup"}</td>
-            <td>${p.date || new Date().toLocaleDateString()}</td>
-        </tr>
-    `).join("");
-}
 
+    if(totalPatients) totalPatients.querySelector('p').textContent = myPatients.length;
+
+    const tableBody = document.getElementById("patientsTableBody");
+    if (tableBody) {
+        tableBody.innerHTML = myPatients.map(p => `
+            <tr>
+                <td>${p.name}</td>
+                <td>${p.age}</td>
+                <td>${p.diagnosis || "Under Checkup"}</td>
+                <td>${p.date || "2024-12-29"}</td>
+                <td><button class="btn btn-accent" onclick="viewPatient('${p.id}')">View</button></td>
+            </tr>
+        `).join("");
+    }
+}
 window.showAddPatientModal = () => {
     Swal.fire({
         title: 'Add New Patient',
@@ -46,7 +53,8 @@ window.showAddPatientModal = () => {
                 age: result.value.age,
                 diagnosis: result.value.diagnosis,
                 assignedDoctorId: loggedInDoctor.id,
-                date: new Date().toLocaleDateString()
+                date: new Date().toLocaleDateString(),
+                visits: []
             };
             db.patients.push(newPatient);
             localStorage.setItem("hospitalDB", JSON.stringify(db));
