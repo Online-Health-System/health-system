@@ -37,31 +37,31 @@
       "totalDoctors": 5,
       "availableDoctors": 3
     },
-  {
-  "id": "DEP-05",
-  "name": "Orthopedics",
-  "totalDoctors": 7,
-  "availableDoctors": 4
-},
-{
-  "id": "DEP-06",
-  "name": "Ophthalmology",
-  "totalDoctors": 5,
-  "availableDoctors": 3
-},
-{
-  "id": "DEP-07",
-  "name": "ENT",
-  "totalDoctors": 4,
-  "availableDoctors": 2
-},
-{
-  "id": "DEP-08",
-  "name": "Gynecology",
-  "totalDoctors": 6,
-  "availableDoctors": 4
-}
-],
+    {
+      "id": "DEP-05",
+      "name": "Orthopedics",
+      "totalDoctors": 7,
+      "availableDoctors": 4
+    },
+    {
+      "id": "DEP-06",
+      "name": "Ophthalmology",
+      "totalDoctors": 5,
+      "availableDoctors": 3
+    },
+    {
+      "id": "DEP-07",
+      "name": "ENT",
+      "totalDoctors": 4,
+      "availableDoctors": 2
+    },
+    {
+      "id": "DEP-08",
+      "name": "Gynecology",
+      "totalDoctors": 6,
+      "availableDoctors": 4
+    }
+  ],
   "doctors": [
     {
       "id": "DOC-101",
@@ -71,6 +71,7 @@
       "status": "Available",
       "appointmentsToday": 6,
       "email": "ahmed.hassan@hospital.com",
+      "password": "123",
       "phone": "+20 100 123 4567",
       "gender": "Male",
       "experienceYears": 12,
@@ -88,6 +89,7 @@
       "status": "Busy",
       "appointmentsToday": 9,
       "email": "sara.ali@hospital.com",
+      "password": "123",
       "phone": "+20 101 555 8123",
       "gender": "Female",
       "experienceYears": 9,
@@ -105,6 +107,7 @@
       "status": "Available",
       "appointmentsToday": 4,
       "email": "omar.khaled@hospital.com",
+      "password": "123",
       "phone": "+20 102 777 3344",
       "gender": "Male",
       "experienceYears": 7,
@@ -122,6 +125,7 @@
       "status": "Unavailable",
       "appointmentsToday": 0,
       "email": "mona.youssef@hospital.com",
+      "password": "123",
       "phone": "+20 109 222 9988",
       "gender": "Female",
       "experienceYears": 15,
@@ -139,6 +143,7 @@
       "status": "Busy",
       "appointmentsToday": 8,
       "email": "khaled.mahmoud@hospital.com",
+      "password": "123",
       "phone": "+20 111 333 8899",
       "gender": "Male",
       "experienceYears": 11,
@@ -156,6 +161,7 @@
       "status": "Available",
       "appointmentsToday": 3,
       "email": "nour.samir@hospital.com",
+      "password": "123",
       "phone": "+20 122 888 7766",
       "gender": "Male",
       "experienceYears": 6,
@@ -173,6 +179,7 @@
       "status": "Busy",
       "appointmentsToday": 7,
       "email": "hany.abdelrahman@hospital.com",
+      "password": "123",
       "phone": "+20 115 444 2233",
       "gender": "Male",
       "experienceYears": 10,
@@ -190,6 +197,7 @@
       "status": "Available",
       "appointmentsToday": 2,
       "email": "rania.fathy@hospital.com",
+      "password": "123",
       "phone": "+20 106 999 4455",
       "gender": "Female",
       "experienceYears": 8,
@@ -207,6 +215,7 @@
       "status": "Unavailable",
       "appointmentsToday": 0,
       "email": "yasser.ibrahim@hospital.com",
+      "password": "123",
       "phone": "+20 118 555 6677",
       "gender": "Male",
       "experienceYears": 14,
@@ -216,92 +225,97 @@
       "patientsToday": 0,
       "bio": "Senior cardiologist with extensive clinical experience."
     },
-  {
-  "id": "DOC-110",
-  "name": "Dr. Tarek ElSayed",
-  "specialty": "Orthopedics",
-  "departmentId": "DEP-05",
-  "status": "Available",
-  "appointmentsToday": 5,
-  "email": "tarek.elsayed@hospital.com",
-  "phone": "+20 120 444 8899",
-  "gender": "Male",
-  "experienceYears": 13,
-  "qualification": "MD, Orthopedics",
-  "clinicRoom": "Room 510",
-  "workingHours": "09:00 AM - 03:00 PM",
-  "patientsToday": 11,
-  "bio": "Specialist in bone fractures and joint replacement."
-},
-{
-  "id": "DOC-111",
-  "name": "Dr. Mai Abdelaziz",
-  "specialty": "Ophthalmology",
-  "departmentId": "DEP-06",
-  "status": "Busy",
-  "appointmentsToday": 8,
-  "email": "mai.abdelaziz@hospital.com",
-  "phone": "+20 121 333 2211",
-  "gender": "Female",
-  "experienceYears": 9,
-  "qualification": "MD, Ophthalmology",
-  "clinicRoom": "Room 610",
-  "workingHours": "10:00 AM - 04:00 PM",
-  "patientsToday": 16,
-  "bio": "Expert in eye care and vision correction."
-},
-{
-  "id": "DOC-112",
-  "name": "Dr. Mahmoud Adel",
-  "specialty": "ENT",
-  "departmentId": "DEP-07",
-  "status": "Available",
-  "appointmentsToday": 3,
-  "email": "mahmoud.adel@hospital.com",
-  "phone": "+20 122 666 7788",
-  "gender": "Male",
-  "experienceYears": 7,
-  "qualification": "MD, ENT",
-  "clinicRoom": "Room 710",
-  "workingHours": "11:00 AM - 05:00 PM",
-  "patientsToday": 6,
-  "bio": "Treating ear, nose, and throat disorders."
-},
-{
-  "id": "DOC-113",
-  "name": "Dr. Salma Naguib",
-  "specialty": "Gynecology",
-  "departmentId": "DEP-08",
-  "status": "Available",
-  "appointmentsToday": 4,
-  "email": "salma.naguib@hospital.com",
-  "phone": "+20 123 555 8899",
-  "gender": "Female",
-  "experienceYears": 10,
-  "qualification": "MD, Gynecology",
-  "clinicRoom": "Room 810",
-  "workingHours": "09:00 AM - 02:00 PM",
-  "patientsToday": 9,
-  "bio": "Specialist in women's health and pregnancy care."
-},
-{
-  "id": "DOC-114",
-  "name": "Dr. Hassan Mostafa",
-  "specialty": "Orthopedics",
-  "departmentId": "DEP-05",
-  "status": "Unavailable",
-  "appointmentsToday": 0,
-  "email": "hassan.mostafa@hospital.com",
-  "phone": "+20 124 777 9900",
-  "gender": "Male",
-  "experienceYears": 15,
-  "qualification": "PhD, Orthopedics",
-  "clinicRoom": "Room 515",
-  "workingHours": "01:00 PM - 06:00 PM",
-  "patientsToday": 0,
-  "bio": "Senior orthopedic consultant."
-}
-],
+    {
+      "id": "DOC-110",
+      "name": "Dr. Tarek ElSayed",
+      "specialty": "Orthopedics",
+      "departmentId": "DEP-05",
+      "status": "Available",
+      "appointmentsToday": 5,
+      "email": "tarek.elsayed@hospital.com",
+      "password": "123",
+      "phone": "+20 120 444 8899",
+      "gender": "Male",
+      "experienceYears": 13,
+      "qualification": "MD, Orthopedics",
+      "clinicRoom": "Room 510",
+      "workingHours": "09:00 AM - 03:00 PM",
+      "patientsToday": 11,
+      "bio": "Specialist in bone fractures and joint replacement."
+    },
+    {
+      "id": "DOC-111",
+      "name": "Dr. Mai Abdelaziz",
+      "specialty": "Ophthalmology",
+      "departmentId": "DEP-06",
+      "status": "Busy",
+      "appointmentsToday": 8,
+      "email": "mai.abdelaziz@hospital.com",
+      "password": "123",
+      "phone": "+20 121 333 2211",
+      "gender": "Female",
+      "experienceYears": 9,
+      "qualification": "MD, Ophthalmology",
+      "clinicRoom": "Room 610",
+      "workingHours": "10:00 AM - 04:00 PM",
+      "patientsToday": 16,
+      "bio": "Expert in eye care and vision correction."
+    },
+    {
+      "id": "DOC-112",
+      "name": "Dr. Mahmoud Adel",
+      "specialty": "ENT",
+      "departmentId": "DEP-07",
+      "status": "Available",
+      "appointmentsToday": 3,
+      "email": "mahmoud.adel@hospital.com",
+      "password": "123",
+      "phone": "+20 122 666 7788",
+      "gender": "Male",
+      "experienceYears": 7,
+      "qualification": "MD, ENT",
+      "clinicRoom": "Room 710",
+      "workingHours": "11:00 AM - 05:00 PM",
+      "patientsToday": 6,
+      "bio": "Treating ear, nose, and throat disorders."
+    },
+    {
+      "id": "DOC-113",
+      "name": "Dr. Salma Naguib",
+      "specialty": "Gynecology",
+      "departmentId": "DEP-08",
+      "status": "Available",
+      "appointmentsToday": 4,
+      "email": "salma.naguib@hospital.com",
+      "password": "123",
+      "phone": "+20 123 555 8899",
+      "gender": "Female",
+      "experienceYears": 10,
+      "qualification": "MD, Gynecology",
+      "clinicRoom": "Room 810",
+      "workingHours": "09:00 AM - 02:00 PM",
+      "patientsToday": 9,
+      "bio": "Specialist in women's health and pregnancy care."
+    },
+    {
+      "id": "DOC-114",
+      "name": "Dr. Hassan Mostafa",
+      "specialty": "Orthopedics",
+      "departmentId": "DEP-05",
+      "status": "Unavailable",
+      "appointmentsToday": 0,
+      "email": "hassan.mostafa@hospital.com",
+      "password": "123",
+      "phone": "+20 124 777 9900",
+      "gender": "Male",
+      "experienceYears": 15,
+      "qualification": "PhD, Orthopedics",
+      "clinicRoom": "Room 515",
+      "workingHours": "01:00 PM - 06:00 PM",
+      "patientsToday": 0,
+      "bio": "Senior orthopedic consultant."
+    }
+  ],
   "patients": [
     {
       "id": "PAT-201",
@@ -311,9 +325,8 @@
       "phone": "+20 101 555 2345",
       "email": "mohamed.adel@gmail.com",
       "bloodType": "A+",
-      "chronicDiseases": [
-        "Diabetes"
-      ],
+      "chronicDiseases": ["Diabetes"],
+      "password": "123",
       "assignedDoctorId": "DOC-101",
       "visits": [
         {
@@ -354,6 +367,7 @@
       "phone": "+20 100 777 8899",
       "email": "aya.mahmoud@gmail.com",
       "bloodType": "O+",
+      "password": "123",
       "chronicDiseases": [],
       "assignedDoctorId": "DOC-102",
       "visits": [
@@ -396,9 +410,8 @@
       "phone": "+20 111 333 4455",
       "email": "youssef.samir@gmail.com",
       "bloodType": "B-",
-      "chronicDiseases": [
-        "Hypertension"
-      ],
+      "password": "123",
+      "chronicDiseases": ["Hypertension"],
       "assignedDoctorId": "DOC-103",
       "visits": [
         {
@@ -437,9 +450,8 @@
       "phone": "+20 102 888 1122",
       "email": "salma.nabil@gmail.com",
       "bloodType": "AB+",
-      "chronicDiseases": [
-        "Asthma"
-      ],
+      "password": "123",
+      "chronicDiseases": ["Asthma"],
       "assignedDoctorId": "DOC-101",
       "visits": [
         {
@@ -466,9 +478,8 @@
       "phone": "+20 109 222 3344",
       "email": "hassan.mostafa@gmail.com",
       "bloodType": "A-",
-      "chronicDiseases": [
-        "Heart Disease"
-      ],
+      "password": "123",
+      "chronicDiseases": ["Heart Disease"],
       "assignedDoctorId": "DOC-105",
       "visits": [
         {
@@ -495,6 +506,7 @@
       "phone": "+20 100 999 6677",
       "email": "mona.adel@gmail.com",
       "bloodType": "O-",
+      "password": "123",
       "chronicDiseases": [],
       "assignedDoctorId": "DOC-106",
       "visits": [
@@ -520,9 +532,8 @@
       "phone": "+20 111 555 7788",
       "email": "omar.saeed@gmail.com",
       "bloodType": "B+",
-      "chronicDiseases": [
-        "Anemia"
-      ],
+      "chronicDiseases": ["Anemia"],
+      "password": "123",
       "assignedDoctorId": "DOC-107",
       "visits": [
         {
@@ -549,9 +560,8 @@
       "phone": "+20 102 444 9988",
       "email": "nourhan.adel@gmail.com",
       "bloodType": "AB-",
-      "chronicDiseases": [
-        "Migraine"
-      ],
+      "password": "123",
+      "chronicDiseases": ["Migraine"],
       "assignedDoctorId": "DOC-108",
       "visits": [
         {
@@ -643,8 +653,7 @@
     "availableDoctors": 19,
     "busyDoctors": 7,
     "unavailableDoctors": 3
-  }
-  ,
+  },
   "doctorRequests": [
     {
       "id": "dr_req_1",
@@ -667,5 +676,23 @@
       "department": "Neurology",
       "status": "rejected"
     }
-  ]
+  ],"medicalRecords": [
+  {
+    "id": "MR-001",
+    "patientId": "PAT-201",
+    "doctorId": "DOC-101",
+    "date": "2024-12-18",
+    "diagnosis": "Diabetes",
+    "notes": "Patient needs regular blood sugar monitoring."
+  },
+  {
+    "id": "MR-002",
+    "patientId": "PAT-201",
+    "doctorId": "DOC-102",
+    "date": "2025-01-05",
+    "diagnosis": "Skin Allergy",
+    "notes": "Prescribed antihistamine for 7 days."
+  }
+]
+  
 }

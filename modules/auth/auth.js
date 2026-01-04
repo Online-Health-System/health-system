@@ -1,30 +1,37 @@
-import { Storage } from "../../Data/storage.js";
+import { Storage } from '../../Data/storage.js';
 
 export const handleLogin = (email, password) => {
-  if (email === "admin@hospital.com" && password === "admin123") {
-    const adminUser = { id: "ADMIN-01", name: "System Admin", role: "admin" };
-    Storage.save("currentUser", adminUser);
-    return { success: true, role: "admin" };
-  }
-  const doctors = Storage.get("doctors") || [];
-  const doctor = doctors.find(
-    (d) => d.email === email && d.password === password,
-  );
-  if (doctor) {
-    Storage.save("currentUser", { ...doctor, role: "doctor" });
-    return { success: true, role: "doctor" };
-  }
-  const patients = Storage.get("patients") || [];
-  const patient = patients.find(
-    (p) => p.email === email && p.password === password,
-  );
-  if (patient) {
-    Storage.save("currentUser", { ...patient, role: "patient" });
-    return { success: true, role: "patient" };
-  }
 
-  return { success: false, message: "Invalid email or password" };
+    if (email === "admin@hospital.com" && password === "admin123") {
+        const adminUser = { id: "ADMIN-01", name: "System Admin", role: "admin" };
+        Storage.save('currentUser', adminUser);
+        return { success: true, role: 'admin' };
+    }
+    const doctors = Storage.get('doctors') || [];
+    const doctor = doctors.find(d => d.email === email && d.password === password);
+    if (doctor) {
+        Storage.save('currentUser', { ...doctor, role: 'doctor' });
+        return { success: true, role: 'doctor' };
+    }
+    const patients = Storage.get('patients') || [];
+    const patient = patients.find(p => p.email === email && p.password === password);
+    if (patient) {
+        Storage.save('currentUser', { ...patient, role: 'patient' });
+        return { success: true, role: 'patient' };
+    }
+
+    return { success: false, message: "Invalid email or password" };
 };
+
+
+export function getCurrentUser() {
+  const user = localStorage.getItem("currentUser");
+  if (!user) {
+    window.location.href = "login.html";
+    return null;
+  }
+  return JSON.parse(user);
+}
 
 export const checkAccess = (allowedRoles) => {
   const currentUser = Storage.get("currentUser");
@@ -37,17 +44,11 @@ export const checkAccess = (allowedRoles) => {
     window.location.href = `${currentUser.role}.html`;
   }
 };
-
-export const logout = () => {
-  Storage.remove("currentUser");
-  window.location.href = "login.html";
-};
-
-export function getCurrentUser() {
-  const user = localStorage.getItem("currentUser");
-  if (!user) {
-    window.location.href = "login.html";
+export function getCurrentUser2() {
+  try {
+    const user = localStorage.getItem("currentUser");
+    return user ? JSON.parse(user) : null;
+  } catch {
     return null;
   }
-  return JSON.parse(user);
 }

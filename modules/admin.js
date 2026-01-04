@@ -284,7 +284,7 @@ export function loadAppointments(container) {
         <td>${doctor ? doctor.name : "-"}</td>
         <td>${app.department}</td>
         <td>${app.date} ${app.time}</td>
-        <td><span class="badge ${app.status === "pending" ? "badge-warning" : app.status === "approved" ? "badge-success" : app.status === "approved" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
+        <td><span class="badge ${app.status === "Pending" ? "badge-warning" : app.status === "Confirmed" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
         ${container ? `<td>
           <div class="table-actions">
             <button class="btn btn-accent" onclick="editAppointment('${app.id}')">Edit</button>

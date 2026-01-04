@@ -1,51 +1,75 @@
-import { Storage } from '../../Data/storage.js';
-
 const signupForm = document.getElementById('signupForm');
 
 if (signupForm) {
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
+        
+        const role = document.getElementById('userRole').value;
         const name = document.getElementById('signupName').value;
         const email = document.getElementById('signupEmail').value;
         const password = document.getElementById('signupPassword').value;
         const confirmPass = document.getElementById('confirmPassword').value;
-
         if (password !== confirmPass) {
-            alert("Passwords do not match!");
+            Swal.fire({
+                title: "Error!",
+                text: "Passwords do not match. Please try again.",
+                icon: "error",
+                confirmButtonColor: "#1a2a6c",
+                customClass: { popup: "swal-navy" }
+            });
             return;
         }
 
-        const db = JSON.parse(localStorage.getItem("hospitalDB")) || { doctorRequests: [], doctors: [] };
+        let db = JSON.parse(localStorage.getItem("hospitalDB"));
 
-        const isEmailExists = [
-            ...(db.doctorRequests || []), 
-            ...(db.doctors || [])
-        ].some(d => d.email === email);
-
-        if (isEmailExists) {
-            alert("This email is already registered or has a pending request!");
+        if (!db) {
+            Swal.fire({
+                title: "System Error",
+                text: "Database not found. Please contact support.",
+                icon: "error",
+                customClass: { popup: "swal-navy" }
+            });
             return;
         }
 
-        const newRequest = {
-            id: `REQ-${Date.now()}`,
-            name: name,
-            email: email,
-            password: password,
-            department: "General",
-            status: "pending",
-            requestDate: new Date().toLocaleDateString()
+        const newUser = {
+            id: role === 'doctor' ? `REQ-${Date.now()}` : `PAT-${Date.now()}`,
+            name,
+            email,
+            password,
+            status: role === 'doctor' ? 'pending' : 'approved',
+            joinedAt: new Date().toLocaleDateString()
         };
 
-        if (!db.doctorRequests) {
-            db.doctorRequests = [];
+        if (role === 'doctor') {
+            if (!db.doctorRequests) db.doctorRequests = [];
+            db.doctorRequests.push(newUser);
+            localStorage.setItem("hospitalDB", JSON.stringify(db));
+            Swal.fire({
+                title: "Registration Successful!",
+                text: "Your request as a Doctor is now pending admin approval.",
+                icon: "info",
+                confirmButtonText: "Got it!",
+                confirmButtonColor: "#1a2a6c",
+                customClass: { popup: "swal-navy" }
+            }).then(() => {
+                window.location.href = "login.html";
+            });
+            
+        } else {
+            if (!db.patients) db.patients = [];
+            db.patients.push(newUser);
+            localStorage.setItem("hospitalDB", JSON.stringify(db));
+            Swal.fire({
+                title: "Welcome to Our Hospital!",
+                text: "Your account has been created. You can login now.",
+                icon: "success",
+                confirmButtonText: "Go to Login",
+                confirmButtonColor: "#1a2a6c",
+                customClass: { popup: "swal-navy" }
+            }).then(() => {
+                window.location.href = "login.html";
+            });
         }
-
-        db.doctorRequests.push(newRequest);
-        localStorage.setItem("hospitalDB", JSON.stringify(db));
-
-        alert("Your request has been sent to the Admin!");
-        window.location.href = 'login.html';
     });
 }

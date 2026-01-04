@@ -1,73 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Appointments | Doctor</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Appointments | Doctor</title>
-  <link rel="stylesheet" href="../css/style.css">
-</head>
+  <body>
+    <div class="layout">
+      <!-- ===== Sidebar ===== -->
+      <aside class="sidebar">
+        <h2>
+          <img src="../assets/images/logo.png" width="50" height="50" />
+          Health Care
+        </h2>
+        <a href="doctor.html">Dashboard</a>
+        <a href="profileDoc.html">Profile</a>
+        <a href="" class="active">Appointments</a>
+        <a href="reports.html">Reports</a>
+        <a id="logoutBtn">Logout</a>
+      </aside>
 
-<body>
-
-  <div class="layout">
-
-    <!-- ===== Sidebar ===== -->
-    <aside class="sidebar">
-      <h2>
-        <img src="../assets/images/logo.png" width="50" height="50">
-        Health Care
-      </h2>
-
-      <a href="doctor.html">Dashboard</a>
-      <a href="profileDoc.html">Profile</a>
-      <a href="">Appointments</a>
-      <a href="reports.html">Reports</a>
-      <a href="../pages/login.html">Logout</a>
-    </aside>
-
-    <!-- ===== Main ===== -->
-    <main class="main">
-
-      <!-- Header -->
-      <header class="header">
-        <h1>Appointments</h1>
-        <p>Manage your daily and upcoming schedule</p>
-      </header>
-
-
-      <!-- Appointments Table -->
-      <section class="glass-table">
-        <table id="appointmentTable">
-          <thead>
-            <tr>
-              <th>Patient</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-
-          </tbody>
-        </table>
-      </section>
-    </main>
-  </div>
-  <script src="../../modules/docAppointments.js" type="module"></script>
-  <script type="module">
-    //import { Storage } from '../../Data/storage.js';
-    import { fetchAppointmentsData } from '../../modules/docAppointments.js';
-    // import { checkAccess } from "../../modules/auth/auth.js";
-    // import { getCurrentUser } from '../../modules/auth/auth.js';
-    // checkAccess(['doctor']);
-    // let currentUser = getCurrentUser();
-    //currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
-    let cuurentUser = { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
-    fetchAppointmentsData();
-
-  </script>
-</body>
-
+      <!-- ===== Main ===== -->
+      <main class="main">
+        <!-- Header -->
+        <header class="header">
+          <h1>Appointments</h1>
+          <p>Manage your daily and upcoming schedule</p>
+        </header>
+        <!-- Appointments Table -->
+        <section class="glass-table">
+          <table id="appointmentTable">
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../modules/docAppointments.js" type="module"></script>
+    <script type="module">
+      import { Storage } from "../../Data/storage.js";
+      import { fetchAppointmentsData } from "../../modules/docAppointments.js";
+      import { checkAccess } from "../../modules/auth/auth.js";
+      import { getCurrentUser } from "../../modules/auth/auth.js";
+      let currentUser = {
+        id: "DOC-101",
+        name: "Dr. Ahmed Hassan",
+        role: "doctor",
+      };
+      fetchAppointmentsData();
+    </script>
+  </body>
 </html>

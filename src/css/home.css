@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 /* ===== Colors (Navy Theme) ===== */
 :root {
-  --primary: #0A3D62;     /* Navy */
-  --secondary: #E3EAF0;   /* Light Gray */
-  --dark: #0B1C2D;        /* Dark Navy */
-  --accent: #5C7AEA;     /* Soft Blue Accent */
-  --danger: #C62828;
-  --glass: rgba(255,255,255,0.16);
+  --primary: #0a3d62; /* Navy */
+  --secondary: #e3eaf0; /* Light Gray */
+  --dark: #0b1c2d; /* Dark Navy */
+  --accent: #5c7aea; /* Soft Blue Accent */
+  --danger: #c62828;
+  --glass: rgba(255, 255, 255, 0.16);
 }
 /* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 /* ===== Body ===== */
 body {
-  background: linear-gradient(135deg, #0B1C2D, #0A3D62);
+  background: linear-gradient(135deg, #0b1c2d, #0a3d62);
   color: #fff;
 }
 /* ===== Buttons ===== */
@@ -48,14 +48,14 @@ body {
   padding: 0px 50px;
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   background: rgba(11, 28, 45, 0.9);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   z-index: 1000;
 }
 .home-header .home-logo img {
-  width:80px;
+  width: 80px;
 }
 /* ===== Hero Section ===== */
 .home-hero {
@@ -67,7 +67,7 @@ body {
   background: url("../assets/images/BackGroundImage2.jpg") center/cover
     no-repeat;
   margin: 40px 50px;
-  margin-top:100px;
+  margin-top: 100px;
   border-radius: 20px;
 }
 .hero-overlay {
@@ -160,8 +160,8 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  justify-content: center; 
-  justify-items: center;     
+  justify-content: center;
+  justify-items: center;
 }
 .home-department-card {
   background: var(--glass);
@@ -246,17 +246,17 @@ body {
   backdrop-filter: blur(14px);
   padding: 22px;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   width: 100%;
-  min-height: 120px;  
+  min-height: 120px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .home-hospital-cards .home-info-item:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 .home-hospital-cards .home-info-item span {
   font-size: 13px;

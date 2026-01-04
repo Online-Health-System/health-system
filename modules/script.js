@@ -10,7 +10,7 @@ fetch("../../Data/data.json")
     const departments = DB.departments;
     const doctors = DB.doctors;
     const hospital = DB.hospitalInfo;
-    loadHospitalInfo(hospitalInfoContainer, hospital)
+    loadHospitalInfo(hospitalInfoContainer, hospital);
     loadDepartments(departmentContainer, departments, doctors);
   })
   .catch((err) => console.error(err));
