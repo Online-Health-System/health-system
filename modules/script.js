@@ -6,7 +6,7 @@ fetch("../../Data/data.json")
   .then((res) => res.json())
   .then((data) => {
     DB = data;
-
+    console.log(DB);
     const departments = DB.departments;
     const doctors = DB.doctors;
     const hospital = DB.hospitalInfo;
