@@ -32,7 +32,7 @@ if (!currentUser) {
 
 const currentPatientId = currentUser.id;
 
-const data = Storage.get("hospitalData");
+const data = Storage.get("hospitalDB");
 
 const tbody = document.getElementById("appointmentsBody");
 
@@ -127,7 +127,7 @@ tbody.addEventListener("click", e => {
     }).then((result) => {
       if (result.isConfirmed) {
         myAppointments[index].status = "Canceled";
-        Storage.save("hospitalData", data);
+        Storage.save("hospitalDB", data);
 
         Swal.fire({
           title: "Canceled!",

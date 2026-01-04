@@ -3,8 +3,8 @@ export const dataInitialized = fetch("../../Data/data.json")
   .then(res => res.json())
   .then(data => {
     // Save complete hospital data
-    if (!localStorage.getItem("hospitalData")) {
-      localStorage.setItem("hospitalData", JSON.stringify(data));
+    if (!localStorage.getItem("hospitalDB")) {
+      localStorage.setItem("hospitalDB", JSON.stringify(data));
     }
     
     // Save doctors and patients separately for authentication

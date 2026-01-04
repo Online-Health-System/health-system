@@ -32,7 +32,7 @@ if (!currentUser) {
 const currentPatientId = currentUser.id;
 
 // Load hospital data
-const data = Storage.get("hospitalData");
+const data = Storage.get("hospitalDB");
 
 if (!data) {
   console.error("❌ hospitalData not found - data failed to load!");
@@ -140,7 +140,7 @@ tbody.addEventListener("click", e => {
     }).then((result) => {
       if (result.isConfirmed) {
         myAppointments[index].status = "Canceled";
-        Storage.save("hospitalData", data);
+        Storage.save("hospitalDB", data);
 
         Swal.fire({
           title: "Canceled!",

@@ -28,7 +28,7 @@ if (!currentUser) {
 
 const currentPatientId = currentUser.id;
 
-const data = Storage.get("hospitalData");
+const data = Storage.get("hospitalDB");
 
 
 if (!data) {
@@ -75,7 +75,7 @@ document
         patient.gender = document.getElementById("gender").value;
         patient.bloodType = document.getElementById("bloodType").value;
 
-        Storage.save("hospitalData", data);
+        Storage.save("hospitalDB", data);
 
         Swal.fire({
           title: "Saved!",

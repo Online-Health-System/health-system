@@ -48,7 +48,7 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  const data = Storage.get("hospitalData");
+  const data = Storage.get("hospitalDB");
 
   if (!data || !data.appointments) {
     alert("Hospital data not loaded");
@@ -78,7 +78,7 @@ form.addEventListener("submit", function (e) {
   };
 
   data.appointments.push(newAppointment);
-  Storage.save("hospitalData", data);
+  Storage.save("hospitalDB", data);
 
   window.location.href = "my-appointments.html";
 });

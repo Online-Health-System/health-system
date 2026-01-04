@@ -9,8 +9,7 @@ export function fetchAppointmentsData() {
 
     if (hospitalDB.appointments && hospitalDB.appointments.length > 0) {
         const doctorId = JSON.parse(localStorage.getItem('currentUser')).id;
-        const assignedPatients = hospitalDB.patients.filter(p => p.assignedDoctorId === doctorId);
-        patients.push(...assignedPatients);
+        patients.push(...hospitalDB.patients)
         appointmentsDataArr.push(...hospitalDB.appointments.filter(app => app.doctorId === doctorId));
         appointmentsDataArr.sort((a, b) => {
             const dateA = new Date(a.date + ' ' + a.time);
@@ -28,7 +27,7 @@ export function fetchAppointmentsData() {
 // -----------------Helper Functions--------------------
 function RenderTableData() {
     tbody.innerHTML = "";
-    if (patients.length === 0) {
+    if (appointmentsDataArr.length === 0) {
         const tr = document.createElement('tr');
         tr.innerHTML = `<td colspan="5" align="center">No Appointments.</td>`;
         tbody.appendChild(tr);
