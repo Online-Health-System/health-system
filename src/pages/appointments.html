@@ -57,13 +57,14 @@
   </div>
   <script src="../../modules/docAppointments.js" type="module"></script>
   <script type="module">
-    import { Storage } from '../../Data/storage.js';
+    //import { Storage } from '../../Data/storage.js';
     import { fetchAppointmentsData } from '../../modules/docAppointments.js';
-    import { checkAccess } from "../../modules/auth/auth.js";
-    import { getCurrentUser } from '../../modules/auth/auth.js';
-    checkAccess(['doctor']);
-    let currentUser = getCurrentUser();
-    currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+    // import { checkAccess } from "../../modules/auth/auth.js";
+    // import { getCurrentUser } from '../../modules/auth/auth.js';
+    // checkAccess(['doctor']);
+    // let currentUser = getCurrentUser();
+    //currentUser = currentUser ? currentUser : { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
+    let cuurentUser = { id: 'DOC-101', name: 'Dr. Ahmed Hassan', role: 'doctor' };
     fetchAppointmentsData();
 
   </script>
