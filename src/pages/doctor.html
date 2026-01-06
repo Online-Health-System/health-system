@@ -15,93 +15,19 @@
           Health Care
         </h2>
 
-        <a href="" class="active">Dashboard</a>
-        <a href="profileDoc.html">Profile</a>
-        <a href="appointments.html">Appointments</a>
-        <a href="reports.html">Reports</a>
+        <a href="" class="doctor-link active" data-view="dashboard">Dashboard</a>
+        <a href="" class="doctor-link" data-view="profile">Profile</a>
+        <a href="" class="doctor-link" data-view="appointments">Appointments</a>
+        <a href="" class="doctor-link" data-view="reports">Reports</a>
         <a id="logoutBtn">Logout</a>
       </aside>
 
       <!-- ===== Main ===== -->
-      <main class="main">
-        <!-- Header -->
-        <header class="header docheader">
-          <div>
-            <h1>Doctor Dashboard</h1>
-            <p></p>
-          </div>
-          <div>
-            <input
-              type="text"
-              id="patientSearch"
-              placeholder="Search by patient name..."
-            />
-          </div>
-        </header>
-
-        <!-- Cards -->
-        <section class="cards">
-          <div class="card" id="totalPatient">
-            <h3>Total Patients</h3>
-            <p></p>
-          </div>
-
-          <div class="card" id="appointments">
-            <h3>Today's Appointments</h3>
-            <p></p>
-          </div>
-
-          <div class="card" id="Confirm">
-            <h3>Confirmed</h3>
-            <p></p>
-          </div>
-
-          <div class="card" id="Pending">
-            <h3>Pending</h3>
-            <p></p>
-          </div>
-        </section>
-
-        <!-- Patients Table -->
-        <section class="glass-table">
-          <table id="patientsTable">
-            <thead>
-              <tr>
-                <th>Patient Name</th>
-                <th>Age</th>
-                <th>Phone</th>
-                <th>Chronic Diseases</th>
-                <th>Blood Type</th>
-                <th>Last Visit</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </section>
-
-        <div id="medicalNotesModal" class="modal">
-          <div class="glass-card notesBackground">
-            <h3>Medical Notes</h3>
-
-            <ul id="notesList"></ul>
-
-            <textarea
-              id="newNote"
-              rows="3"
-              placeholder="Write a new note..."
-            ></textarea>
-            <button id="addNoteBtn" class="btn btn-accent">Add Note</button>
-            <button id="closeNotesBtn" class="btn btn-primary">Close</button>
-          </div>
-        </div>
+      <main class="main" id="doctorMain">
       </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../../modules/doctor.js" type="module"></script>
-    <script type="module">
-      import { fetchPatients } from "../../modules/doctor.js";
-      fetchPatients();
-    </script>
+    <script src="../../modules/doctorActions.js" type="module"></script>
   </body>
 </html>
