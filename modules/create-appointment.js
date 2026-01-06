@@ -55,18 +55,47 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  // ===== Optional conflict check =====
-  const conflict = data.appointments.some(app =>
-    app.doctorId === doctorId &&
-    app.date === date &&
-    app.time === time &&
-    app.status !== "Canceled"
-  );
+// Rule 1: Same patient can't book same doctor twice in the same day
 
-  if (conflict) {
-    alert("This appointment slot is already booked");
-    return;
-  }
+const sameDoctorSameDay = data.appointments.some(app =>
+  app.patientId === currentPatientId &&
+  app.doctorId === doctorId &&
+  app.date === date &&
+  app.status !== "Canceled"
+);
+
+if (sameDoctorSameDay) {
+  Swal.fire({
+    title: "Appointment Conflict",
+    text: "You already have an appointment with this doctor on the same day.",
+    icon: "warning",
+    confirmButtonText: "OK",
+    customClass: {
+      popup: "swal-navy"
+    }
+  });
+  return;
+}
+
+// Rule 2:Same patient can't book same any doctor at the same time
+const sameTimeConflict = data.appointments.some(app =>
+  app.date === date &&
+  app.time === time &&
+  app.status !== "Canceled"
+);
+
+if (sameTimeConflict) {
+  Swal.fire({
+    title: "Time Slot Unavailable",
+    text: "This time slot is already booked. Please choose another time.",
+    icon: "error",
+    confirmButtonText: "Choose another time",
+    customClass: {
+      popup: "swal-navy"
+    }
+  });
+  return;
+}
 
   const newAppointment = {
     id: "APP-" + Date.now(),
