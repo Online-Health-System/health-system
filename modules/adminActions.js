@@ -191,3 +191,61 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
     }
   });
 });
+
+window.searchPatients = (keyword) => {
+  const tbody = document.getElementById("patientsTableBody");
+  if (!tbody) return;
+
+  const filtered = DB.patients.filter(p =>
+    p.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+
+  tbody.innerHTML = filtered.map(p => {
+    const doctor = DB.doctors.find(d => d.id === p.assignedDoctorId);
+    return `
+      <tr>
+        <td>${p.name}</td>
+        <td>${p.age}</td>
+        <td>${p.gender}</td>
+        <td>${p.phone}</td>
+        <td>${p.email}</td>
+        <td>${p.bloodType}</td>
+        <td>${p.chronicDiseases?.length ? p.chronicDiseases.join(", ") : "-"}</td>
+        <td>${doctor ? doctor.name : "-"}</td>
+        <td>
+          <button class="btn btn-accent" onclick="editPatient('${p.id}')">Edit</button>
+          <button class="btn btn-danger" onclick="deletePatient('${p.id}')">Delete</button>
+        </td>
+      </tr>
+    `;
+  }).join("");
+};
+window.searchDoctors = (keyword) => {
+  const tbody = document.getElementById("doctorsTableBody");
+  if (!tbody) return;
+
+  const filtered = DB.doctors.filter(d =>
+    d.name.toLowerCase().includes(keyword.toLowerCase())
+  );
+
+  tbody.innerHTML = filtered.map(d => `
+    <tr>
+      <td>${d.name}</td>
+      <td>${d.specialty}</td>
+      <td>
+        <span class="badge ${
+          d.status === "Busy"
+            ? "badge-warning"
+            : d.status === "Available"
+            ? "badge-success"
+            : "badge-danger"
+        }">${d.status}</span>
+      </td>
+      <td>${d.appointmentsToday}</td>
+      <td>
+        <button class="btn btn-accent" onclick="editDoctor('${d.id}')">Edit</button>
+        <button class="btn btn-danger" onclick="deleteDoctor('${d.id}')">Delete</button>
+      </td>
+    </tr>
+  `).join("");
+};
