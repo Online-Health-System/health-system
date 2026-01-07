@@ -30,11 +30,11 @@ function renderSidebar() {
   `;
 
   const doctorLinks = `
-    <a href="doctor.html">Dashboard</a>
-    <a href="profileDoc.html">Profile</a>
-    <a href="appointments.html">Appointments</a>
-    <a href="reports.html" class="active">Reports</a>
-    <a href="../login.html" id="logoutBtn">Logout</a>
+    <a href="" class="doctor-link" data-view="dashboard">Dashboard</a>
+        <a href="" class="doctor-link" data-view="profile">Profile</a>
+        <a href="" class="doctor-link" data-view="appointments">Appointments</a>
+        <a href="" class="doctor-link active" data-view="reports">Reports</a>
+        <a id="logoutBtn">Logout</a>
   `;
 
   sidebar.innerHTML =
@@ -105,8 +105,8 @@ function renderDashboard() {
               <tr><th>Diagnosis</th><td>${v.diagnosis}</td></tr>
               <tr><th>Treatment</th><td>${v.treatment}</td></tr>
               <tr><th>Prescriptions</th><td>${v.prescriptions.join(
-                ", "
-              )}</td></tr>
+          ", "
+        )}</td></tr>
               <tr><th>Follow-up</th><td>${v.followUp}</td></tr>
             </table>
           </div>
