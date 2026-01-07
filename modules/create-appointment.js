@@ -1,101 +1,62 @@
-import { getCurrentUser2, checkAccess } from "./auth/auth.js";
+// create-appointment.js
+import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
 import { dataInitialized } from "./init.data.js";
+import { checkAccess } from "./auth/auth.js";
 
-/* ===============================
-   DOM Elements
-================================ */
-const form = document.getElementById("appointmentForm");
+// Wait for data to load before running
+await dataInitialized;
+checkAccess(['patient']);
+
+// Try to get logged-in user
+let currentUser = null;
+
+try {
+  currentUser = getCurrentUser2();
+} catch (e) {
+  currentUser = null;
+}
+
+if (!currentUser) {
+  console.warn("No logged-in user, using test patient");
+
+  currentUser = {
+    id: "PAT-201",
+    role: "patient",
+    testMode: true
+  };
+}
+
+const currentPatientId = currentUser.id;
+
+// Get hospital data
+const data = Storage.get("hospitalData");
+const departments = data.departments;
+const doctors = data.doctors;
+
 const departmentSelect = document.getElementById("department");
 const doctorSelect = document.getElementById("doctor");
-const logoutBtn = document.getElementById("logoutBtn");
 
-/* ===============================
-   Global Variables
-================================ */
-let hospitalData = null;
-let departments = [];
-let doctors = [];
-let currentUser = null;
-let currentPatientId = null;
+// ===== Populate Departments on page load =====
+departments.forEach(dept => {
+  const option = document.createElement("option");
+  option.value = dept.id;
+  option.textContent = dept.name;
+  departmentSelect.appendChild(option);
+});
 
-/* ===============================
-   Initialize Page
-================================ */
-async function initPage() {
-  await dataInitialized;
-  checkAccess(["patient"]);
-
-  // Get current user
-  try {
-    currentUser = getCurrentUser2();
-  } catch (e) {
-    currentUser = null;
-  }
-
-  // Fallback test patient
-  if (!currentUser) {
-    console.warn("No logged-in user, using test patient");
-    currentUser = {
-      id: "PAT-201",
-      role: "patient",
-      testMode: true,
-    };
-  }
-
-  currentPatientId = currentUser.id;
-
-  // Load hospital data
-  hospitalData = Storage.get("hospitalDB");
-
-  if (!hospitalData) {
-    Swal.fire("Error", "Hospital data not loaded", "error");
-    return;
-  }
-
-  hospitalData.appointments = hospitalData.appointments || [];
-  departments = hospitalData.departments || [];
-  doctors = hospitalData.doctors || [];
-
-  loadDepartments();
-}
-
-initPage();
-
-/* ===============================
-   Load Departments
-================================ */
-function loadDepartments() {
-  departmentSelect.innerHTML =
-    `<option value="">Select Department</option>`;
-
-  departments.forEach((dep) => {
-    const option = document.createElement("option");
-    option.value = dep.id;
-    option.textContent = dep.name;
-    departmentSelect.appendChild(option);
-  });
-}
-console.log("Hospital Data:", hospitalData);
-console.log("Departments:", departments);
-console.log("Doctors:", doctors);
-
-/* ===============================
-   Department Change → Load Doctors
-================================ */
+// ===== Handle Department Selection =====
 departmentSelect.addEventListener("change", function () {
   const departmentId = this.value;
 
-  doctorSelect.innerHTML =
-    `<option value="">Select Doctor</option>`;
+  doctorSelect.innerHTML = `<option value="">Select Doctor</option>`;
   doctorSelect.disabled = true;
 
   if (!departmentId) return;
 
-  const availableDoctors = doctors.filter(
-    (doc) =>
-      doc.departmentId === departmentId &&
-      doc.status === "Available"
+  const availableDoctors = doctors.filter(doc =>
+    doc.departmentId === departmentId &&
+    doc.status === "Available"
   );
 
   if (availableDoctors.length === 0) {
@@ -106,7 +67,7 @@ departmentSelect.addEventListener("change", function () {
     return;
   }
 
-  availableDoctors.forEach((doc) => {
+  availableDoctors.forEach(doc => {
     const option = document.createElement("option");
     option.value = doc.id;
     option.textContent = `${doc.name} (${doc.specialty})`;
@@ -116,109 +77,141 @@ departmentSelect.addEventListener("change", function () {
   doctorSelect.disabled = false;
 });
 
-/* ===============================
-   Submit Appointment
-================================ */
+const form = document.getElementById("appointmentForm");
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const doctorId = doctorSelect.value;
+  const departmentId = document.getElementById("department").value;
+  const doctorId = document.getElementById("doctor").value;
   const date = document.getElementById("date").value;
   const time = document.getElementById("time").value;
-  const reason = document.getElementById("reason").value.trim();
+  const reason = document.getElementById("reason").value;
 
-  if (!doctorId || !date || !time || !reason) {
-    Swal.fire("Missing Data", "Please fill all fields", "warning");
-    return;
-  }
+  // Get department name
+  const selectedDept = departments.find(dept => dept.id === departmentId);
+  const departmentName = selectedDept ? selectedDept.name : "";
 
-  // Date & time validation
+
+  // ===== Date & Time Validation =====
   const selectedDateTime = new Date(`${date}T${time}`);
   if (selectedDateTime <= new Date()) {
-    Swal.fire(
-      "Invalid Date",
-      "Please select a future date and time",
-      "error"
-    );
+    alert("Please choose a future date and time");
     return;
   }
 
-  // Rule 1: Same patient + same doctor + same day
-  const sameDoctorSameDay = hospitalData.appointments.some(
-    (app) =>
-      app.patientId === currentPatientId &&
-      app.doctorId === doctorId &&
-      app.date === date &&
-      app.status !== "Canceled"
+
+  if (!data || !data.appointments) {
+    alert("Hospital data not loaded");
+    return;
+  }
+
+
+  /* ===== Optional conflict check =====
+  const conflict = data.appointments.some(app =>
+    app.doctorId === doctorId &&
+    app.date === date &&
+    app.time === time &&
+    app.status !== "Canceled"
   );
 
-  if (sameDoctorSameDay) {
-    Swal.fire(
-      "Appointment Conflict",
-      "You already booked this doctor on the same day",
-      "warning"
-    );
+  if (conflict) {
+    alert("This appointment slot is already booked");
     return;
-  }
+  }*/
 
-  // Rule 2: Same time slot
-  const sameTimeSlot = hospitalData.appointments.some(
-    (app) =>
-      app.date === date &&
-      app.time === time &&
-      app.status !== "Canceled"
-  );
 
-  if (sameTimeSlot) {
-    Swal.fire(
-      "Time Unavailable",
-      "This time slot is already booked",
-      "error"
-    );
-    return;
-  }
+    // Rule 1: Same patient can't book same doctor twice in the same day
+
+const sameDoctorSameDay = data.appointments.some(app =>
+  app.patientId === currentPatientId &&
+  app.doctorId === doctorId &&
+  app.date === date &&
+  app.status !== "Canceled"
+);
+
+if (sameDoctorSameDay) {
+  Swal.fire({
+    title: "Appointment Conflict",
+    text: "You already have an appointment with this doctor on the same day.",
+    icon: "warning",
+    confirmButtonText: "OK",
+    customClass: {
+      popup: "swal-navy"
+    }
+  });
+  return;
+}
+
+// Rule 2:Same patient can't book same any doctor at the same time
+const sameTimeConflict = data.appointments.some(app =>
+  app.date === date &&
+  app.time === time &&
+  app.status !== "Canceled"
+);
+
+if (sameTimeConflict) {
+  Swal.fire({
+    title: "Time Slot Unavailable",
+    text: "This time slot is already booked. Please choose another time.",
+    icon: "error",
+    confirmButtonText: "Choose another time",
+    customClass: {
+      popup: "swal-navy"
+    }
+  });
+  return;
+}
+
+
 
   const newAppointment = {
     id: "APP-" + Date.now(),
     patientId: currentPatientId,
-    doctorId,
-    date,
-    time,
-    reason,
-    status: "Pending",
+    doctorId: doctorId,
+    department: departmentName,
+    date: date,
+    time: time,
+    reason: reason,
+    status: "Pending"
   };
 
-  hospitalData.appointments.push(newAppointment);
-  Storage.save("hospitalDB", hospitalData);
+  data.appointments.push(newAppointment);
+  Storage.save("hospitalData", data);
 
-  Swal.fire({
-    title: "Appointment Created",
-    text: "Your appointment has been booked successfully",
-    icon: "success",
-    timer: 2500,
-    showConfirmButton: false,
-  }).then(() => {
-    window.location.href = "my-appointments.html";
-  });
+
+Swal.fire({
+  title: "Appointment Submitted!",
+  text: "Your appointment is pending and will be confirmed after the doctor approves it.",
+  icon: "info",
+  timer: 3000,
+  showConfirmButton: false,
+  customClass: {
+    popup: "swal-navy"
+  }
+}).then(() => {
+  window.location.href = "my-appointments.html";
 });
 
-/* ===============================
-   Logout
-================================ */
-logoutBtn.addEventListener("click", function (e) {
+});
+
+document.getElementById("logoutBtn").addEventListener("click", (e) => {
   e.preventDefault();
 
   Swal.fire({
     title: "Logout",
-    text: "Are you sure you want to logout?",
+    text: "Are you sure?",
     icon: "warning",
     showCancelButton: true,
     confirmButtonText: "Yes",
     cancelButtonText: "No",
+    customClass: {
+      popup: "swal-navy"
+    }
   }).then((result) => {
     if (result.isConfirmed) {
-      localStorage.removeItem("currentUser");
-      window.location.href = "../login.html";
+      
+ window.location.href = "/src/pages/login.html";  
     }
   });
 });
