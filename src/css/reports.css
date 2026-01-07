@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 /* ===== Theme Variables ===== */
 :root {
-  --primary: #0A3D62;
-  --accent: #5C7AEA;
-  --danger: #C62828;
-  --dark: #0B1C2D;
-  --glass: rgba(255,255,255,0.16);
+  --primary: #0a3d62;
+  --accent: #5c7aea;
+  --danger: #c62828;
+  --dark: #0b1c2d;
+  --glass: rgba(255, 255, 255, 0.16);
 }
 
 /* ===== Reset ===== */
@@ -14,12 +14,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0B1C2D, #0A3D62);
+  background: linear-gradient(135deg, #0b1c2d, #0a3d62);
   color: #fff;
 }
 
@@ -33,25 +33,22 @@ body {
   background: rgba(11, 28, 45, 0.6);
   backdrop-filter: blur(14px);
   padding: 20px;
-  overflow-y: auto;
 }
 
 .sidebar h2 {
   margin-bottom: 30px;
-  color: #E3EAF0;
+  color: #e3eaf0;
 }
-
 .sidebar h2 img {
-  vertical-align: middle;
-  margin-right: 10px;
+  position: relative;
+  top: 15px;
 }
-
 .sidebar a {
   display: block;
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 10px;
-  color: #E3EAF0;
+  color: #e3eaf0;
   text-decoration: none;
   transition: 0.3s;
 }
@@ -59,7 +56,6 @@ body {
 .sidebar a:hover {
   background: rgba(92, 122, 234, 0.35);
 }
-
 .sidebar .active {
   background: rgba(92, 122, 234, 0.45);
   color: #fff;
@@ -68,7 +64,7 @@ body {
 
 /* ===== Header ===== */
 .header {
-  margin-left: 250px; 
+  margin-left: 250px;
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -85,7 +81,7 @@ body {
 
 /* ===== Main Content ===== */
 .main-content {
-  margin-left: 250px; 
+  margin-left: 250px;
   padding: 25px;
 }
 
@@ -96,12 +92,12 @@ body {
   border-radius: 20px;
   padding: 22px;
   margin-bottom: 35px;
-  box-shadow: 0 15px 35px rgba(0,0,0,.4);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .glass-table h2 {
   margin-bottom: 15px;
-  color: #E3EAF0;
+  color: #e3eaf0;
 }
 
 .glass-table table {
@@ -116,12 +112,12 @@ body {
 }
 
 .glass-table th {
-  background: rgba(11,28,45,.75);
+  background: rgba(11, 28, 45, 0.75);
 }
 
 .glass-table tr {
-  border-top: 2px solid rgba(152,161,195,.25);
-  transition: background .3s;
+  border-top: 2px solid rgba(152, 161, 195, 0.25);
+  transition: background 0.3s;
 }
 
 .glass-table tr:first-child {
@@ -129,32 +125,32 @@ body {
 }
 
 .glass-table tr:hover {
-  background: rgba(92,122,234,.25);
+  background: rgba(92, 122, 234, 0.25);
 }
 
 /* ===== Accordion ===== */
 .accordion {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   margin-bottom: 12px;
   overflow: hidden;
 }
 
 .accordion-header {
-  background: rgba(11,28,45,.8);
+  background: rgba(11, 28, 45, 0.8);
   padding: 12px 16px;
   cursor: pointer;
   font-weight: 500;
 }
 
 .accordion-header:hover {
-  background: rgba(92,122,234,.35);
+  background: rgba(92, 122, 234, 0.35);
 }
 
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height .3s ease;
+  transition: max-height 0.3s ease;
   padding: 0 16px;
 }
 
@@ -167,5 +163,5 @@ body {
 .accordion-content th,
 .accordion-content td {
   padding: 8px;
-  border-bottom: 1px solid rgba(255,255,255,.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }

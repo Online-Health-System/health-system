@@ -212,22 +212,37 @@ export function loadPatients(container) {
     .join("");
 
   const patientsFullHTML = `
-    <div class="header">
-      ${container ? `<h1>Patients</h1>` : `<h2>Patients</h2> `}
-      <p>All patients in the hospital</p>
-    </div>
-    <section class="glass-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Email</th><th>Blood</th><th>Diseases</th><th>Doctor</th>
-            ${container ? `<th>Actions</th>` : ``}
-          </tr>
-        </thead>
-        <tbody>${patientsHTML}</tbody>
-      </table>
-    </section>
-  `;
+  <div class="header">
+    ${container ? `<h1>Patients</h1>` : `<h2>Patients</h2>`}
+    <p>All patients in the hospital</p>
+
+    ${container ? `
+      <input 
+        type="text"
+        id="patientSearch"
+        placeholder="Search by patient name..."
+        class="search-input"
+        oninput="searchPatients(this.value)"
+      />
+    ` : ""}
+  </div>
+
+  <section class="glass-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Age</th><th>Gender</th><th>Phone</th>
+          <th>Email</th><th>Blood</th><th>Diseases</th><th>Doctor</th>
+          ${container ? `<th>Actions</th>` : ``}
+        </tr>
+      </thead>
+      <tbody id="patientsTableBody">
+        ${patientsHTML}
+      </tbody>
+    </table>
+  </section>
+`;
+
   if (container) container.innerHTML = patientsFullHTML;
   return patientsFullHTML;
 }
@@ -252,22 +267,36 @@ export function loadDoctors(container) {
     .join("");
 
   const doctorsFullHTML = `
-    <div class="header">
-      ${container ? `<h1>Doctors</h1>` : `<h2>Doctors</h2>`}
-      <p>All Doctors in the hospital</p>
-    </div>
-    <section class="glass-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th><th>Specialty</th><th>Status</th><th>Appointments</th>
-            ${container ? `<th>Actions</th>` : ``}
-          </tr>
-        </thead>
-        <tbody>${doctorsHTML}</tbody>
-      </table>
-    </section>
-  `;
+  <div class="header">
+    ${container ? `<h1>Doctors</h1>` : `<h2>Doctors</h2>`}
+    <p>All Doctors in the hospital</p>
+
+    ${container ? `
+      <input
+        type="text"
+        id="doctorSearch"
+        placeholder="Search by doctor name..."
+        class="search-input"
+        oninput="searchDoctors(this.value)"
+      />
+    ` : ""}
+  </div>
+
+  <section class="glass-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th><th>Specialty</th><th>Status</th><th>Appointments</th>
+          ${container ? `<th>Actions</th>` : ``}
+        </tr>
+      </thead>
+      <tbody id="doctorsTableBody">
+        ${doctorsHTML}
+      </tbody>
+    </table>
+  </section>
+`;
+
   if (container) container.innerHTML = doctorsFullHTML;
   return doctorsFullHTML;
 }
@@ -284,7 +313,7 @@ export function loadAppointments(container) {
         <td>${doctor ? doctor.name : "-"}</td>
         <td>${app.department}</td>
         <td>${app.date} ${app.time}</td>
-        <td><span class="badge ${app.status === "pending" ? "badge-warning" : app.status === "approved" ? "badge-success" : app.status === "approved" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
+        <td><span class="badge ${app.status === "Pending" ? "badge-warning" : app.status === "Confirmed" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
         ${container ? `<td>
           <div class="table-actions">
             <button class="btn btn-accent" onclick="editAppointment('${app.id}')">Edit</button>

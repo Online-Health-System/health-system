@@ -1,8 +1,13 @@
 
 import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
+import { dataInitialized } from "./init.data.js";
 import { checkAccess } from "./auth/auth.js";
+
+// Wait for data to load before running
+await dataInitialized;
 checkAccess(['patient']);
+
 
 // ==========================
 // Try to get logged-in user
@@ -28,6 +33,26 @@ if (!currentUser) {
 const currentPatientId = currentUser.id;
 
 const data = Storage.get("hospitalData");
+
+// ===== Auto-cancel expired pending appointments =====
+const now = new Date();
+let dataUpdated = false;
+
+data.appointments.forEach(app => {
+  if (app.status === "Pending") {
+    const appointmentDateTime = new Date(`${app.date}T${app.time}`);
+
+    if (appointmentDateTime < now) {
+      app.status = "Canceled";
+      dataUpdated = true;
+    }
+  }
+});
+
+// Save only if something changed
+if (dataUpdated) {
+  Storage.save("hospitalData", data);
+}
 
 const tbody = document.getElementById("appointmentsBody");
 
@@ -157,8 +182,7 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      Storage.remove("currentUser");
-      window.location.href = "/src/pages/login.html";
+ window.location.href = "/src/pages/login.html";  
     }
   });
 });

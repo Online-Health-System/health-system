@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Create Appointment | Online Health System</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  </head>
+  <body>
+    <div class="layout">
+      <!-- ===== Sidebar ===== -->
+      <aside class="sidebar">
+        <h2>
+          <img src="../assets/images/logo.png" width="50" height="50" />
+          Health Care
+        </h2>
+        <a href="patient.html">My Dashboard</a>
+        <a href="profile.html">My Profile</a>
+        <a href="reports.html">My Reports</a>
+        <a class="active" href="#">Book Appointment</a>
+        <a href="my-appointments.html">My Appointments</a>
+        <a href="medical-records.html">Medical Records</a>
+        <a href="../login.html" id="logoutBtn">Logout</a>
+      </aside>
+      <!-- ===== Main ===== -->
+      <main class="main">
+        <!-- Header -->
+        <header class="header">
+          <h1>Book Appointment</h1>
+          <p>Fill the form below to create a new appointment</p>
+        </header>
+        <!-- ===== Form ===== -->
+        <section class="cards patient-cards">
+          <div class="card form-card patient-form-card">
+            <form id="appointmentForm">
+              <div class="form-group patient-form-group">
+  <label for="department">Department</label>
+  <select id="department" required>
+    <option value="">Select Department</option>
+  </select>
+</div>
+
+<div class="form-group patient-form-group">
+  <label for="doctor">Doctor</label>
+  <select id="doctor" required disabled>
+    <option value="">Select Doctor</option>
+  </select>
+</div>
+
+              <div class="form-group patient-form-group">
+                <label for="date">Appointment Date</label>
+                <input type="date" id="date" required />
+              </div>
+              <div class="form-group patient-form-group">
+                <label for="time">Appointment Time</label>
+                <input type="time" id="time" required />
+              </div>
+              <div class="form-group patient-form-group">
+                <label for="reason">Describe Your Condition</label>
+                <input type="text" id="reason" required  placeholder="Describe your Case..."/>
+              </div>
+              <div class="form-actions patient-form-actions">
+                <button type="submit" class="btn btn-accent">
+                  Save Appointment
+                </button>
+                <a href="patient.html" class="btn btn-danger">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../../modules/create-appointment.js"></script>
+  </body>
+</html>

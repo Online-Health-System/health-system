@@ -1,11 +1,14 @@
-import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
+import { getCurrentUser2 } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
+import { dataInitialized } from "./init.data.js";
 import { checkAccess } from "./auth/auth.js";
+
+// Wait for data to load before running
+await dataInitialized;
 checkAccess(['patient']);
 
 // Try to get logged-in user
 let currentUser = null;
-
 try {
   currentUser = getCurrentUser2();
 } catch (e) {
@@ -26,20 +29,21 @@ if (!currentUser) {
 const currentPatientId = currentUser.id;
 
 // Load hospital data
-const data = Storage.get("hospitalData");
+const data = Storage.get("hospitalDB");
 
 if (!data) {
-  console.error("hospitalData not found");
+  console.error("❌ hospitalData not found - data failed to load!");
+  console.warn("Attempting to use empty data structures instead");
 }
 
 // ===== Doctors Map =====
 const doctorsMap = {};
-data.doctors.forEach(doc => {
+(data?.doctors || []).forEach(doc => {
     doctorsMap[doc.id] = doc.name;
 });
 
 // ===== Appointments =====
-const myAppointments = data.appointments.filter(
+const myAppointments = (data?.appointments || []).filter(
     app => app.patientId === currentPatientId
 );
 
@@ -51,13 +55,11 @@ document.getElementById("upcomingAppointments").innerText =
     myAppointments.filter(app => app.status === "Pending").length;
 // ===== Medical Records Card =====
 
-const myMedicalRecords = data.medicalRecords.filter(
+const myMedicalRecords = (data?.medicalRecords || []).filter(
     record => record.patientId === currentPatientId
 );
 
-document.getElementById("medicalRecordsCount").innerText =
-    myMedicalRecords.length;
-
+document.getElementById("medicalRecordsCount").innerText =myMedicalRecords.length;
 
 // ===== Table =====
 const tbody = document.getElementById("appointmentsBody");
@@ -99,23 +101,7 @@ myAppointments.forEach(app => {
   tbody.appendChild(tr);
 });
 
-/*
-tbody.addEventListener("click", e => {
-  if (e.target.classList.contains("btn-danger")) {
-    const index = e.target.dataset.index;
-
-    if (confirm("Are you sure you want to cancel this appointment?")) {
-      myAppointments[index].status = "Canceled";
-      Storage.save("hospitalData", data);
-      location.reload();
-    }
-  }
-});
-*/
-
-
 // canceling appointemnt with sweet alert 
-
 tbody.addEventListener("click", e => {
   if (e.target.classList.contains("btn-danger")) {
     const index = e.target.dataset.index;
@@ -133,7 +119,7 @@ tbody.addEventListener("click", e => {
     }).then((result) => {
       if (result.isConfirmed) {
         myAppointments[index].status = "Canceled";
-        Storage.save("hospitalData", data);
+        Storage.save("hospitalDB", data);
 
         Swal.fire({
           title: "Canceled!",
@@ -162,7 +148,6 @@ document.querySelectorAll(".clickable-card").forEach(card => {
 
 document.getElementById("logoutBtn").addEventListener("click", (e) => {
   e.preventDefault();
-
   Swal.fire({
     title: "Logout",
     text: "Are you sure?",
@@ -175,8 +160,6 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      Storage.remove("currentUser");
-      window.location.href = "../login.html";
-    }
+window.location.href = "./login.html";   }
   });
 });

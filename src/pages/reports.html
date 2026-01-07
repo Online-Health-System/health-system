@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hospital Dashboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/reports.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/reports.css" />
+    <link rel="icon" type="image/png" href="../assets/images/logo.png" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar"></aside>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <h1>My Reports</h1>
+      </div>
+    </header>
 
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar"></aside>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div id="doctors"></div>
+      <div id="patients"></div>
+      <div id="appointments"></div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">
-      <h1>My Reports</h1>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <div id="doctors"></div>
-    <div id="patients"></div>
-    <div id="appointments"></div>
-  </main>
-
-  <script type="module" src="../../modules/reports.js"></script>
-</body>
+    <script type="module" src="../../modules/reports.js"></script>
+  </body>
 </html>
