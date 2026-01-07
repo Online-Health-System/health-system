@@ -1,209 +1,148 @@
 import { getCurrentUser, checkAccess } from "./auth/auth.js";
 checkAccess(["doctor", "patient"]);
 
-const currentUser = getCurrentUser();
-// if (!currentUser) return;
-
-// const currentUser = { id: 'DOC-101',  role: 'doctor' };
+// const currentUser = getCurrentUser();
+const currentUser = { id: "DOC-101", role: "doctor" };
+// const currentUser = { id: "PAT-201", role: "patient" };
 
 let DB = {};
 
-// ===== Sidebar Rendering =====
+// Sidebar
 function renderSidebar() {
   const sidebar = document.getElementById("sidebar");
+  if (!sidebar) return;
 
-  const commonHeader = `
+  let links = "";
+  // ===== Header =====
+  const header = `
     <h2>
       <img src="../assets/images/logo.png" width="50" height="50">
       Health Care
     </h2>
   `;
 
-  const patientLinks = `
-    <a href="patient.html">My Dashboard</a>
-    <a href="profile.html">My Profile</a>
-    <a href="reports.html" class="active">My Reports</a>
-    <a href="create-appointment.html">Book Appointment</a>
-    <a href="my-appointments.html">My Appointments</a>
-    <a href="medical-records.html">Medical Records</a>
-    <a href="../login.html" id="logoutBtn">Logout</a>
-  `;
+  // ===== Patient Sidebar =====
+  if (currentUser.role === "patient") {
+    links = `
+      <a href="patient.html">My Dashboard</a>
+      <a href="profile.html">My Profile</a>
+      <a href="reports.html" class="active">My Reports</a>
+      <a href="create-appointment.html">Book Appointment</a>
+      <a href="my-appointments.html">My Appointments</a>
+      <a href="medical-records.html">Medical Records</a>
+      <a href="../login.html" id="logoutBtn">Logout</a>
+    `;
+  }
 
-  const doctorLinks = `
-    <a href="" class="doctor-link" data-view="dashboard">Dashboard</a>
-        <a href="" class="doctor-link" data-view="profile">Profile</a>
-        <a href="" class="doctor-link" data-view="appointments">Appointments</a>
-        <a href="" class="doctor-link active" data-view="reports">Reports</a>
-        <a id="logoutBtn">Logout</a>
-  `;
+  // ===== Doctor Sidebar =====
+  if (currentUser.role === "doctor") {
+    links = `
+      <a href="doctor.html">Dashboard</a>
+      <a href="profileDoc.html">Profile</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="reports.html" class="active">Reports</a>
+      <a href="../login.html" id="logoutBtn">Logout</a>
+    `;
+  }
 
-  sidebar.innerHTML =
-    commonHeader +
-    (currentUser.role === "patient" ? patientLinks : doctorLinks);
+  sidebar.innerHTML = header + links;
 }
 
-// ===== Dashboard Rendering =====
-function renderDashboard() {
-  const role = currentUser.role;
 
-  // Doctors
-  const RenderDoctor = () => {
-    let doctorsToShow = [];
-    if (role === "doctor") {
-      doctorsToShow = DB.doctors.filter((d) => d.id === currentUser.id);
-    } else if (role === "patient") {
-      const pat = DB.patients.find((p) => p.id === currentUser.id);
-      if (pat)
-        doctorsToShow = DB.doctors.filter((d) => d.id === pat.assignedDoctorId);
-    }
+// Doctors
+function renderDoctors() {
+  const container = document.getElementById("doctorsContainer");
+  const template = document.getElementById("doctorTemplate");
+  container.innerHTML = "";
 
-    let docHTML = `<div class="glass-table"><h2>Doctors</h2><table>
-      <thead><tr>
-      <th>Name</th><th>Specialty</th><th>Status</th><th>Email</th>
-      <th>Phone</th><th>Clinic Room</th>
-      </tr></thead><tbody>`;
+  let list = [];
 
-    doctorsToShow.forEach((d) => {
-      docHTML += `<tr>
-        <td>${d.name}</td><td>${d.specialty}</td><td>${d.status}</td>
-        <td>${d.email}</td><td>${d.phone}</td><td>${d.clinicRoom}</td>
-      </tr>`;
-    });
+  if (currentUser.role === "doctor") {
+    list = DB.doctors.filter(d => d.id === currentUser.id);
+  } else {
+    const p = DB.patients.find(x => x.id === currentUser.id);
+    if (p) list = DB.doctors.filter(d => d.id === p.assignedDoctorId);
+  }
 
-    docHTML += `</tbody></table></div>`;
-    document.getElementById("doctors").innerHTML = docHTML;
-  };
+  list.forEach(d => {
+    const card = template.content.cloneNode(true);
+    card.querySelector("[data-name]").textContent = d.name;
+    card.querySelector("[data-specialty]").textContent = d.specialty;
+    card.querySelector("[data-status]").textContent = d.status;
+    card.querySelector("[data-email]").textContent = d.email;
+    card.querySelector("[data-phone]").textContent = d.phone;
+    card.querySelector("[data-room]").textContent = d.clinicRoom;
+    container.appendChild(card);
+  });
+}
 
-  // Patients
-  const RenderPatient = () => {
-    let patientsToShow = [];
-    if (role === "doctor") {
-      patientsToShow = DB.patients.filter(
-        (p) => p.assignedDoctorId === currentUser.id
-      );
-    } else if (role === "patient") {
-      const patient = DB.patients.find((p) => p.id === currentUser.id);
-      if (patient) patientsToShow = [patient];
-    }
+// Patients + Visits
+function renderPatients() {
+  const container = document.getElementById("patientsContainer");
+  const template = document.getElementById("patientTemplate");
+  container.innerHTML = "";
 
-    let patHTML = `<div class="glass-table"><h2>Patient Info</h2><table>
-      <thead><tr>
-      <th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Email</th>
-      <th>Blood Type</th><th>Chronic Diseases</th><th>Assigned Doctor</th><th>Visits</th>
-      </tr></thead><tbody>`;
+  let list = [];
 
-    patientsToShow.forEach((p) => {
-      const assignedDoc = DB.doctors.find((d) => d.id === p.assignedDoctorId);
-      let visitsHTML = "";
+  if (currentUser.role === "doctor") {
+    list = DB.patients.filter(p => p.assignedDoctorId === currentUser.id);
+  } else {
+    const p = DB.patients.find(x => x.id === currentUser.id);
+    if (p) list = [p];
+  }
+
+  list.forEach(p => {
+    const doc = DB.doctors.find(d => d.id === p.assignedDoctorId);
+    const card = template.content.cloneNode(true);
+
+    card.querySelector("[data-name]").textContent = p.name;
+    card.querySelector("[data-age]").textContent = p.age;
+    card.querySelector("[data-gender]").textContent = p.gender;
+    card.querySelector("[data-blood]").textContent = p.bloodType;
+    card.querySelector("[data-phone]").textContent = p.phone;
+    card.querySelector("[data-email]").textContent = p.email;
+    card.querySelector("[data-chronic]").textContent =
+      p.chronicDiseases.length ? p.chronicDiseases.join(", ") : "-";
+    card.querySelector("[data-doctor]").textContent = doc ? doc.name : "-";
+
+    const visitsBox = card.querySelector("[data-visits]");
+
+    if (!p.visits.length) {
+      visitsBox.innerHTML = "<p>No visits yet</p>";
+    } else {
       p.visits.forEach((v, i) => {
-        visitsHTML += `
-        <div class="accordion">
-          <div class="accordion-header">Visit ${i + 1}: ${v.date}</div>
-          <div class="accordion-content">
-            <table>
-              <tr><th>Reason</th><td>${v.reason}</td></tr>
-              <tr><th>Diagnosis</th><td>${v.diagnosis}</td></tr>
-              <tr><th>Treatment</th><td>${v.treatment}</td></tr>
-              <tr><th>Prescriptions</th><td>${v.prescriptions.join(
-          ", "
-        )}</td></tr>
-              <tr><th>Follow-up</th><td>${v.followUp}</td></tr>
-            </table>
+        visitsBox.innerHTML += `
+          <div class="visit-card">
+            <div class="visit-header">
+              <span class="badge">Visit #${i + 1}</span>
+              <span>${v.date}</span>
+            </div>
+            <p>Reason: ${v.reason}</p>
+            <p>Diagnosis: ${v.diagnosis}</p>
+            <p>Treatment: ${v.treatment}</p>
+            <p>Prescriptions: ${v.prescriptions.join(", ")}</p>
+            <p>Follow Up: ${v.followUp}</p>
           </div>
-        </div>`;
+        `;
       });
+    }
 
-      patHTML += `<tr>
-        <td>${p.name}</td><td>${p.age}</td><td>${p.gender}</td>
-        <td>${p.phone}</td><td>${p.email}</td><td>${p.bloodType}</td>
-        <td>${p.chronicDiseases.join(", ") || "-"}</td>
-        <td>${assignedDoc ? assignedDoc.name : "-"}</td>
-        <td>${visitsHTML}</td>
-      </tr>`;
-    });
-
-    patHTML += `</tbody></table></div>`;
-    document.getElementById("patients").innerHTML = patHTML;
-  };
-
-  // Appointments
-  const RenderAppointments = () => {
-    let appsToShow = [];
-    if (role === "doctor")
-      appsToShow = DB.appointments.filter((a) => a.doctorId === currentUser.id);
-    else if (role === "patient")
-      appsToShow = DB.appointments.filter(
-        (a) => a.patientId === currentUser.id
-      );
-
-    let appHTML = `<div class="glass-table"><h2>Appointments</h2><table>
-      <thead><tr>
-      <th>Patient</th><th>Doctor</th><th>Department</th><th>Date</th><th>Time</th><th>Status</th>
-      </tr></thead><tbody>`;
-
-    appsToShow.forEach((a) => {
-      const pat = DB.patients.find((p) => p.id === a.patientId);
-      const doc = DB.doctors.find((d) => d.id === a.doctorId);
-      appHTML += `<tr>
-        <td>${pat ? pat.name : a.patientId}</td>
-        <td>${doc ? doc.name : a.doctorId}</td>
-        <td>${a.department}</td>
-        <td>${a.date}</td>
-        <td>${a.time}</td>
-        <td>${a.status}</td>
-      </tr>`;
-    });
-
-    appHTML += `</tbody></table></div>`;
-    document.getElementById("appointments").innerHTML = appHTML;
-  };
-
-  // Accordion
-  const RenderAccordion = () => {
-    document.querySelectorAll(".accordion-header").forEach((header) => {
-      header.onclick = () => {
-        const content = header.nextElementSibling;
-        content.style.maxHeight = content.style.maxHeight
-          ? null
-          : content.scrollHeight + "px";
-      };
-    });
-  };
-
-  RenderDoctor();
-  RenderPatient();
-  RenderAppointments();
-  RenderAccordion();
+    container.appendChild(card);
+  });
 }
-// ===== Fetch Data =====
+// ===== Print =====
+const printBtn = document.getElementById("printBtn");
+printBtn.addEventListener("click", () => {
+  window.print();
+});
+
+// Load
 fetch("../../Data/data.json")
-  .then((res) => res.json())
-  .then((data) => {
+  .then(r => r.json())
+  .then(data => {
     DB = data;
     renderSidebar();
-    renderDashboard();
-  })
-  .catch((err) => console.error(err));
-
-
-document.addEventListener("click", function (e) {
-  if (e.target.id === "logoutBtn") {
-    e.preventDefault();
-
-    Swal.fire({
-      title: "Logout",
-      text: "Are you sure?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonText: "Yes",
-      cancelButtonText: "No",
-      customClass: {
-        popup: "swal-navy"
-      }
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.href = "./login.html";
-      }
-    });
-  }
-});
+    renderDoctors();
+    renderPatients();
+    renderAppointments();
+  });

@@ -1,36 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hospital Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/reports.css" />
-    <link rel="icon" type="image/png" href="../assets/images/logo.png" />
-  </head>
-  <body>
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar"></aside>
-    <!-- Header -->
-    <header class="header">
-      <div class="logo">
-        <h1>My Reports</h1>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <title>Reports | Health Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <div id="doctors"></div>
-      <div id="patients"></div>
-      <div id="appointments"></div>
-    </main>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="../css/reports.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
 
-    <script type="module" src="../../modules/reports.js"></script>
-  </body>
+<aside class="sidebar" id="sidebar"></aside>
+<header class="header">
+  <h3>Reports</h3>
+  <span id="currentRole"></span>
+  <button id="printBtn" class="print-btn">Print</button>
+</header>
+
+<main class="main-content">
+
+  <section class="glass-card">
+    <h2>Doctors</h2>
+    <div class="cards-grid" id="doctorsContainer"></div>
+  </section>
+
+  <section class="glass-card">
+    <h2>Patients Reports</h2>
+    <div class="patients-list" id="patientsContainer"></div>
+  </section>
+</main>
+
+<!-- Doctor -->
+<template id="doctorTemplate">
+  <div class="data-card">
+    <h3 data-name></h3>
+    <p>Specialty: <span data-specialty></span></p>
+    <p>Status: <span data-status></span></p>
+    <p>Email: <span data-email></span></p>
+    <p>Phone: <span data-phone></span></p>
+    <p>Room: <span data-room></span></p>
+  </div>
+</template>
+
+<!-- Patient -->
+<template id="patientTemplate">
+  <div class="patient-card">
+    <h3 data-name></h3>
+
+    <div class="patient-meta">
+      <p>Age: <span data-age></span></p>
+      <p>Gender: <span data-gender></span></p>
+      <p>Blood: <span data-blood></span></p>
+    </div>
+
+    <div class="patient-meta">
+      <p>Phone: <span data-phone></span></p>
+      <p>Email: <span data-email></span></p>
+    </div>
+
+    <p>Chronic: <span data-chronic></span></p>
+    <p>Doctor: <span data-doctor></span></p>
+
+    <div class="visits-section">
+      <h4>Visits History</h4>
+      <div class="visits-list" data-visits></div>
+    </div>
+  </div>
+</template>
+<script type="module" src="../../modules/reports.js"></script>
+</body>
 </html>
