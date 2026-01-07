@@ -239,7 +239,23 @@ export function loadDoctorProfile(container) {
     return doctorsProfileHTML;
 }
 
+export function cancelSameSlotAppointments(confirmedAppId) {
+  const confirmedApp = DB.appointments.find(app => app.id === confirmedAppId);
+  if (!confirmedApp) return;
 
+  DB.appointments.forEach(app => {
+    if (
+      app.id !== confirmedAppId &&
+      app.doctorId === confirmedApp.doctorId &&
+      app.date === confirmedApp.date &&
+      app.time === confirmedApp.time
+    ) {
+      app.status = "Cancelled";
+    }
+  });
+
+  saveDB();
+}
 export function loadAppointments(container) {const appointmentsHTML =
   appointmentsDataArr.length === 0
     ? `<tr><td colspan="${container ? 5 : 4}" align="center">No Appointments.</td></tr>`:
@@ -251,6 +267,7 @@ export function loadAppointments(container) {const appointmentsHTML =
         <td>${patient ? patient.name : "-"}</td>
         <td>${app.date ? app.date : "-"}</td>
         <td>${app.time ? app.time : "-"}</td>
+        <td>${app.reason ? app.reason : "-"}</td>
         <td><span class="badge ${app.status === "Pending" ? "badge-warning" : app.status === "Confirmed" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
         ${container 
                     ? `<td>
@@ -274,7 +291,7 @@ export function loadAppointments(container) {const appointmentsHTML =
       <table>
         <thead>
           <tr>
-            <th>Patient Name</th><th>Date</th><th>time</th><th>Status</th>
+            <th>Patient Name</th><th>Date</th><th>time</th><th>Reason</th><th>Status</th>
             ${container ? `<th>Actions</th>` : ``}
           </tr>
         </thead>
@@ -282,6 +299,7 @@ export function loadAppointments(container) {const appointmentsHTML =
       </table>
     </section>
   `;
+  
     if (container) container.innerHTML = appointmentsFullHTML;
     return appointmentsFullHTML;
 }

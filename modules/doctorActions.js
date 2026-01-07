@@ -1,4 +1,6 @@
-import { DB,saveDB, loadAppointments,patients,appointmentsDataArr,renderPatientsTable,loadDoctorProfile} from "./doctor.js";
+import { DB,saveDB, loadAppointments,patients,appointmentsDataArr,renderPatientsTable,loadDoctorProfile,
+  cancelSameSlotAppointments
+} from "./doctor.js";
 
 const doctorMain = document.getElementById("doctorMain")
 
@@ -15,6 +17,8 @@ function editStatus({ list, id, onReload }) {
   }).then(r => {
     if (!r.isConfirmed || r.value === item.status) return;
     item.status = r.value;
+    if (item.status === "approved")
+      cancelSameSlotAppointments(item.id);
     saveDB();
     onReload();
     Swal.fire({ title: "Updated!", text: "Status Updated Successfully", icon: "success", customClass: { popup: "swal-navy" } });

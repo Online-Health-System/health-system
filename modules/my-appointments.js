@@ -32,7 +32,7 @@ if (!currentUser) {
 
 const currentPatientId = currentUser.id;
 
-const data = Storage.get("hospitalData");
+const data = Storage.get("hospitalDB");
 
 // ===== Auto-cancel expired pending appointments =====
 const now = new Date();
@@ -147,7 +147,7 @@ tbody.addEventListener("click", e => {
     }).then((result) => {
       if (result.isConfirmed) {
         myAppointments[index].status = "Canceled";
-        Storage.save("hospitalData", data);
+        Storage.save("hospitalDB", data);
 
         Swal.fire({
           title: "Canceled!",

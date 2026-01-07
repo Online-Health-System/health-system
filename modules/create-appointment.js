@@ -177,7 +177,7 @@ if (sameTimeConflict) {
   };
 
   data.appointments.push(newAppointment);
-  Storage.save("hospitalData", data);
+  Storage.save("hospitalDB", data);
 
 
 Swal.fire({

@@ -325,7 +325,9 @@
       "phone": "+20 101 555 2345",
       "email": "mohamed.adel@gmail.com",
       "bloodType": "A+",
-      "chronicDiseases": ["Diabetes"],
+      "chronicDiseases": [
+        "Diabetes"
+      ],
       "password": "123",
       "assignedDoctorId": "DOC-101",
       "visits": [
@@ -411,7 +413,9 @@
       "email": "youssef.samir@gmail.com",
       "bloodType": "B-",
       "password": "123",
-      "chronicDiseases": ["Hypertension"],
+      "chronicDiseases": [
+        "Hypertension"
+      ],
       "assignedDoctorId": "DOC-103",
       "visits": [
         {
@@ -451,7 +455,9 @@
       "email": "salma.nabil@gmail.com",
       "bloodType": "AB+",
       "password": "123",
-      "chronicDiseases": ["Asthma"],
+      "chronicDiseases": [
+        "Asthma"
+      ],
       "assignedDoctorId": "DOC-101",
       "visits": [
         {
@@ -479,7 +485,9 @@
       "email": "hassan.mostafa@gmail.com",
       "bloodType": "A-",
       "password": "123",
-      "chronicDiseases": ["Heart Disease"],
+      "chronicDiseases": [
+        "Heart Disease"
+      ],
       "assignedDoctorId": "DOC-105",
       "visits": [
         {
@@ -532,7 +540,9 @@
       "phone": "+20 111 555 7788",
       "email": "omar.saeed@gmail.com",
       "bloodType": "B+",
-      "chronicDiseases": ["Anemia"],
+      "chronicDiseases": [
+        "Anemia"
+      ],
       "password": "123",
       "assignedDoctorId": "DOC-107",
       "visits": [
@@ -561,7 +571,9 @@
       "email": "nourhan.adel@gmail.com",
       "bloodType": "AB-",
       "password": "123",
-      "chronicDiseases": ["Migraine"],
+      "chronicDiseases": [
+        "Migraine"
+      ],
       "assignedDoctorId": "DOC-108",
       "visits": [
         {
@@ -589,7 +601,7 @@
       "department": "Cardiology",
       "date": "2025-01-03",
       "time": "10:30",
-      "reason": "",
+      "reason": "Heart checkup and blood pressure monitoring",
       "status": "Confirmed"
     },
     {
@@ -599,7 +611,7 @@
       "department": "Dermatology",
       "date": "2025-01-03",
       "time": "13:00",
-      "reason": "",
+      "reason": "Skin rash evaluation and treatment",
       "status": "Pending"
     },
     {
@@ -609,7 +621,7 @@
       "department": "Cardiology",
       "date": "2025-01-04",
       "time": "11:00",
-      "reason": "",
+      "reason": "Follow-up for heart condition",
       "status": "Pending"
     },
     {
@@ -619,7 +631,7 @@
       "department": "Cardiology",
       "date": "2025-01-04",
       "time": "09:30",
-      "reason": "",
+      "reason": "Post-surgery cardiac follow-up",
       "status": "Confirmed"
     },
     {
@@ -628,8 +640,8 @@
       "doctorId": "DOC-106",
       "department": "Dermatology",
       "date": "2025-01-05",
-      "reason": "",
       "time": "14:00",
+      "reason": "Routine skin examination",
       "status": "Pending"
     },
     {
@@ -639,7 +651,7 @@
       "department": "Pediatrics",
       "date": "2025-01-05",
       "time": "10:00",
-      "reason": "",
+      "reason": "Child growth and health assessment",
       "status": "Confirmed"
     },
     {
@@ -649,7 +661,7 @@
       "department": "Neurology",
       "date": "2025-01-06",
       "time": "12:30",
-      "reason": "",
+      "reason": "Migraine evaluation and treatment plan",
       "status": "Pending"
     }
   ],

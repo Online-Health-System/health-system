@@ -19,15 +19,10 @@ This project simulates an online healthcare platform where:
 ```text
 Online-Health-System/
 ├── data/
-<<<<<<< HEAD
-│   └── data.js
-│
-=======
 │   ├── appointments.js
 │   ├── data.json
 │   ├── storage.js
 │   └── users.js
->>>>>>> origin/main
 ├── modules/
 │   ├── auth/
 │   │   ├── auth.js
