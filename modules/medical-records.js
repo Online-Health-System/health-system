@@ -25,7 +25,7 @@ if (!currentUser) {
 }
 
 const currentPatientId = currentUser.id;
-const data = Storage.get("hospitalData");
+const data = Storage.get("hospitalDB");
 const tbody = document.getElementById("recordsBody");
 
 if (!data || !data.medicalRecords) {

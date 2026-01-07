@@ -34,15 +34,19 @@
           <div class="card form-card patient-form-card">
             <form id="appointmentForm">
               <div class="form-group patient-form-group">
-                <label for="doctor">Doctor</label>
-                <select id="doctor" required>
-                  <option value="">Select Doctor</option>
-                  <option value="DOC-101">Dr. Ahmed Hassan (Cardiology)</option>
-                  <option value="DOC-102">Dr. Sara Ali (Dermatology)</option>
-                  <option value="DOC-103">Dr. Omar Khaled (Pediatrics)</option>
-                  <option value="DOC-104">Dr. Mona Youssef (Neurology)</option>
-                </select>
-              </div>
+  <label for="department">Department</label>
+  <select id="department" required>
+    <option value="">Select Department</option>
+  </select>
+</div>
+
+<div class="form-group patient-form-group">
+  <label for="doctor">Doctor</label>
+  <select id="doctor" required disabled>
+    <option value="">Select Doctor</option>
+  </select>
+</div>
+
               <div class="form-group patient-form-group">
                 <label for="date">Appointment Date</label>
                 <input type="date" id="date" required />
@@ -50,6 +54,10 @@
               <div class="form-group patient-form-group">
                 <label for="time">Appointment Time</label>
                 <input type="time" id="time" required />
+              </div>
+              <div class="form-group patient-form-group">
+                <label for="reason">Describe Your Condition</label>
+                <input type="text" id="reason" required  placeholder="Describe your Case..."/>
               </div>
               <div class="form-actions patient-form-actions">
                 <button type="submit" class="btn btn-accent">

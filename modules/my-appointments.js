@@ -34,6 +34,26 @@ const currentPatientId = currentUser.id;
 
 const data = Storage.get("hospitalData");
 
+// ===== Auto-cancel expired pending appointments =====
+const now = new Date();
+let dataUpdated = false;
+
+data.appointments.forEach(app => {
+  if (app.status === "Pending") {
+    const appointmentDateTime = new Date(`${app.date}T${app.time}`);
+
+    if (appointmentDateTime < now) {
+      app.status = "Canceled";
+      dataUpdated = true;
+    }
+  }
+});
+
+// Save only if something changed
+if (dataUpdated) {
+  Storage.save("hospitalData", data);
+}
+
 const tbody = document.getElementById("appointmentsBody");
 
 
@@ -162,6 +182,7 @@ document.getElementById("logoutBtn").addEventListener("click", (e) => {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-window.location.href = "./login.html";    }
+ window.location.href = "/src/pages/login.html";  
+    }
   });
 });
