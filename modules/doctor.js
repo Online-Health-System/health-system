@@ -1,4 +1,5 @@
-import { handleProfileUpdate,handleMedicalNotes} from "./doctorActions.js";
+import { handleProfileUpdate, handleMedicalNotes } from "./doctorActions.js";
+import { renderDoctors, renderPatients } from "./reports.js";
 export let DB = {};
 const doctorMain = document.getElementById("doctorMain");
 const links = document.querySelectorAll(".doctor-link");
@@ -10,74 +11,76 @@ let currentDoc = null;
 export const savedDB = localStorage.getItem("hospitalDB");
 
 links.forEach((link) => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault();
-        links.forEach((l) => l.classList.remove("active"));
-        link.classList.add("active");
-        const view = link.dataset.view;
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    links.forEach((l) => l.classList.remove("active"));
+    link.classList.add("active");
+    const view = link.dataset.view;
 
-        switch (view) {
-            case "dashboard":
-                loadDashboard(doctorMain);
-                break;
-            case "profile":
-                loadDoctorProfile(doctorMain);
-                handleProfileUpdate();
-                break;
-            case "appointments":
-                loadAppointments(doctorMain);
-                break;
-            case "reports":
-                goToReportsPage();
-                break;
-        }
-    });
+    switch (view) {
+      case "dashboard":
+        loadDashboard(doctorMain);
+        break;
+      case "profile":
+        loadDoctorProfile(doctorMain);
+        handleProfileUpdate();
+        break;
+      case "appointments":
+        loadAppointments(doctorMain);
+        break;
+      case "reports":
+        loadReports(doctorMain);
+        renderDoctors();
+        renderPatients();
+        break;
+    }
+  });
 });
 
 if (savedDB) {
-    DB = JSON.parse(savedDB);
-    if (!DB.doctors) DB.doctors = [];
-    if (!DB.patients) DB.patients = [];
-    if (!DB.doctorRequests) DB.doctorRequests = [];
-    if (!DB.appointments) DB.appointments = [];
-    getCurrentDoctorInfo();
-    loadDashboard(doctorMain);
+  DB = JSON.parse(savedDB);
+  if (!DB.doctors) DB.doctors = [];
+  if (!DB.patients) DB.patients = [];
+  if (!DB.doctorRequests) DB.doctorRequests = [];
+  if (!DB.appointments) DB.appointments = [];
+  getCurrentDoctorInfo();
+  loadDashboard(doctorMain);
 } else {
-    fetch("../../Data/data.json")
-        .then((res) => res.json())
-        .then((data) => {
-            DB = data;
-            if (!DB.doctors) DB.doctors = [];
-            if (!DB.patients) DB.patients = [];
-            if (!DB.doctorRequests) DB.doctorRequests = [];
-            if (!DB.appointments) DB.appointments = [];
-            localStorage.setItem("hospitalDB", JSON.stringify(DB));
-            getCurrentDoctorInfo();
-            loadDashboard(doctorMain);
-        })
-        .catch((err) => console.error(err));
+  fetch("../../Data/data.json")
+    .then((res) => res.json())
+    .then((data) => {
+      DB = data;
+      if (!DB.doctors) DB.doctors = [];
+      if (!DB.patients) DB.patients = [];
+      if (!DB.doctorRequests) DB.doctorRequests = [];
+      if (!DB.appointments) DB.appointments = [];
+      localStorage.setItem("hospitalDB", JSON.stringify(DB));
+      getCurrentDoctorInfo();
+      loadDashboard(doctorMain);
+    })
+    .catch((err) => console.error(err));
 }
 
 export function saveDB() {
-    localStorage.setItem("hospitalDB", JSON.stringify(DB));
+  localStorage.setItem("hospitalDB", JSON.stringify(DB));
 }
 
 export function getCurrentDoctorInfo() {
-    patients.push(...DB.patients.filter(p => p.assignedDoctorId === currentUser.id));
-    appointmentsDataArr.push(...DB.appointments.filter(a => a.doctorId === currentUser.id));
-    appointmentsDataArr.sort((a, b) => {
-        const dateA = new Date(a.date + ' ' + a.time);
-        const dateB = new Date(b.date + ' ' + b.time);
-        return dateB - dateA;
-    });
-    appointmentsDataArr.forEach(app => {
-        if (app.status === 'Confirmed') confirmedCount++;
-        else if (app.status === 'Pending') pendingCount++;
-    });
-    currentDoc = DB.doctors.find(d => d.id === currentUser.id);
+  patients.push(...DB.patients.filter(p => p.assignedDoctorId === currentUser.id));
+  appointmentsDataArr.push(...DB.appointments.filter(a => a.doctorId === currentUser.id));
+  appointmentsDataArr.sort((a, b) => {
+    const dateA = new Date(a.date + ' ' + a.time);
+    const dateB = new Date(b.date + ' ' + b.time);
+    return dateB - dateA;
+  });
+  appointmentsDataArr.forEach(app => {
+    if (app.status === 'Confirmed') confirmedCount++;
+    else if (app.status === 'Pending') pendingCount++;
+  });
+  currentDoc = DB.doctors.find(d => d.id === currentUser.id);
 }
-export function loadDashboard(container,patientsList=patients) {
-    const dashboardHTML = `
+export function loadDashboard(container, patientsList = patients) {
+  const dashboardHTML = `
   <header class="header docheader">
           <div>
             <h1>Doctor Dashboard</h1>
@@ -134,19 +137,20 @@ export function loadDashboard(container,patientsList=patients) {
         </section>
         </div>
   `;
-    if (container) container.innerHTML = dashboardHTML;
-      renderPatientsTable(patientsList);
+  if (container) container.innerHTML = dashboardHTML;
+  renderPatientsTable(patientsList);
 
-    return dashboardHTML;
+  return dashboardHTML;
 }
+
 export function renderPatientsTable(patientsList) {
   const tbody = document.querySelector('#patientsTable tbody');
   tbody.innerHTML =
     patientsList.length === 0
       ? `<tr><td colspan="7" align="center">No patients found.</td></tr>`
       : patientsList
-          .map(
-            (patient) => `
+        .map(
+          (patient) => `
     <tr data-current-patient-id="${patient.id}">
       <td>${patient.name}</td>
       <td>${patient.age}</td>
@@ -157,13 +161,13 @@ export function renderPatientsTable(patientsList) {
       <td><button class="btn btn-accent show_medical">View</button></td>
     </tr>
   `
-          )
-          .join('');
-    handleMedicalNotes();
+        )
+        .join('');
+  handleMedicalNotes();
 }
 
 export function loadDoctorProfile(container) {
-    const doctorsProfileHTML = `<header class="header">
+  const doctorsProfileHTML = `<header class="header">
         <h1>My Profile</h1>
         <p>Update your personal information</p>
       </header>
@@ -235,8 +239,8 @@ export function loadDoctorProfile(container) {
         </div>
       </section>
   `;
-    if (container) container.innerHTML = doctorsProfileHTML;
-    return doctorsProfileHTML;
+  if (container) container.innerHTML = doctorsProfileHTML;
+  return doctorsProfileHTML;
 }
 
 export function cancelSameSlotAppointments(confirmedAppId) {
@@ -256,33 +260,34 @@ export function cancelSameSlotAppointments(confirmedAppId) {
 
   saveDB();
 }
-export function loadAppointments(container) {const appointmentsHTML =
-  appointmentsDataArr.length === 0
-    ? `<tr><td colspan="${container ? 5 : 4}" align="center">No Appointments.</td></tr>`:
-     appointmentsDataArr
+export function loadAppointments(container) {
+  const appointmentsHTML =
+    appointmentsDataArr.length === 0
+      ? `<tr><td colspan="${container ? 5 : 4}" align="center">No Appointments.</td></tr>` :
+      appointmentsDataArr
         .map((app) => {
-            const patient = DB.patients.find((p) => p.id === app.patientId);
-            return `
+          const patient = DB.patients.find((p) => p.id === app.patientId);
+          return `
       <tr>
         <td>${patient ? patient.name : "-"}</td>
         <td>${app.date ? app.date : "-"}</td>
         <td>${app.time ? app.time : "-"}</td>
         <td>${app.reason ? app.reason : "-"}</td>
         <td><span class="badge ${app.status === "Pending" ? "badge-warning" : app.status === "Confirmed" ? "badge-success" : "badge-danger"}">${app.status}</span></td>
-        ${container 
-                    ? `<td>
+        ${container
+              ? `<td>
       <div class="table-actions">
         <button class="btn btn-accent" onclick="editAppointment('${app.id}')">Edit</button>
         <button class="btn btn-danger" onclick="deleteAppointment('${app.id}')">Cancel</button>
       </div>
     </td>`
-                    : ``}
+              : ``}
       </tr>
-    `; 
+    `;
         })
         .join("");
 
-    const appointmentsFullHTML = `
+  const appointmentsFullHTML = `
     <div class="header">
       ${container ? `<h1>Appointments</h1>` : `<h2>Appointments</h2>`}
       <p>Manage your daily and upcoming schedule</p>
@@ -299,11 +304,77 @@ export function loadAppointments(container) {const appointmentsHTML =
       </table>
     </section>
   `;
-  
-    if (container) container.innerHTML = appointmentsFullHTML;
-    return appointmentsFullHTML;
+
+  if (container) container.innerHTML = appointmentsFullHTML;
+  return appointmentsFullHTML;
 }
 
-function goToReportsPage() {
-    window.location.href = "reports.html";
+function loadReports(container) {
+  const reportsHTML = `
+  <link rel="stylesheet" href="../css/reports.css">
+  <header class="header" style =" margin: 0 auto;" >
+  <h3>Reports</h3>
+  <span id="currentRole"></span>
+  <button id="printBtn2" class="print-btn">Print</button>
+</header>
+<main class="main-content" style =" margin: 0 auto;" >
+
+  <section class="glass-card">
+    <h2>Doctors</h2>
+    <div class="cards-grid" id="doctorsContainer"></div>
+  </section>
+
+  <section class="glass-card">
+    <h2>Patients Reports</h2>
+    <div class="patients-list" id="patientsContainer"></div>
+  </section>
+</main>
+
+<!-- Doctor -->
+<template id="doctorTemplate">
+  <div class="data-card">
+    <h3 data-name></h3>
+    <p>Specialty: <span data-specialty></span></p>
+    <p>Status: <span data-status></span></p>
+    <p>Email: <span data-email></span></p>
+    <p>Phone: <span data-phone></span></p>
+    <p>Room: <span data-room></span></p>
+  </div>
+</template>
+
+<!-- Patient -->
+<template id="patientTemplate">
+  <div class="patient-card">
+    <h3 data-name></h3>
+
+    <div class="patient-meta">
+      <p>Age: <span data-age></span></p>
+      <p>Gender: <span data-gender></span></p>
+      <p>Blood: <span data-blood></span></p>
+    </div>
+
+    <div class="patient-meta">
+      <p>Phone: <span data-phone></span></p>
+      <p>Email: <span data-email></span></p>
+    </div>
+
+    <p>Chronic: <span data-chronic></span></p>
+    <p>Doctor: <span data-doctor></span></p>
+
+    <div class="visits-section">
+      <h4>Visits History</h4>
+      <div class="visits-list" data-visits></div>
+    </div>
+  </div>
+</template>
+  `
+  const printBtn = document.getElementById("printBtn2");
+  if (printBtn) {
+    printBtn.addEventListener("click", () => {
+      window.print();
+    });
+  }
+  if (container) container.innerHTML = reportsHTML;
+  return reportsHTML;
 }
+

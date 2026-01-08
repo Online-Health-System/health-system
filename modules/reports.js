@@ -1,8 +1,8 @@
 import { getCurrentUser, checkAccess } from "./auth/auth.js";
 checkAccess(["doctor", "patient"]);
 
-// const currentUser = getCurrentUser();
-const currentUser = { id: "DOC-101", role: "doctor" };
+const currentUser = getCurrentUser();
+// const currentUser = { id: "DOC-101", role: "doctor" };
 // const currentUser = { id: "PAT-201", role: "patient" };
 
 let DB = {};
@@ -30,7 +30,7 @@ function renderSidebar() {
       <a href="create-appointment.html">Book Appointment</a>
       <a href="my-appointments.html">My Appointments</a>
       <a href="medical-records.html">Medical Records</a>
-      <a href="../login.html" id="logoutBtn">Logout</a>
+      <a href="../pages/login.html" id="logoutBtn">Logout</a>
     `;
   }
 
@@ -50,7 +50,7 @@ function renderSidebar() {
 
 
 // Doctors
-function renderDoctors() {
+export function renderDoctors() {
   const container = document.getElementById("doctorsContainer");
   const template = document.getElementById("doctorTemplate");
   container.innerHTML = "";
@@ -77,7 +77,7 @@ function renderDoctors() {
 }
 
 // Patients + Visits
-function renderPatients() {
+export function renderPatients() {
   const container = document.getElementById("patientsContainer");
   const template = document.getElementById("patientTemplate");
   container.innerHTML = "";
