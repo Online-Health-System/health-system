@@ -1,8 +1,8 @@
 import { getCurrentUser, checkAccess } from "./auth/auth.js";
 checkAccess(["doctor", "patient"]);
 
-// const currentUser = getCurrentUser();
-const currentUser = { id: "DOC-101", role: "doctor" };
+const currentUser = getCurrentUser();
+// const currentUser = { id: "DOC-101", role: "doctor" };
 // const currentUser = { id: "PAT-201", role: "patient" };
 
 let DB = {};
@@ -146,3 +146,22 @@ fetch("../../Data/data.json")
     renderPatients();
     renderAppointments();
   });
+
+    document.getElementById("logoutBtn").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  Swal.fire({
+    title: "Logout",
+    text: "Are you sure?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+    customClass: {
+      popup: "swal-navy"
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+window.location.href = "./login.html";     }
+  });
+});

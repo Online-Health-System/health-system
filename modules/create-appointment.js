@@ -1,5 +1,5 @@
 // create-appointment.js
-import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
+import { getCurrentUser  } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
 import { dataInitialized } from "./init.data.js";
 import { checkAccess } from "./auth/auth.js";
@@ -12,7 +12,7 @@ checkAccess(['patient']);
 let currentUser = null;
 
 try {
-  currentUser = getCurrentUser2();
+  currentUser = getCurrentUser();
 } catch (e) {
   currentUser = null;
 }
@@ -30,7 +30,7 @@ if (!currentUser) {
 const currentPatientId = currentUser.id;
 
 // Get hospital data
-const data = Storage.get("hospitalData");
+const data = Storage.get("hospitalDB");
 const departments = data.departments;
 const doctors = data.doctors;
 
@@ -49,7 +49,7 @@ departments.forEach(dept => {
 departmentSelect.addEventListener("change", function () {
   const departmentId = this.value;
 
-  doctorSelect.innerHTML = `<option value="">Select Doctor</option>`;
+  doctorSelect.innerHTML = <option value="">Select Doctor</option>;
   doctorSelect.disabled = true;
 
   if (!departmentId) return;
@@ -144,24 +144,7 @@ if (sameDoctorSameDay) {
 }
 
 // Rule 2:Same patient can't book same any doctor at the same time
-const sameTimeConflict = data.appointments.some(app =>
-  app.date === date &&
-  app.time === time &&
-  app.status !== "Canceled"
-);
 
-if (sameTimeConflict) {
-  Swal.fire({
-    title: "Time Slot Unavailable",
-    text: "This time slot is already booked. Please choose another time.",
-    icon: "error",
-    confirmButtonText: "Choose another time",
-    customClass: {
-      popup: "swal-navy"
-    }
-  });
-  return;
-}
 
 
 

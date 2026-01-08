@@ -1,4 +1,4 @@
-import { getCurrentUser, getCurrentUser2 } from "./auth/auth.js";
+import { getCurrentUser } from "./auth/auth.js";
 import { Storage } from "../Data/storage.js";
 import { dataInitialized } from "./init.data.js";
 import { checkAccess } from "./auth/auth.js";
@@ -10,7 +10,7 @@ checkAccess(["patient"]);
 // Try to get logged-in user
 let currentUser = null;
 try {
-  currentUser = getCurrentUser2();
+  currentUser = getCurrentUser();
 } catch (e) {
   currentUser = null;
 }
