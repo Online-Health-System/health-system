@@ -58,8 +58,6 @@ if (signupForm) {
             Swal.fire({ title: "Error!", text: "Passwords do not match.", icon: "error" });
             return;
         }
-
-        // التعديل هنا: Regex أكثر مرونة يقبل أي رمز خاص
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
         
         if (!passwordRegex.test(password)) {
