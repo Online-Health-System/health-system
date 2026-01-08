@@ -17,8 +17,10 @@ function editStatus({ list, id, onReload }) {
   }).then(r => {
     if (!r.isConfirmed || r.value === item.status) return;
     item.status = r.value;
-    if (item.status === "approved")
+    if (item.status === "approved"){
+      DB.patients.find(p => p.id === item.patientId).assignedDoctorId = item.doctorId;
       cancelSameSlotAppointments(item.id);
+    }
     saveDB();
     onReload();
     Swal.fire({ title: "Updated!", text: "Status Updated Successfully", icon: "success", customClass: { popup: "swal-navy" } });
@@ -48,6 +50,34 @@ function deleteData({ list, id, onReload }) {
     });
   });
 }
+function cancelItem({ list, id, onReload }) {
+  const item = list.find(i => i.id === id);
+  if (!item) return;
+
+  Swal.fire({
+    title: "Cancel Appointment?",
+    text: "The appointment will be marked as cancelled",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonText: "Yes, Cancel",
+    cancelButtonText: "No",
+    customClass: { popup: "swal-navy" }
+  }).then(r => {
+    if (!r.isConfirmed) return;
+
+    item.status = "Cancelled";
+    saveDB();
+    onReload();
+
+    Swal.fire({
+      title: "Cancelled",
+      text: "Appointment has been cancelled",
+      icon: "success",
+      customClass: { popup: "swal-navy" }
+    });
+  });
+}
+
 export function handleProfileUpdate() {
   const profileForm = document.getElementById("profileForm");
   const currentDoc = DB.doctors.find(d => d.id === JSON.parse(localStorage.getItem("currentUser")).id);
@@ -166,7 +196,7 @@ export function handleMedicalNotes() {
   });
 }
 
-
+window.cancelAppointment = (id) => cancelItem({ list: appointmentsDataArr, id, onReload: () => loadAppointments(doctorMain) });
 window.deleteAppointment = (id) => deleteData({ list: appointmentsDataArr, id, onReload: () => loadAppointments(doctorMain) });
 window.editAppointment = (id) => editStatus({ list: appointmentsDataArr, id, onReload: () => loadAppointments(doctorMain) });
 window.saveAppointment = (id) => saveData({ list: DB.doctors, id, onReload: () => loadAppointments(doctorMain) });

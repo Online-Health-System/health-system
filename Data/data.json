@@ -637,7 +637,7 @@
     {
       "id": "APP-305",
       "patientId": "PAT-206",
-      "doctorId": "DOC-106",
+      "doctorId": "DOC-101",
       "department": "Dermatology",
       "date": "2025-01-05",
       "time": "14:00",

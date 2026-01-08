@@ -131,10 +131,10 @@ export function renderPatients() {
   });
 }
 // ===== Print =====
-const printBtn = document.getElementById("printBtn");
-printBtn.addEventListener("click", () => {
-  window.print();
-});
+// const printBtn = document.getElementById("printBtn");
+// printBtn.addEventListener("click", () => {
+//   window.print();
+// });
 
 // Load
 fetch("../../Data/data.json")

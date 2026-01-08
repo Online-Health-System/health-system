@@ -278,7 +278,7 @@ export function loadAppointments(container) {
               ? `<td>
       <div class="table-actions">
         <button class="btn btn-accent" onclick="editAppointment('${app.id}')">Edit</button>
-        <button class="btn btn-danger" onclick="deleteAppointment('${app.id}')">Cancel</button>
+        <button class="btn btn-danger" onclick="cancelAppointment('${app.id}')">Cancel</button>
       </div>
     </td>`
               : ``}
