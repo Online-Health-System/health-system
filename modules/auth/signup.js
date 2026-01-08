@@ -15,7 +15,7 @@ if (userRole) {
             const db = Storage.get("hospitalDB") || { departments: [] };
             const options = db.departments.map(dept => `<option value="${dept.name}">${dept.name}</option>`).join('');
             topFields += `
-                <select id="specialty" class="swal2-input" style="width:100%; margin-bottom:15px; background:rgba(255,255,255,0.1); color:gray; border:1px solid #444;">
+                <select id="specialty" class="swal2-input" style="width:100%; margin-bottom:15px; background:rgba(255,255,255,0.1); color:white; border:1px solid #444;">
                     <option value="" disabled selected style="color:black">Select Specialization</option>
                     ${options}
                 </select>
@@ -31,7 +31,7 @@ if (userRole) {
             const cvHtml = `
                 <div id="cvSection" style="margin-top: 10px; text-align: left;">
                     <label style="color:white; display:block; margin-bottom:5px; font-size: 0.8rem; padding-left: 5px;">Professional License / CV</label>
-                    <input type="file" id="cvFile" accept=".pdf,.jpg,.png" required style="color:red; margin-bottom:15px; width: 100%;" />
+                    <input type="file" id="cvFile" accept=".pdf,.jpg,.png" required style="color:white; margin-bottom:15px; width: 100%;" />
                 </div>
             `;
             const submitBtn = signupForm.querySelector('button[type="submit"]');
@@ -59,11 +59,20 @@ if (signupForm) {
             return;
         }
 
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        // التعديل هنا: Regex أكثر مرونة يقبل أي رمز خاص
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+        
         if (!passwordRegex.test(password)) {
             Swal.fire({
                 title: "Weak Password!",
-                text: "Must be at least 8 characters, with upper, lower, number, and special character.",
+                html: `<div style="text-align:left; font-size:0.9rem;">
+                        Password must have:<br>
+                        - At least 8 characters<br>
+                        - One uppercase letter (A-Z)<br>
+                        - One lowercase letter (a-z)<br>
+                        - One number (0-9)<br>
+                        - One special character (@, #, $, etc.)
+                       </div>`,
                 icon: "warning"
             });
             return;
